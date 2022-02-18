@@ -53,5 +53,14 @@ dependencies {
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    // Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+
+    //Firebase Coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
 
 }
