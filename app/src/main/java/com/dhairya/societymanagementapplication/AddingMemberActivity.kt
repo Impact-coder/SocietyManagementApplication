@@ -19,8 +19,8 @@ class AddingMemberActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_member)
 
-        setStatusBarTransparent() // call setstatusbar function
-        supportActionBar?.hide()        // hides the action bar
+//        setStatusBarTransparent() // call setstatusbar function
+//        supportActionBar?.hide()        // hides the action bar
 
         var listview = findViewById<ListView>(R.id.list_members)
         var add_member = findViewById<AppCompatButton>(R.id.btn_add_member)
