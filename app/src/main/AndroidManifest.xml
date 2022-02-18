@@ -12,6 +12,10 @@
         <activity
             android:name=".SplashScreen3"
             android:exported="true" />
+
+        <activity
+            android:name=".SplashScreen2"
+            android:exported="true" />
         <activity
             android:name=".SplashScreen1"
             android:exported="true" >
