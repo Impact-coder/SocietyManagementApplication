@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocietyManagementApplication">
         <activity
+            android:name=".AddingMemberActivity"
+            android:exported="true" />
+        <activity
             android:name=".DashBoard"
             android:exported="true" />
         <activity
