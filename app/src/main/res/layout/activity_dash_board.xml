@@ -6,4 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".DashBoard">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_member_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Add Member"
+        android:background="@drawable/button_corner"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:backgroundTint="#c3ceef"
+        android:paddingHorizontal="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

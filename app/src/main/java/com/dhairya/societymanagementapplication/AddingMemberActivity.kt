@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -11,22 +12,79 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class AddingMemberActivity : AppCompatActivity() {
+
+    // Firebase auth instance
+    private val auth = FirebaseAuth.getInstance()
+
+    private val residents = FirebaseFirestore.getInstance().collection("residents")
+
     var arr=ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_member)
 
-//        setStatusBarTransparent() // call setstatusbar function
-//        supportActionBar?.hide()        // hides the action bar
+        setStatusBarTransparent() // call setstatusbar function
+        supportActionBar?.hide()        // hides the action bar
 
         var listview = findViewById<ListView>(R.id.list_members)
         var add_member = findViewById<AppCompatButton>(R.id.btn_add_member)
         var member_email=findViewById<TextInputEditText>(R.id.email_edittext)
+        var member_password: String = "SMA@cp2"
         var member_flatno=findViewById<TextInputEditText>(R.id.flatno_edittext)
+        var btn_done = findViewById<AppCompatButton>(R.id.btn_done)
+
         add_member.setOnClickListener {
+
+            if (member_email.length() == 0 || member_flatno.length() == 0) {
+                Toast.makeText(this, "Please Enter required details!!", Toast.LENGTH_SHORT).show()
+
+            } else {
+
+                CoroutineScope(Dispatchers.Main).launch {
+
+                    try {
+                        auth.createUserWithEmailAndPassword(
+                            member_email.text.toString(),
+                            member_password
+                        ).await()
+                    } catch (e: Exception) {
+                        Toast.makeText(applicationContext, e.message.toString(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+
+                    if (auth.currentUser != null) {
+                        val uid = auth.currentUser!!.uid
+                        val resident = residentsData(
+                            uid = uid,
+                            email = member_email.text.toString(),
+                            flatNo = member_flatno.text.toString()
+                        )
+
+                        residents.document(uid).set(resident).await()
+
+                        Toast.makeText(
+                            applicationContext,
+                            "Members added Successfully!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+
+                    }
+
+
+                }
+            }
+
             if(member_flatno.text.toString() == "")
             {
                 Toast.makeText(this, "Please enter Email Address", Toast.LENGTH_LONG).show()
@@ -38,6 +96,14 @@ class AddingMemberActivity : AppCompatActivity() {
             }
             var adapter: ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,arr)
             listview.adapter = adapter
+
+        }
+
+        btn_done.setOnClickListener {
+            Intent(this, DashBoard::class.java).apply {
+                startActivity(this)
+                finish()
+            }
         }
 
     }
@@ -68,6 +134,8 @@ class AddingMemberActivity : AppCompatActivity() {
         }
         window.attributes=winParameters
     }
+
+
 
 
 }
