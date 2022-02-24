@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
@@ -36,6 +37,7 @@ class Login : AppCompatActivity() {
 
         val login_username = findViewById<TextInputEditText>(R.id.login_username)
         val login_password = findViewById<TextInputEditText>(R.id.login_password)
+        val forgotPasswordText = findViewById<TextView>(R.id.forgot_password)
         val btn_login = findViewById<AppCompatButton>(R.id.btn_login)
 
         btn_login.setOnClickListener {
@@ -70,6 +72,12 @@ class Login : AppCompatActivity() {
 
             }
 
+        }
+
+        forgotPasswordText.setOnClickListener {
+            Intent(this,forgotPassword::class.java).apply {
+                startActivity(this)
+            }
         }
     }
 

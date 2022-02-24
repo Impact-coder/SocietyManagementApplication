@@ -10,15 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocietyManagementApplication">
         <activity
+            android:name=".forgotPasswordConfirmation"
+            android:exported="true" />
+        <activity
+            android:name=".forgotPassword"
+            android:exported="true" />
+        <activity
             android:name=".SplashScreen3"
             android:exported="true" />
-
         <activity
             android:name=".SplashScreen2"
             android:exported="true" />
         <activity
             android:name=".SplashScreen1"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,9 +38,7 @@
             android:exported="true" />
         <activity
             android:name=".Login"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
