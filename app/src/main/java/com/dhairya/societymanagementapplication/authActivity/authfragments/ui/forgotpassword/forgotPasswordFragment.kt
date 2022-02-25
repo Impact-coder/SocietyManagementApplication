@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginViewModel
@@ -22,6 +23,16 @@ class forgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
         binding = FragmentForgotPasswordBinding.bind(view)
         binding.apply {
+
+            forgotPasswordEmail.setText(viewModel.email)
+
+            forgotPasswordEmail.addTextChangedListener {
+                viewModel.email = it.toString()
+            }
+
+            btnForgotPassword.setOnClickListener {
+                viewModel.forgotPassword()
+            }
 
         }
     }
