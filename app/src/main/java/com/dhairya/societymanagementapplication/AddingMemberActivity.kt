@@ -26,7 +26,7 @@ class AddingMemberActivity : AppCompatActivity() {
 
     private val residents = FirebaseFirestore.getInstance().collection("residents")
 
-    var arr=ArrayList<String>()
+    var arr = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +37,9 @@ class AddingMemberActivity : AppCompatActivity() {
 
         var listview = findViewById<ListView>(R.id.list_members)
         var add_member = findViewById<AppCompatButton>(R.id.btn_add_member)
-        var member_email=findViewById<TextInputEditText>(R.id.email_edittext)
+        var member_email = findViewById<TextInputEditText>(R.id.email_edittext)
         var member_password: String = "SMA@cp2"
-        var member_flatno=findViewById<TextInputEditText>(R.id.flatno_edittext)
+        var member_flatno = findViewById<TextInputEditText>(R.id.flatno_edittext)
         var btn_done = findViewById<AppCompatButton>(R.id.btn_done)
 
         add_member.setOnClickListener {
@@ -85,16 +85,15 @@ class AddingMemberActivity : AppCompatActivity() {
                 }
             }
 
-            if(member_flatno.text.toString() == "")
-            {
+            if (member_flatno.text.toString() == "") {
                 Toast.makeText(this, "Please enter Email Address", Toast.LENGTH_LONG).show()
-            }
-            else
-            {
-                var details=member_email.text.toString() +"\t\t\t"+ member_flatno.text.toString()
+            } else {
+                var details =
+                    member_email.text.toString() + "\t\t\t" + member_flatno.text.toString()
                 arr.add(details)
             }
-            var adapter: ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,arr)
+            var adapter: ArrayAdapter<String> =
+                ArrayAdapter(this, android.R.layout.simple_list_item_1, arr)
             listview.adapter = adapter
 
         }
@@ -110,13 +109,14 @@ class AddingMemberActivity : AppCompatActivity() {
 
     // Function to transparent status bar
     private fun setStatusBarTransparent() {
-        if (Build.VERSION.SDK_INT in 19..20){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT in 19..20) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
             }
         }
         if (Build.VERSION.SDK_INT >= 19) {
-            window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -125,17 +125,15 @@ class AddingMemberActivity : AppCompatActivity() {
         }
     }
 
-    private fun setWindowFlag(bits: Int, on: Boolean){
-        val winParameters=window.attributes
-        if(on) {
+    private fun setWindowFlag(bits: Int, on: Boolean) {
+        val winParameters = window.attributes
+        if (on) {
             winParameters.flags = winParameters.flags or bits
-        }else{
-            winParameters.flags=winParameters.flags and bits.inv()
+        } else {
+            winParameters.flags = winParameters.flags and bits.inv()
         }
-        window.attributes=winParameters
+        window.attributes = winParameters
     }
-
-
 
 
 }

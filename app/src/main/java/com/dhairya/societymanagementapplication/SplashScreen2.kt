@@ -19,7 +19,7 @@ class SplashScreen2 : AppCompatActivity() {
         var intro2_next_btn = findViewById<AppCompatButton>(R.id.intro2_next_btn)
 
         intro2_next_btn.setOnClickListener {
-            Intent(this,SplashScreen3::class.java).apply {
+            Intent(this, SplashScreen3::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
@@ -27,13 +27,14 @@ class SplashScreen2 : AppCompatActivity() {
     }
 
     private fun setStatusBarTransparent() {
-        if (Build.VERSION.SDK_INT in 19..20){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT in 19..20) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
             }
         }
         if (Build.VERSION.SDK_INT >= 19) {
-            window.decorView.systemUiVisibility= View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            window.decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         }
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -42,13 +43,13 @@ class SplashScreen2 : AppCompatActivity() {
         }
     }
 
-    private fun setWindowFlag(bits: Int, on: Boolean){
-        val winParameters=window.attributes
-        if(on) {
+    private fun setWindowFlag(bits: Int, on: Boolean) {
+        val winParameters = window.attributes
+        if (on) {
             winParameters.flags = winParameters.flags or bits
-        }else{
-            winParameters.flags=winParameters.flags and bits.inv()
+        } else {
+            winParameters.flags = winParameters.flags and bits.inv()
         }
-        window.attributes=winParameters
+        window.attributes = winParameters
     }
 }

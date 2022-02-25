@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocietyManagementApplication">
         <activity
+            android:name=".authActivity.AuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".changePassword"
             android:exported="true" />
         <activity
