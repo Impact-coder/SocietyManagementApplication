@@ -1,4 +1,6 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
-class loginViewModel {
+import androidx.lifecycle.ViewModel
+
+class loginViewModel: ViewModel() {
 }

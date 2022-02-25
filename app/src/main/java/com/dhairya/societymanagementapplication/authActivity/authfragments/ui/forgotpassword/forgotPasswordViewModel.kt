@@ -1,4 +1,6 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpassword
 
-class forgotPasswordViewModel {
+import androidx.lifecycle.ViewModel
+
+class forgotPasswordViewModel: ViewModel() {
 }
