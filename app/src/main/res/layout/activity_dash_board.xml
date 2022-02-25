@@ -6,25 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".DashBoard">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/add_member_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_corner"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/quotes_cardview"
+        android:layout_width="0dp"
+        android:layout_height="200sp"
+        android:layout_marginTop="20sp"
         android:backgroundTint="#c3ceef"
-        android:paddingHorizontal="40dp"
-        android:text="Add\nMember"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <ScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.85"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
+        android:translationZ="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quotes_cardview">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/one"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Communications"
+                        android:layout_gravity="center"/>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/two"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_gravity="center"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/three"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/four"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/five"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/six"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/seven"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/eight"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#c3ceef"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp">
+
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:translationZ="10dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

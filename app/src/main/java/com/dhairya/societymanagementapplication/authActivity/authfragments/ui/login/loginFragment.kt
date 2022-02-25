@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.databinding.ActivityAddingMemberBinding.bind
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
@@ -20,6 +21,10 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
         binding = FragmentLoginBinding.bind(view)
         binding.apply {
+
+            btnLogin.setOnClickListener {
+                findNavController().navigate(loginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
+            }
 
         }
     }

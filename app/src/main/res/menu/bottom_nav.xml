@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/dashboard"
+        android:id="@+id/home"
         android:iconTint="@color/black"
-        android:title="Dashboard" />
+        android:title="Home" />
     <item
         android:id="@+id/notices"
         android:iconTint="@color/black"
         android:title="Notices" />
     <item
-        android:id="@+id/rules"
+        android:id="@+id/profile"
         android:iconTint="@color/black"
-        android:title="Rules" />
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/communications"
+        android:iconTint="@color/black"
+        android:title="Communications" />
+
 </menu>

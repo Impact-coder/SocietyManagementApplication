@@ -31,10 +31,6 @@ class Login : AppCompatActivity() {
         setStatusBarTransparent() // call setstatusbar function
         supportActionBar?.hide()        // hides the action bar
 
-
-
-
-
         val login_username = findViewById<TextInputEditText>(R.id.login_username)
         val login_password = findViewById<TextInputEditText>(R.id.login_password)
         val forgotPasswordText = findViewById<TextView>(R.id.forgot_password)

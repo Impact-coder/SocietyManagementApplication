@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.dhairya.societymanagementapplication.loginFragment"
+        android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,21 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.dhairya.societymanagementapplication.forgotPasswordFragment"
+        android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpassword.forgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password" >
-        <action
-            android:id="@+id/action_forgotPasswordFragment_to_forgotPasswordConfrimationFragment"
-            app:destination="@id/forgotPasswordConfrimationFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.dhairya.societymanagementapplication.changePasswordFragment"
+        android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
-    <fragment
-        android:id="@+id/forgotPasswordConfrimationFragment"
-        android:name="com.dhairya.societymanagementapplication.forgotPasswordConfrimationFragment"
-        android:label="fragment_forgot_password_confrimation"
-        tools:layout="@layout/fragment_forgot_password_confrimation" />
 </navigation>

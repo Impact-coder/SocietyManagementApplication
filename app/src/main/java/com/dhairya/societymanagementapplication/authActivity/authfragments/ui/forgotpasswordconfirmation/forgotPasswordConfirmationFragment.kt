@@ -12,7 +12,7 @@ import com.dhairya.societymanagementapplication.databinding.FragmentChangePasswo
 import com.dhairya.societymanagementapplication.databinding.FragmentForgotPasswordConfrimationBinding
 
 
-class forgotPasswordConfrimationFragment : Fragment(R.layout.fragment_forgot_password_confrimation) {
+class forgotPasswordConfirmationFragment : Fragment(R.layout.fragment_forgot_password_confrimation) {
 
     private val viewModel: forgotPasswordConfirmationViewModel by viewModels()
     private lateinit var binding: FragmentForgotPasswordConfrimationBinding

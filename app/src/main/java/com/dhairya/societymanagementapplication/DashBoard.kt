@@ -10,13 +10,7 @@ class DashBoard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
 
-        var add_member_btn = findViewById<AppCompatButton>(R.id.add_member_btn)
 
-        add_member_btn.setOnClickListener {
-            Intent(this, AddingMemberActivity::class.java).apply {
-                startActivity(this)
-                finish()
-            }
-        }
+
     }
 }
