@@ -1,7 +1,10 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -22,11 +25,24 @@ class loginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.bind(view)
         binding.apply {
 
-            btnLogin.setOnClickListener {
-                findNavController().navigate(loginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
-            }
+               loginUsername.setText(viewModel.email)
+               loginPassword.setText(viewModel.password)
 
-        }
+               loginUsername.addTextChangedListener {
+                   viewModel.email = it.toString()
+               }
+               loginPassword.addTextChangedListener {
+                   viewModel.password = it.toString()
+               }
+
+
+               btnLogin.setOnClickListener {
+                   viewModel.login()
+                   Toast.makeText(context, "Login Done", Toast.LENGTH_SHORT).show()
+               }
+           }
+
+
     }
 
 }
