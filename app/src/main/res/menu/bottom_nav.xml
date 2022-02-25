@@ -3,19 +3,24 @@
     <item
         android:id="@+id/home"
         android:iconTint="@color/black"
+        android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
         android:id="@+id/notices"
+        android:icon="@drawable/ic_sharp_notice"
         android:iconTint="@color/black"
         android:title="Notices" />
     <item
+        android:id="@+id/communications"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:iconTint="@color/black"
+        android:title="Communications" />
+    <item
         android:id="@+id/profile"
+        android:icon="@drawable/ic_account"
         android:iconTint="@color/black"
         android:title="Profile" />
 
-    <item
-        android:id="@+id/communications"
-        android:iconTint="@color/black"
-        android:title="Communications" />
+
 
 </menu>

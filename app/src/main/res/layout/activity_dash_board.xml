@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ebeffa"
     tools:context=".DashBoard">
 
     <androidx.cardview.widget.CardView
@@ -12,7 +13,7 @@
         android:layout_height="200sp"
         android:layout_marginTop="20sp"
         android:backgroundTint="#c3ceef"
-        android:elevation="10dp"
+        android:elevation="30dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,13 +23,16 @@
     <ScrollView
         android:id="@+id/horizontal_scroll"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.85"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbarSize="0dp"
         android:translationZ="5dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quotes_cardview">
+        app:layout_constraintTop_toBottomOf="@id/quotes_cardview"
+        app:layout_constraintBottom_toTopOf="@id/bottomnavbar"
+        app:layout_constraintWidth_percent="0.85">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,16 +50,16 @@
                     android:layout_height="150sp"
                     android:layout_gravity="left|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Communications"
-                        android:layout_gravity="center"/>
-
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/chat"
+                        android:text="\nCommunications" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -65,15 +69,16 @@
                     android:layout_height="150sp"
                     android:layout_gravity="right|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
                     <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_gravity="center"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_tax"
+                        android:text="\nPay maintenance" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -83,10 +88,16 @@
                     android:layout_height="150sp"
                     android:layout_gravity="left|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_audit"
+                        android:text="\nGet Expense Sheet" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -96,10 +107,17 @@
                     android:layout_height="150sp"
                     android:layout_gravity="right|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_buildings"
+                        android:text="\nResidents"
+                        android:textAlignment="center" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -109,10 +127,17 @@
                     android:layout_height="150sp"
                     android:layout_gravity="right|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_announcement"
+                        android:text="\nNotices"
+                        android:textAlignment="center" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -122,10 +147,17 @@
                     android:layout_height="150sp"
                     android:layout_gravity="right|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_filling_files"
+                        android:text="\nRules"
+                        android:textAlignment="center" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -135,25 +167,20 @@
                     android:layout_height="150sp"
                     android:layout_gravity="right|top"
                     android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/eight"
-                    android:layout_width="150dp"
-                    android:layout_height="150sp"
-                    android:layout_gravity="right|top"
-                    android:layout_marginTop="20sp"
-                    android:backgroundTint="#c3ceef"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="10dp">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_report"
+                        android:text="\nFile complain"
+                        android:textAlignment="center" />
 
                 </androidx.cardview.widget.CardView>
+
 
             </GridLayout>
         </LinearLayout>
