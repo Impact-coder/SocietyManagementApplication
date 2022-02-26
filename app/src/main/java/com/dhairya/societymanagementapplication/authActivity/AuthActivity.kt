@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.authActivity
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -31,3 +32,5 @@ class AuthActivity : AppCompatActivity() {
 
     }
 }
+
+const val AUTH_RESULT_OK = Activity.RESULT_FIRST_USER

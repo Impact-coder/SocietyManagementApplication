@@ -52,6 +52,8 @@ class changePasswordViewModel(
                     user.updatePassword(newPassword)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
+                                //Redirect to deshboard
+
                             } else {
                                 showErrorMessage(task.exception.toString())
                             }
