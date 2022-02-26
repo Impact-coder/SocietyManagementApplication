@@ -38,6 +38,8 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
                btnLogin.setOnClickListener {
                    viewModel.login()
+//                   findNavController().navigate(loginFragmentDirections.actionGlobalLoginFragment())
+
                    Toast.makeText(context, "Login Done", Toast.LENGTH_SHORT).show()
                }
            }
