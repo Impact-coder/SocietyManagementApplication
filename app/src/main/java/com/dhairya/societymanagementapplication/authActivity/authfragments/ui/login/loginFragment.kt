@@ -15,24 +15,19 @@ import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
 
 class loginFragment : Fragment(R.layout.fragment_login) {
 
-    //Object of view model
     private val viewModel: loginViewModel by viewModels()
-    //view binding
     private lateinit var binding: FragmentLoginBinding
 
-    // oncreate activity of fragement lifecycle
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //init obj
-        binding = FragmentLoginBinding.bind(view)
 
+        binding = FragmentLoginBinding.bind(view)
         binding.apply {
 
                loginUsername.setText(viewModel.email)
                loginPassword.setText(viewModel.password)
 
-                //if any changes is feilds the automatically store in viewmodel
                loginUsername.addTextChangedListener {
                    viewModel.email = it.toString()
                }
@@ -43,9 +38,8 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
                btnLogin.setOnClickListener {
                    viewModel.login()
+//                   findNavController().navigate(loginFragmentDirections.actionGlobalLoginFragment())
 
-                   // travle one fragement t another fragement
-                   findNavController().navigate(loginFragmentDirections.actionLoginFragmentToForgotPasswordFragment())
                    Toast.makeText(context, "Login Done", Toast.LENGTH_SHORT).show()
                }
            }
