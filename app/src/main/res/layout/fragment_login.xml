@@ -56,7 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/text_corner"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,6 +85,8 @@
             android:textSize="18sp"
             android:layout_marginTop="5dp"
             android:background="@drawable/text_corner"
+            android:maxLines="1"
+            android:inputType="textPassword"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
