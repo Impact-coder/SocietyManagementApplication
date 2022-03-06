@@ -16,6 +16,8 @@ class changePasswordViewModel(
     private val state: SavedStateHandle
 ) : ViewModel() {
 
+    //Live data events
+
     private val changePasswordEventChannel = Channel<ChangePasswordEvent>()
     val changePasswordEvent = changePasswordEventChannel.receiveAsFlow()
 
