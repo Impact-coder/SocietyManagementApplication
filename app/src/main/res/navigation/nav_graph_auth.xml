@@ -12,10 +12,27 @@
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpassword.forgotPasswordFragment"
         android:label="fragment_forgot_password"
-        tools:layout="@layout/fragment_forgot_password" />
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_forgotPasswordConfirmationFragment"
+            app:destination="@id/forgotPasswordConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordConfirmationFragment"
+        android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpasswordconfirmation.forgotPasswordConfirmationFragment"
+        android:label="fragment_forgot_password_confrimation"
+        tools:layout="@layout/fragment_forgot_password_confrimation" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>
