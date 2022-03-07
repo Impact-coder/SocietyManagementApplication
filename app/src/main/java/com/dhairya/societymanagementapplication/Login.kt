@@ -33,7 +33,7 @@ class Login : AppCompatActivity() {
 
         val login_username = findViewById<TextInputEditText>(R.id.login_username)
         val login_password = findViewById<TextInputEditText>(R.id.login_password)
-        val forgotPasswordText = findViewById<TextView>(R.id.forgot_password)
+        val forgotPasswordText = findViewById<TextView>(R.id.text_forgot_password)
         val btn_login = findViewById<AppCompatButton>(R.id.btn_login)
 
         btn_login.setOnClickListener {
