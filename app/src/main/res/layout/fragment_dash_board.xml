@@ -193,6 +193,7 @@
                     app:cardElevation="30dp">
 
                     <Button
+                        android:id="@+id/add_member_btn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"

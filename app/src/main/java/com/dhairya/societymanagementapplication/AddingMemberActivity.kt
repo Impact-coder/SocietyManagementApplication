@@ -98,12 +98,12 @@ class AddingMemberActivity : AppCompatActivity() {
 
         }
 
-        btn_done.setOnClickListener {
-            Intent(this, DashBoard::class.java).apply {
-                startActivity(this)
-                finish()
-            }
-        }
+//        btn_done.setOnClickListener {
+//            Intent(this, DashBoard::class.java).apply {
+//                startActivity(this)
+//                finish()
+//            }
+//        }
 
     }
 

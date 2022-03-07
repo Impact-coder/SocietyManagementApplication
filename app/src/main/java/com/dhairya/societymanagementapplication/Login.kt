@@ -49,12 +49,12 @@ class Login : AppCompatActivity() {
                             login_password.text.toString()
                         ).await()
 
-                        withContext(Dispatchers.Main) {
-                            Intent(applicationContext, DashBoard::class.java).apply {
-                                startActivity(this)
-                                finish()
-                            }
-                        }
+//                        withContext(Dispatchers.Main) {
+//                            Intent(applicationContext, DashBoard::class.java).apply {
+//                                startActivity(this)
+//                                finish()
+//                            }
+//                        }
 
                     } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
