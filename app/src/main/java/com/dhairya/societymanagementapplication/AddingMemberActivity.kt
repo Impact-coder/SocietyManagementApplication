@@ -37,9 +37,9 @@ class AddingMemberActivity : AppCompatActivity() {
 
         var listview = findViewById<ListView>(R.id.list_members)
         var add_member = findViewById<AppCompatButton>(R.id.btn_add_member)
-        var member_email = findViewById<TextInputEditText>(R.id.AddMember_email_edittext)
+        var member_email = findViewById<TextInputEditText>(R.id.addMember_email_edittext)
         var member_password: String = "SMA@cp2"
-        var member_flatno = findViewById<TextInputEditText>(R.id.AddMember_flatno_edittext)
+        var member_flatno = findViewById<TextInputEditText>(R.id.addMember_flatno_edittext)
         var btn_done = findViewById<AppCompatButton>(R.id.btn_done)
 
         add_member.setOnClickListener {

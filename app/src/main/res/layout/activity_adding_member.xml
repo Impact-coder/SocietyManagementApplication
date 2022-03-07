@@ -39,7 +39,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/AddMember_email_edittext"
+            android:id="@+id/addMember_email_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -62,7 +62,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/AddMember_flatno_edittext"
+            android:id="@+id/addMember_flatno_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
