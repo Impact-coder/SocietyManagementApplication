@@ -92,7 +92,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/forgot_password"
+        android:id="@+id/text_forgot_password"
         android:layout_width="match_parent"
         android:gravity="right"
         android:paddingRight="65dp"
@@ -123,7 +123,7 @@
         android:elevation="10sp"
         android:background="@drawable/button_corner"
         android:layout_marginTop="50sp"
-        app:layout_constraintTop_toBottomOf="@id/forgot_password"
+        app:layout_constraintTop_toBottomOf="@id/text_forgot_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

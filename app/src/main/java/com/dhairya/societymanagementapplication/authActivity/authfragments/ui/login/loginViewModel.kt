@@ -1,8 +1,12 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
+import android.content.Intent
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dhairya.societymanagementapplication.DashBoard
 import com.dhairya.societymanagementapplication.authActivity.AUTH_RESULT_OK
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,7 +24,7 @@ class loginViewModel constructor(
     //Live data events
 
     private val loginEventChannel = Channel<LoginEvent>()
-//    val loginEvent = loginEventChannel.receiveAsFlow()
+    val loginEvent = loginEventChannel.receiveAsFlow()
 
 
     private val auth = FirebaseAuth.getInstance()
@@ -55,6 +59,8 @@ class loginViewModel constructor(
             }
         }
     }
+
+
 
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {

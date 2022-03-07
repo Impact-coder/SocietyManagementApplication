@@ -58,7 +58,7 @@
             android:background="@drawable/text_corner"
             android:textSize="18sp"
             android:maxLines="1"
-            android:inputType="ema"/>
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,10 +89,17 @@
             android:inputType="textPassword"
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <ImageButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:src="@drawable/ic_baseline_visibility_24" />-->
+
+    </com.google.android.material.textfield.TextInputLayout>z
+
 
     <TextView
-        android:id="@+id/forgot_password"
+        android:id="@+id/text_forgot_password"
         android:layout_width="match_parent"
         android:gravity="right"
         android:paddingRight="65dp"
@@ -123,7 +130,7 @@
         android:elevation="10sp"
         android:background="@drawable/button_corner"
         android:layout_marginTop="50sp"
-        app:layout_constraintTop_toBottomOf="@id/forgot_password"
+        app:layout_constraintTop_toBottomOf="@id/text_forgot_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
