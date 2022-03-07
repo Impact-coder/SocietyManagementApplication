@@ -1,4 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
-class dashBoardViewModel {
+import androidx.lifecycle.ViewModel
+
+class dashBoardViewModel: ViewModel() {
 }
