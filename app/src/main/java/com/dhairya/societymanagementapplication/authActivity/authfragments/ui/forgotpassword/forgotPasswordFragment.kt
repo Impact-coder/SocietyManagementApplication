@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginViewModel
 import com.dhairya.societymanagementapplication.databinding.FragmentForgotPasswordBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collect
 
 class forgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
@@ -32,9 +36,36 @@ class forgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
             btnForgotPassword.setOnClickListener {
                 viewModel.forgotPassword()
+
             }
 
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.forgotPasswordEvent.collect { events ->
+                    when (events) {
+                        is forgotPasswordViewModel.ForgotPasswordEvent.NavigateBackWithResult -> {
+                            Snackbar.make(
+                                requireView(),
+                                "Password reset link sent to your email",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                            findNavController().navigate(forgotPasswordFragmentDirections.actionForgotPasswordFragmentToForgotPasswordConfirmationFragment())
+                        }
+                        is forgotPasswordViewModel.ForgotPasswordEvent.ShowErrorMessage -> {
+
+                            Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+                        }
+
+                    }.exhaustive
+
+                }
+
+            }
         }
+
+
     }
 
 }
+
+val <T> T.exhaustive: T
+    get() = this

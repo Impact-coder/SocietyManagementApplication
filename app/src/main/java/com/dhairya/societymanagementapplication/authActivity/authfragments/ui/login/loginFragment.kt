@@ -48,8 +48,16 @@ class loginFragment : Fragment(R.layout.fragment_login) {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.loginEvent.collect { events ->
                 when(events){
-                    is loginViewModel.LoginEvent.NavigateBackWithResult -> TODO()
-                    is loginViewModel.LoginEvent.ShowErrorMessage -> TODO()
+                    is loginViewModel.LoginEvent.NavigateBackWithResult -> {
+                            Intent(requireContext(), DashBoard ::class.java).also {
+                                startActivity(it)
+                                requireActivity().finish()
+                            }
+                    }
+                    is loginViewModel.LoginEvent.ShowErrorMessage -> {
+                        Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+
+                    }
                 }.exhaustive
 
             }

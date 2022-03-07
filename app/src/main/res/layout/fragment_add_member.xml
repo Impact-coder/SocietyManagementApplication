@@ -39,7 +39,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_edittext"
+            android:id="@+id/AddMember_email_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -62,7 +62,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/flatno_edittext"
+            android:id="@+id/AddMember_flatno_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -72,7 +72,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
-        android:id="@+id/radioGroup_roles"
+        android:id="@+id/radioGroup_Member_roles"
         android:checkedButton="@+id/radio_button_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         android:paddingHorizontal="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup_roles"/>
+        app:layout_constraintTop_toBottomOf="@id/radioGroup_Member_roles"/>
 
     <ListView
         android:id="@+id/list_members"

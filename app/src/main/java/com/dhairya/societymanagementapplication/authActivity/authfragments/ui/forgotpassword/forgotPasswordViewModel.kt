@@ -3,6 +3,7 @@ package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.f
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dhairya.societymanagementapplication.authActivity.AUTH_RESULT_OK
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -36,11 +37,11 @@ class forgotPasswordViewModel constructor(
                 } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
                 }
-//                forgotPasswordEventChannel.send(
-//                    ForgotPasswordEvent.NavigateBackWithResult(
-//                        AUTH_RESULT_OK
-//                    )
-//                )
+                forgotPasswordEventChannel.send(
+                    ForgotPasswordEvent.NavigateBackWithResult(
+                        AUTH_RESULT_OK
+                    )
+                )
             }
         }
     }
