@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.addMember
 
+import android.provider.MediaStore
 import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -31,6 +32,7 @@ class addMemberViewModel (
 
 
 
+
     var addMemberEmailEdittext= state.get<String>("addMemberEmailEdittext") ?: ""
         set(value) {
             field = value
@@ -45,7 +47,7 @@ class addMemberViewModel (
 
 
 
-    fun addMember(){
+    fun addMember(radio_str: String){
 
         if (addMemberEmailEdittext.isBlank() || addMemberFlatnoEdittext.isBlank()) {
             val error = "The field must not be empty"
@@ -70,6 +72,7 @@ class addMemberViewModel (
                         uid = uid,
                         email = addMemberEmailEdittext,
                         flatNo = addMemberFlatnoEdittext,
+                        role = radio_str
 
                     )
                     residents.document(uid).set(resident).await()
@@ -79,8 +82,6 @@ class addMemberViewModel (
 
             }
         }
-
-        
         
 
     }
