@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordViewModel
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpassword.forgotPasswordFragmentDirections
 import com.dhairya.societymanagementapplication.databinding.FragmentChangePasswordBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentForgotPasswordConfrimationBinding
 
@@ -25,7 +27,8 @@ class forgotPasswordConfirmationFragment : Fragment(R.layout.fragment_forgot_pas
         binding.apply {
 
             btnBackTologin.setOnClickListener {
-//                viewModel.
+                findNavController().navigate(forgotPasswordConfirmationFragmentDirections.actionForgotPasswordConfirmationFragmentToLoginFragment())
+
             }
 
         }
