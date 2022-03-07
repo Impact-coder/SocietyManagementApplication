@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -16,19 +17,12 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        var nav1=findViewById<BottomNavigationView>(R.id.bottomnavbar)
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_dashboard) as NavHostFragment
         navController = navHostFragment.findNavController()
 
-
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.dashBoardFragment) {
-                actionBar?.hide()
-            } else {
-                actionBar?.show()
-            }
-        }
 
     }
 }

@@ -9,5 +9,29 @@
         android:id="@+id/dashBoardFragment"
         android:name="com.dhairya.societymanagementapplication.dashBoardFragment"
         android:label="fragment_dash_board"
-        tools:layout="@layout/fragment_dash_board" />
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_expenseSheetFragment"
+            app:destination="@id/expenseSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseSheetFragment"
+        android:name="com.dhairya.societymanagementapplication.expenseSheetFragment"
+        android:label="fragment_expense_sheet"
+        tools:layout="@layout/fragment_expense_sheet" />
+    <fragment
+        android:id="@+id/addMemberFragment"
+        android:name="com.dhairya.societymanagementapplication.addMemberFragment"
+        android:label="fragment_add_member"
+        tools:layout="@layout/fragment_add_member" />
+    <fragment
+        android:id="@+id/maintenanceInvoiceFragment"
+        android:name="com.dhairya.societymanagementapplication.maintenanceInvoiceFragment"
+        android:label="fragment_maintenance_invoice"
+        tools:layout="@layout/fragment_maintenance_invoice" />
+    <fragment
+        android:id="@+id/residentListFragment"
+        android:name="com.dhairya.societymanagementapplication.residentListFragment"
+        android:label="fragment_resident_list"
+        tools:layout="@layout/fragment_resident_list" />
 </navigation>

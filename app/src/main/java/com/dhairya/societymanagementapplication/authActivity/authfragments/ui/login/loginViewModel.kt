@@ -18,7 +18,7 @@ import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
 class loginViewModel constructor(
-    private val state: SavedStateHandle // it's store all data of fragement in a bundle when app goes in onpause state
+    private val state: SavedStateHandle // it's store all data of fragment in a bundle when app goes in onpause state
 ) : ViewModel() {
 
     //Live data events

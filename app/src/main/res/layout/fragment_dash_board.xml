@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="200sp"
         android:layout_marginTop="20sp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#c3ceef"
         android:elevation="30dp"
         app:cardCornerRadius="10dp"
@@ -26,12 +27,12 @@
         android:layout_height="match_parent"
         android:scrollbarSize="0dp"
         android:translationZ="5dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quotes_cardview"
-        app:layout_constraintBottom_toTopOf="@id/bottomnavbar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintWidth_percent="0.85">
 
         <LinearLayout
@@ -187,16 +188,6 @@
     </ScrollView>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnavbar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:translationZ="10dp"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
