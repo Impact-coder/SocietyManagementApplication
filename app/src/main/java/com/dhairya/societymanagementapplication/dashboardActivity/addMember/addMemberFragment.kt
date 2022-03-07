@@ -64,6 +64,9 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
             btnDone.setOnClickListener {
                 findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
+
+                addMemberEmailEdittext.setText("")
+                addMemberFlatnoEdittext.setText("")
             }
 
         }
@@ -77,6 +80,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
                             "Members added Successfully!!",
                             Snackbar.LENGTH_LONG
                         ).show()
+
                     }
                     is addMemberViewModel.AddMemberEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
