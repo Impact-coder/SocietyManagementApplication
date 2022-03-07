@@ -24,12 +24,19 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_forgotPasswordConfirmationFragment"
             app:destination="@id/forgotPasswordConfirmationFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordConfirmationFragment"
         android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.forgotpasswordconfirmation.forgotPasswordConfirmationFragment"
         android:label="fragment_forgot_password_confrimation"
-        tools:layout="@layout/fragment_forgot_password_confrimation" />
+        tools:layout="@layout/fragment_forgot_password_confrimation" >
+        <action
+            android:id="@+id/action_forgotPasswordConfirmationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordFragment"
