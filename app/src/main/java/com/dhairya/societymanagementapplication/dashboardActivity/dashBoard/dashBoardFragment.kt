@@ -16,7 +16,7 @@ import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
 
 class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
-//    private val viewModel: dashBoardViewModel by viewModels()
+    private val viewModel: dashBoardViewModel by viewModels()
     private lateinit var binding: FragmentDashBoardBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

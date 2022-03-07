@@ -52,10 +52,10 @@
                     android:layout_gravity="left|top"
                     android:layout_marginTop="20sp"
                     android:backgroundTint="#fff"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="30dp"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -194,16 +194,13 @@
                     app:cardCornerRadius="10dp"
                     app:cardElevation="30dp">
 
-                    <Button
+                    <TextView
                         android:id="@+id/add_member_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:backgroundTint="#fff"
-                        android:drawableTop="@drawable/ic_report"
-                        android:text="Add Member"
-                        android:textColor="#000"
-                        android:textAllCaps="false"
+                        android:drawableTop="@drawable/ic_baseline_person_add_24"
+                        android:text="\n Add Member"
                         android:textAlignment="center" />
 
                 </com.google.android.material.card.MaterialCardView>
