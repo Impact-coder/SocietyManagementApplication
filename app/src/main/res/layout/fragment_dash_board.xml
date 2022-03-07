@@ -182,6 +182,29 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/eight"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:backgroundTint="#fff"
+                        android:drawableTop="@drawable/ic_report"
+                        android:text="Add Member"
+                        android:textColor="#000"
+                        android:textAllCaps="false"
+                        android:textAlignment="center" />
+
+                </com.google.android.material.card.MaterialCardView>
+
 
             </GridLayout>
         </LinearLayout>

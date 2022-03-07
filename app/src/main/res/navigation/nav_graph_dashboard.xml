@@ -13,25 +13,77 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_expenseSheetFragment"
             app:destination="@id/expenseSheetFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_maintenanceInvoiceFragment"
+            app:destination="@id/maintenanceInvoiceFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_addMemberFragment"
+            app:destination="@id/addMemberFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_residentListFragment"
+            app:destination="@id/residentListFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
         android:name="com.dhairya.societymanagementapplication.expenseSheetFragment"
         android:label="fragment_expense_sheet"
-        tools:layout="@layout/fragment_expense_sheet" />
+        tools:layout="@layout/fragment_expense_sheet" >
+        <action
+            android:id="@+id/action_expenseSheetFragment_to_maintenanceInvoiceFragment"
+            app:destination="@id/maintenanceInvoiceFragment" />
+        <action
+            android:id="@+id/action_expenseSheetFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_expenseSheetFragment_to_addMemberFragment2"
+            app:destination="@id/addMemberFragment" />
+        <action
+            android:id="@+id/action_expenseSheetFragment_to_residentListFragment"
+            app:destination="@id/residentListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addMemberFragment"
         android:name="com.dhairya.societymanagementapplication.addMemberFragment"
         android:label="fragment_add_member"
-        tools:layout="@layout/fragment_add_member" />
+        tools:layout="@layout/fragment_add_member" >
+        <action
+            android:id="@+id/action_addMemberFragment_to_maintenanceInvoiceFragment"
+            app:destination="@id/maintenanceInvoiceFragment" />
+        <action
+            android:id="@+id/action_addMemberFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/maintenanceInvoiceFragment"
         android:name="com.dhairya.societymanagementapplication.maintenanceInvoiceFragment"
         android:label="fragment_maintenance_invoice"
-        tools:layout="@layout/fragment_maintenance_invoice" />
+        tools:layout="@layout/fragment_maintenance_invoice" >
+        <action
+            android:id="@+id/action_maintenanceInvoiceFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_maintenanceInvoiceFragment_to_addMemberFragment"
+            app:destination="@id/addMemberFragment" />
+        <action
+            android:id="@+id/action_maintenanceInvoiceFragment_to_residentListFragment"
+            app:destination="@id/residentListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/residentListFragment"
         android:name="com.dhairya.societymanagementapplication.residentListFragment"
         android:label="fragment_resident_list"
-        tools:layout="@layout/fragment_resident_list" />
+        tools:layout="@layout/fragment_resident_list" >
+        <action
+            android:id="@+id/action_residentListFragment_to_addMemberFragment"
+            app:destination="@id/addMemberFragment" />
+        <action
+            android:id="@+id/action_residentListFragment_to_maintenanceInvoiceFragment"
+            app:destination="@id/maintenanceInvoiceFragment" />
+        <action
+            android:id="@+id/action_residentListFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_residentListFragment_to_expenseSheetFragment"
+            app:destination="@id/expenseSheetFragment" />
+    </fragment>
 </navigation>

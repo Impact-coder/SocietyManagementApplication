@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.dhairya.societymanagementapplication.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -22,7 +23,7 @@ class DashboardActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_dashboard) as NavHostFragment
         navController = navHostFragment.findNavController()
-
+        nav1.setupWithNavController(navController)
 
     }
 }
