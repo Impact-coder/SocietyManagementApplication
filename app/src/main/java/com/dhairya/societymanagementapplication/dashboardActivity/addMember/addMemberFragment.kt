@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.addMember
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
@@ -8,10 +9,15 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginViewModel
+import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
 import com.dhairya.societymanagementapplication.databinding.FragmentAddMemberBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collect
 
 
 private const val ARG_PARAM1 = "param1"
@@ -21,6 +27,8 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
     private val viewModel: addMemberViewModel by viewModels()
     private lateinit var binding: FragmentAddMemberBinding
 
+    lateinit var radio: String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -28,38 +36,61 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
         binding = FragmentAddMemberBinding.bind(view)
         binding.apply {
 
-           addMemberEmailEdittext.setText(viewModel.addMemberEmailEdittext)
-           addMemberFlatnoEdittext.setText(viewModel.addMemberFlatnoEdittext)
-//            confirmPassEdittext.setText(viewModel.confirmPassword)
+            radioGroupMemberRoles.setOnCheckedChangeListener { radioGroup, i ->
+                radio = if (radioButton1.id == i) "member" else "Treasurer"
+
+                Snackbar.make(requireView(), radio, Snackbar.LENGTH_LONG).show()
+            }
+
+            addMemberEmailEdittext.setText(viewModel.addMemberEmailEdittext)
+            addMemberFlatnoEdittext.setText(viewModel.addMemberFlatnoEdittext)
 
             addMemberEmailEdittext.addTextChangedListener {
                 viewModel.addMemberEmailEdittext = it.toString()
+
             }
 
             addMemberFlatnoEdittext.addTextChangedListener {
                 viewModel.addMemberFlatnoEdittext = it.toString()
+
             }
 
             btnAddMember.setOnClickListener {
 
-                viewModel.addMember()
+                viewModel.addMember(radio)
 
             }
-
-
-            radioGroupMemberRoles.setOnCheckedChangeListener { radioGroup, i ->
-                val radio= if (radioButton1.id == i) "member" else "Treasurer"
-
-                Snackbar.make(requireView(),radio , Snackbar.LENGTH_LONG).show()
-            }
-
 
 
             btnDone.setOnClickListener {
                 findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
+
+                addMemberEmailEdittext.setText("")
+                addMemberFlatnoEdittext.setText("")
+            }
+
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.addMemberEvent.collect { events ->
+                when (events) {
+                    is addMemberViewModel.AddMemberEvent.NavigateBackWithResult -> {
+                        Snackbar.make(
+                            requireView(),
+                            "Members added Successfully!!",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+
+                    }
+                    is addMemberViewModel.AddMemberEvent.ShowErrorMessage -> {
+                        Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+                    }
+                }.exhaustive
             }
 
         }
     }
-
 }
+
+val <T> T.exhaustive: T
+    get() = this
