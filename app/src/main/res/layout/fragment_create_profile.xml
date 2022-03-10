@@ -63,11 +63,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProfile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/text_corner" />
+            android:background="@drawable/text_corner"
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +88,7 @@
         app:layout_constraintWidth_percent="0.7">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProfile_mobile_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -111,6 +113,7 @@
         app:layout_constraintWidth_percent="0.7">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProfile_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -136,6 +139,7 @@
         app:layout_constraintWidth_percent="0.7">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProfile_flat_no"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
