@@ -18,8 +18,8 @@ class loginViewModel constructor(
 
     //Live data events
 
-    private val loginEventChannel = Channel<LoginEvent>()
-    val loginEvent = loginEventChannel.receiveAsFlow()
+    private val createprofileEventChannel = Channel<LoginEvent>()
+    val loginEvent = createprofileEventChannel.receiveAsFlow()
 
 
     private val auth = FirebaseAuth.getInstance()
@@ -47,7 +47,7 @@ class loginViewModel constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 try {
                     auth.signInWithEmailAndPassword(email, password).await()
-                    loginEventChannel.send(LoginEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+                    createprofileEventChannel.send(LoginEvent.NavigateBackWithResult(AUTH_RESULT_OK))
                 } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
                 }
@@ -61,7 +61,7 @@ class loginViewModel constructor(
 
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {
-        loginEventChannel.send(LoginEvent.ShowErrorMessage(text))
+        createprofileEventChannel.send(LoginEvent.ShowErrorMessage(text))
     }
 
     sealed class LoginEvent {
