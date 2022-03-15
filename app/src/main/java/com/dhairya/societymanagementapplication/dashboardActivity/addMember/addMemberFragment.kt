@@ -20,8 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 class addMemberFragment : Fragment(R.layout.fragment_add_member) {
     private val viewModel: addMemberViewModel by viewModels()

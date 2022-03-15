@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.RequiresApi
@@ -19,7 +20,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
 import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
+import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberViewModel
 import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfileBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfileBinding.*
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
@@ -35,7 +38,10 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
     private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
 
+    lateinit var statusRadio: String
+
     private val mPickImage = 1
+    lateinit var imgUri: String
     private lateinit var mYourBitmap: Bitmap
 
 
@@ -61,24 +67,31 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
         binding = FragmentCreateProfileBinding.bind(view)
         binding.apply {
 
-            cropActivityResultLauncher = registerForActivityResult(cropActivityResultContract){
+            cropActivityResultLauncher = registerForActivityResult(cropActivityResultContract) {
                 it?.let { uri ->
 
 
-
+                    imgUri = uri.toString()
                     val source = ImageDecoder.createSource(context?.contentResolver!!, uri)
                     mYourBitmap = ImageDecoder.decodeBitmap(source)
-                    val resized = Bitmap.createScaledBitmap(mYourBitmap, 300, 300, true)
+                    val resizedImg = Bitmap.createScaledBitmap(mYourBitmap, 300, 300, true)
 
-                    btnChoosePic.setImageBitmap(resized)
+                    btnChoosePic.setImageBitmap(resizedImg)
 
                 }
+            }
+
+            radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+                statusRadio = if (radioButton1.id == i) "Resident Owner" else "Renting Apartment"
+                Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
             }
 
             createProfileName.setText(viewModel.createprofilename)
             createProfileMobileNo.setText(viewModel.createprofilemobileno)
             createProfileEmail.setText(viewModel.createprofileemail)
             createProfileFlatNo.setText(viewModel.createprofileflatno)
+
+
 
 
             createProfileName.addTextChangedListener {
@@ -88,10 +101,12 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                 viewModel.createprofilemobileno = it.toString()
             }
 
+            createProfileEmail.addTextChangedListener {
+                viewModel.createprofileemail = it.toString()
+            }
 
-
-            btnCreateProfile.setOnClickListener {
-                viewModel.createProfile()
+            createProfileFlatNo.addTextChangedListener {
+                viewModel.createprofileflatno = it.toString()
             }
 
             btnChoosePic.setOnClickListener {
@@ -102,11 +117,34 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
             }
 
+            btnCreateProfile.setOnClickListener {
+                viewModel.createProfile(imgUri, statusRadio)
+            }
+
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.createProfileEvent.collect { events ->
+                    when (events) {
+                        is createProfileViewModel.CreateProfileEvent.NavigateBackWithResult -> {
+                            Snackbar.make(
+                                requireView(),
+                                "Profile Created Successfully!!",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+                        is createProfileViewModel.CreateProfileEvent.ShowErrorMessage -> {
+                            Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG)
+                                .show()
+                        }
+                    }.exhaustive
+
+                }
+
+
+            }
 
         }
 
     }
-
 }
 
 

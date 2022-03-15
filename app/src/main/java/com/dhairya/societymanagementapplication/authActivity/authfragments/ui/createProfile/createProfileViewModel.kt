@@ -1,10 +1,20 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile
 
+import android.R
+import android.content.Context
+import android.net.Uri
+import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhairya.societymanagementapplication.authActivity.AUTH_RESULT_OK
+import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberViewModel
+import com.dhairya.societymanagementapplication.data.profileData
+import com.dhairya.societymanagementapplication.residentsData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -16,6 +26,8 @@ class createProfileViewModel constructor(
     private val state: SavedStateHandle // it's store all data of fragment in a bundle when app goes in onpause state
 ) : ViewModel() {
 
+
+
     //Live data events
 
     private val createprofileEventChannel = Channel<CreateProfileEvent>()
@@ -23,6 +35,8 @@ class createProfileViewModel constructor(
 
 
     private val auth = FirebaseAuth.getInstance()
+    private val residents = FirebaseFirestore.getInstance().collection("residents")
+    private val profileData = FirebaseFirestore.getInstance().collection("profileData")
 
     //fetch data from fregement
     var createprofilename = state.get<String>("createprofilename") ?: ""
@@ -51,18 +65,49 @@ class createProfileViewModel constructor(
 
 
 
-    fun createProfile() {
+    fun createProfile(imgUri:String,roleStatus:String) {
+
+
         if (createprofilename.isBlank() || createprofileflatno.isBlank() || createprofilemobileno.isBlank() || createprofileemail.isBlank()) {
             val error = "The field must not be empty"
             showErrorMessage(error)
             return
         } else {
+            var photoUri = Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
+
             viewModelScope.launch(Dispatchers.IO) {
                 try {
-                    createprofileEventChannel.send(CreateProfileEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+
+                    if (auth.currentUser != null) {
+                        val id = profileData.document().id
+
+
+                        val profiledata = profileData(
+                            pid = id,
+                            memberid = Firebase.auth.currentUser!!.uid,
+                            profileImg = "",
+                            fullName = createprofilename,
+                            mobile = createprofilemobileno,
+                            email = createprofileemail,
+                            flatNo = createprofileflatno,
+                            ownershipStatus = roleStatus
+
+                        )
+
+                        profileData.document(id).set(profiledata).await()
+                        createprofileEventChannel.send(
+                            CreateProfileEvent.NavigateBackWithResult(
+                                com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
+                            ))
+
+                    }
+
                 } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
                 }
+
+
+
             }
         }
     }
