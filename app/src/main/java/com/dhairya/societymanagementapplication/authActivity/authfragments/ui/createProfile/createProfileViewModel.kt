@@ -27,7 +27,6 @@ class createProfileViewModel constructor(
 ) : ViewModel() {
 
 
-
     //Live data events
 
     private val createprofileEventChannel = Channel<CreateProfileEvent>()
@@ -64,8 +63,7 @@ class createProfileViewModel constructor(
         }
 
 
-
-    fun createProfile(imgUri:String,roleStatus:String) {
+    fun createProfile(imgUri: String, roleStatus: String) {
 
 
         if (createprofilename.isBlank() || createprofileflatno.isBlank() || createprofilemobileno.isBlank() || createprofileemail.isBlank()) {
@@ -73,7 +71,8 @@ class createProfileViewModel constructor(
             showErrorMessage(error)
             return
         } else {
-            var photoUri = Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
+            var photoUri =
+                Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
 
             viewModelScope.launch(Dispatchers.IO) {
                 try {
@@ -98,7 +97,8 @@ class createProfileViewModel constructor(
                         createprofileEventChannel.send(
                             CreateProfileEvent.NavigateBackWithResult(
                                 com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
-                            ))
+                            )
+                        )
 
                     }
 
@@ -107,20 +107,14 @@ class createProfileViewModel constructor(
                 }
 
 
-
             }
         }
     }
 
 
-
-
-
-
     private fun showErrorMessage(text: String) = viewModelScope.launch {
         createprofileEventChannel.send(CreateProfileEvent.ShowErrorMessage(text))
     }
-
 
 
     sealed class CreateProfileEvent {

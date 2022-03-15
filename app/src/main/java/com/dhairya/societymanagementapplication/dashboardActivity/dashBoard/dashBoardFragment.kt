@@ -25,15 +25,12 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
         binding = FragmentDashBoardBinding.bind(view)
         binding.apply {
-            addMemberBtn.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
-            }
 
-            three.setOnClickListener {
+            btnExpenseSheet.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment())
             }
 
-            four.setOnClickListener {
+            btnResidents.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
             }
         }
