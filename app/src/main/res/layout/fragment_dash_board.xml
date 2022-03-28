@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:backgroundTint="#E6E6E6"
-        app:cardCornerRadius="50dp"
+        app:cardCornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.8"
@@ -33,175 +33,191 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="0dp"
-        app:cardCornerRadius="40dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view"
-        app:layout_constraintWidth_percent="0.8" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_buttons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview"
-        app:layout_constraintWidth_percent="0.8">
-
-        <ScrollView
+        app:layout_constraintWidth_percent="0.85" >
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/btn_expenseSheet"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginTop="30sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_audit"
-                    android:text="\nExpense Sheet"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14dp"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_payMaintenance"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30sp"
-                    android:layout_marginEnd="25sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_tax"
-                    android:shadowColor="#fff"
-                    android:text="\nPay Maintenance"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_communication"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginTop="30sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/chat"
-                    android:shadowColor="#fff"
-                    android:text="\nCommunication"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_expenseSheet"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_residents"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30sp"
-                    android:layout_marginEnd="25sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_buildings"
-                    android:shadowColor="#fff"
-                    android:text="\nResidents"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintTop_toBottomOf="@id/btn_expenseSheet"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_notices"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginTop="30sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_announcement"
-                    android:shadowColor="#fff"
-                    android:text="\nNotices"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_communication"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_rules"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30sp"
-                    android:layout_marginEnd="25sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_filling_files"
-                    android:shadowColor="#fff"
-                    android:text="\nRules"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintTop_toBottomOf="@id/btn_residents"
-                    app:layout_constraintWidth_percent="0.35" />
-
-                <TextView
-                    android:id="@+id/btn_complain"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginTop="30sp"
-                    android:backgroundTint="#fff"
-                    android:drawableTop="@drawable/ic_report"
-                    android:shadowColor="#fff"
-                    android:text="\nNotices"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_notices"
-                    app:layout_constraintWidth_percent="0.35" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </ScrollView>
-
+            android:layout_height="match_parent"
+           >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latest Notices can be viewed Here"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.85"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
+        android:translationZ="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardview">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/one"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/chat"
+                        android:text="\nCommunications" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/two"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_tax"
+                        android:text="\nPay maintenance" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/three"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_audit"
+                        android:text="\nGet Expense Sheet" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/four"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_buildings"
+                        android:text="\nResidents"
+                        android:textAlignment="center" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/five"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_announcement"
+                        android:text="\nNotices"
+                        android:textAlignment="center" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/six"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_filling_files"
+                        android:text="\nRules"
+                        android:textAlignment="center" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/seven"
+                    android:layout_width="150dp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ic_report"
+                        android:text="\nFile complain"
+                        android:textAlignment="center" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

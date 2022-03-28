@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.AppCompatButton
+import com.dhairya.societymanagementapplication.authActivity.AuthActivity
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginFragment
 
 class SplashScreen3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +21,7 @@ class SplashScreen3 : AppCompatActivity() {
         var intro3_started_btn = findViewById<AppCompatButton>(R.id.intro3_started_btn)
 
         intro3_started_btn.setOnClickListener {
-            Intent(this, Login::class.java).apply {
+            Intent(this, AuthActivity::class.java).apply {
                 startActivity(this)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
