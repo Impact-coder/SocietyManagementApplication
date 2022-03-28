@@ -84,7 +84,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
     //image crop
-    implementation "androidx.activity:activity-ktx:1.2.0-alpha06"
+    implementation "androidx.activity:activity-ktx:1.5.0-alpha03"
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 
 

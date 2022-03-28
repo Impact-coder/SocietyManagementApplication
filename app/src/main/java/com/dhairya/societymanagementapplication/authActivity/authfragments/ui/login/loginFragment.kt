@@ -26,6 +26,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.bind(view)
         binding.apply {
 
+
             loginUsername.setText(viewModel.email)
             loginPassword.setText(viewModel.password)
 

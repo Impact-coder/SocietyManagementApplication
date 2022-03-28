@@ -15,6 +15,7 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        supportActionBar?.hide()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_auth) as NavHostFragment
