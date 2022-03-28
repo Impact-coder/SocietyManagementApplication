@@ -1,13 +1,9 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.addMember
 
-import android.provider.MediaStore
-import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
-import com.dhairya.societymanagementapplication.residentsData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers

@@ -1,16 +1,10 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile
 
-import android.R
-import android.content.Context
 import android.net.Uri
-import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dhairya.societymanagementapplication.authActivity.AUTH_RESULT_OK
-import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberViewModel
 import com.dhairya.societymanagementapplication.data.profileData
-import com.dhairya.societymanagementapplication.residentsData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore

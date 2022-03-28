@@ -3,7 +3,6 @@ package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.c
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dhairya.societymanagementapplication.changePassword
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
