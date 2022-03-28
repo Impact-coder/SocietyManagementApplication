@@ -57,16 +57,28 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="0dp"
+    app:layout_constraintWidth_percent="0.85"
+    android:layout_height="0dp"
+    app:layout_constraintHeight_percent="0.52"
+    android:translationZ="1dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/cardview"
+    app:layout_constraintBottom_toBottomOf="parent">
+
     <ScrollView
         android:id="@+id/horizontal_scroll"
-        android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.85"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scrollbarSize="0dp"
         android:translationZ="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,5 +238,7 @@
             </GridLayout>
         </LinearLayout>
     </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
