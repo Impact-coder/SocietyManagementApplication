@@ -33,6 +33,9 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             btnResidents.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
             }
+            btnPayMaintenance.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
+            }
         }
 
 
