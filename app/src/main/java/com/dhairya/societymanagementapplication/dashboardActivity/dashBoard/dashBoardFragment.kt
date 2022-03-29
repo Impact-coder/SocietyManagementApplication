@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
@@ -57,6 +58,10 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
             }
 
+            btnAddMember.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
+            }
+
 
 
 
@@ -67,10 +72,12 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private fun ckeckUserrole(role: String) {
 
-        if(role == "Secretary")
+        if(role == "Member" || role == "Treasurer")
         {
+            binding.cvAddMembers.isVisible = false
 
         }
+
 
     }
 
