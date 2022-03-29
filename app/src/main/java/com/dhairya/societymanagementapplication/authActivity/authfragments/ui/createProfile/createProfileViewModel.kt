@@ -27,9 +27,11 @@ class createProfileViewModel constructor(
     val createProfileEvent = createprofileEventChannel.receiveAsFlow()
 
 
+
     private val auth = FirebaseAuth.getInstance()
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
+//    private val storage = Firebase.storage
 
     //fetch data from fregement
     var createprofilename = state.get<String>("createprofilename") ?: ""
@@ -73,6 +75,8 @@ class createProfileViewModel constructor(
 
                     if (auth.currentUser != null) {
                         val id = profileData.document().id
+
+//                        val imageUploadResult = storage.get
 
 
                         val profiledata = profileData(
