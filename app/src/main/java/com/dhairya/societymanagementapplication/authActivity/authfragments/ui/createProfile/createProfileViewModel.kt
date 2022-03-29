@@ -9,12 +9,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
+import java.util.*
 
 class createProfileViewModel constructor(
     private val state: SavedStateHandle // it's store all data of fragment in a bundle when app goes in onpause state
@@ -31,7 +33,7 @@ class createProfileViewModel constructor(
     private val auth = FirebaseAuth.getInstance()
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
-//    private val storage = Firebase.storage
+    private val storage = Firebase.storage
 
     //fetch data from fregement
     var createprofilename = state.get<String>("createprofilename") ?: ""
@@ -76,13 +78,16 @@ class createProfileViewModel constructor(
                     if (auth.currentUser != null) {
                         val id = profileData.document().id
 
-//                        val imageUploadResult = storage.get
+                        val postId = UUID.randomUUID().toString()
+                        val imageUploadResult = storage.getReference(postId).putFile(photoUri).await()
+                        val imageUrl =
+                            imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
 
 
                         val profiledata = profileData(
                             pid = id,
                             memberid = Firebase.auth.currentUser!!.uid,
-                            profileImg = "",
+                            profileImg = imageUrl,
                             fullName = createprofilename,
                             mobile = createprofilemobileno,
                             email = createprofileemail,
