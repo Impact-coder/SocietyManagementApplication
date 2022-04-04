@@ -118,6 +118,27 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
             }
 
             btnCreateProfile.setOnClickListener {
+
+                if(createProfileName.text == null)
+                {
+                    Toast.makeText(context, "Name field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+                else if(createProfileMobileNo.text == null)
+                {
+                    Toast.makeText(context, "Mobile Number field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+                else if(createProfileEmail.text == null)
+                {
+                    Toast.makeText(context, "Email field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+                else if(createProfileFlatNo.text == null)
+                {
+                    Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    viewModel.createProfile()
+                }
                 viewModel.createProfile(imgUri, statusRadio)
             }
 
