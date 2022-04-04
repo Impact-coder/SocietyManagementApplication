@@ -37,7 +37,6 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                 viewModel.password = it.toString()
             }
 
-
             btnLogin.setOnClickListener {
                 viewModel.login()
             }
@@ -51,26 +50,21 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.loginEvent.collect { events ->
-                when(events){
+                when (events) {
                     is loginViewModel.LoginEvent.NavigateBackWithResult -> {
-                            Intent(requireContext(), DashboardActivity ::class.java).also {
-                                startActivity(it)
-                                requireActivity().finish()
-                            }
+                        Intent(requireContext(), DashboardActivity::class.java).also {
+                            startActivity(it)
+                            requireActivity().finish()
+                        }
                     }
                     is loginViewModel.LoginEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
 
                     }
                 }.exhaustive
-
             }
-
         }
-
     }
-
-
 }
 
 val <T> T.exhaustive: T

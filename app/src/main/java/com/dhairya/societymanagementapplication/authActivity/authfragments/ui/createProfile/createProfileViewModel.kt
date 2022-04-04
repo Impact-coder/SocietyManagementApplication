@@ -80,8 +80,7 @@ class createProfileViewModel constructor(
 
                         val postId = UUID.randomUUID().toString()
                         val imageUploadResult = storage.getReference(postId).putFile(photoUri).await()
-                        val imageUrl =
-                            imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
+                        val imageUrl = imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
 
 
                         val profiledata = profileData(

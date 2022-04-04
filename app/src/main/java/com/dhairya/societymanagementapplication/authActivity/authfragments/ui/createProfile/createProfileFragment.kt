@@ -97,6 +97,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
             createProfileName.addTextChangedListener {
                 viewModel.createprofilename = it.toString()
             }
+
             createProfileMobileNo.addTextChangedListener {
                 viewModel.createprofilemobileno = it.toString()
             }
@@ -111,9 +112,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
             btnChoosePic.setOnClickListener {
 
-
                 cropActivityResultLauncher.launch(null)
-
 
             }
 
