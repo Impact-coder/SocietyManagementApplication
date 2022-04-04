@@ -57,7 +57,7 @@ class createProfileViewModel constructor(
         }
 
 
-    fun createProfile(imgUri: String, roleStatus: String) {
+    fun createProfile(imgUri: Uri, roleStatus: String) {
 
 
         if (createprofilename.isBlank() || createprofileflatno.isBlank() || createprofilemobileno.isBlank() || createprofileemail.isBlank()) {
@@ -65,8 +65,8 @@ class createProfileViewModel constructor(
             showErrorMessage(error)
             return
         } else {
-            var photoUri =
-                Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
+//            var photoUri =
+//                Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
 
             viewModelScope.launch(Dispatchers.IO) {
                 try {
@@ -74,8 +74,9 @@ class createProfileViewModel constructor(
                     if (auth.currentUser != null) {
                         val id = profileData.document().id
 
+
                         val postId = UUID.randomUUID().toString()
-                        val imageUploadResult = storage.getReference(postId).putFile(photoUri).await()
+                        val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
                         val imageUrl = imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
 
 

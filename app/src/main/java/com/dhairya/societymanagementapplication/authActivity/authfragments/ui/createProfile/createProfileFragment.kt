@@ -41,7 +41,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
     lateinit var statusRadio: String
 
     private val mPickImage = 1
-    lateinit var imgUri: String
+    lateinit var imgUri: Uri
     private lateinit var mYourBitmap: Bitmap
 
 
@@ -71,7 +71,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                 it?.let { uri ->
 
 
-                    imgUri = uri.toString()
+                    imgUri = uri
                     val source = ImageDecoder.createSource(context?.contentResolver!!, uri)
                     mYourBitmap = ImageDecoder.decodeBitmap(source)
                     val resizedImg = Bitmap.createScaledBitmap(mYourBitmap, 300, 300, true)
