@@ -142,10 +142,30 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/two"
+                        android:id="@+id/cv_createProfile"
                         android:layout_width="150dp"
                         android:layout_height="150sp"
                         android:layout_gravity="right|top"
+                        android:layout_marginTop="20sp"
+                        android:backgroundTint="#fff"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="30dp">
+
+                        <TextView
+                            android:id="@+id/btn_create_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableTop="@drawable/ic_baseline_person_add_24"
+                            android:text="\nCreate Proofile" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/two"
+                        android:layout_width="150dp"
+                        android:layout_height="150sp"
+                        android:layout_gravity="left|top"
                         android:layout_marginTop="20sp"
                         android:backgroundTint="#fff"
                         app:cardCornerRadius="10dp"
@@ -165,7 +185,7 @@
                         android:id="@+id/three"
                         android:layout_width="150dp"
                         android:layout_height="150sp"
-                        android:layout_gravity="left|top"
+                        android:layout_gravity="right|top"
                         android:layout_marginTop="20sp"
                         android:backgroundTint="#fff"
                         app:cardCornerRadius="10dp"

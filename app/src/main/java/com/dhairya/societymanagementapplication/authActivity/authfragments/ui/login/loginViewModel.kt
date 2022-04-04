@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
+import android.content.SharedPreferences
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,9 +18,8 @@ class loginViewModel constructor(
 ) : ViewModel() {
 
     //Live data events
-
-    private val createprofileEventChannel = Channel<LoginEvent>()
-    val loginEvent = createprofileEventChannel.receiveAsFlow()
+    private val loginEventChannel = Channel<LoginEvent>()
+    val loginEvent = loginEventChannel.receiveAsFlow()
 
 
     private val auth = FirebaseAuth.getInstance()
@@ -39,6 +39,8 @@ class loginViewModel constructor(
 
     //fun for login
     fun login() {
+
+
         if (password.isBlank() || email.isBlank()) {
             val error = "The field must not be empty"
             showErrorMessage(error)
@@ -47,7 +49,7 @@ class loginViewModel constructor(
             viewModelScope.launch(Dispatchers.IO) {
                 try {
                     auth.signInWithEmailAndPassword(email, password).await()
-                    createprofileEventChannel.send(LoginEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+                    loginEventChannel.send(LoginEvent.NavigateBackWithResult(AUTH_RESULT_OK))
                 } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
                 }
@@ -61,7 +63,7 @@ class loginViewModel constructor(
 
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {
-        createprofileEventChannel.send(LoginEvent.ShowErrorMessage(text))
+        loginEventChannel.send(LoginEvent.ShowErrorMessage(text))
     }
 
     sealed class LoginEvent {

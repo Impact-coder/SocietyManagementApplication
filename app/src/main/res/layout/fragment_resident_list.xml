@@ -7,8 +7,8 @@
     tools:context=".dashboardActivity.residentList.residentListFragment"
     android:background="#c3ceef">
 
-    <ListView
-        android:id="@+id/resident_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resident_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
@@ -20,6 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         >
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
