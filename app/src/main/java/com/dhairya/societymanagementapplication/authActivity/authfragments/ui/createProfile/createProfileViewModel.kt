@@ -22,14 +22,10 @@ class createProfileViewModel constructor(
     private val state: SavedStateHandle // it's store all data of fragment in a bundle when app goes in onpause state
 ) : ViewModel() {
 
-
     //Live data events
 
     private val createprofileEventChannel = Channel<CreateProfileEvent>()
     val createProfileEvent = createprofileEventChannel.receiveAsFlow()
-
-
-
     private val auth = FirebaseAuth.getInstance()
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
