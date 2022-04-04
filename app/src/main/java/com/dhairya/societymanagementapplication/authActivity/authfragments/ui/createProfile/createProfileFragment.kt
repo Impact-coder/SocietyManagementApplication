@@ -135,11 +135,15 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                 {
                     Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT).show()
                 }
+                else if(imgUri == null)
+                {
+                    Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT).show()
+                }
                 else
                 {
-                    viewModel.createProfile()
+                    viewModel.createProfile(imgUri, statusRadio)
                 }
-                viewModel.createProfile(imgUri, statusRadio)
+
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
