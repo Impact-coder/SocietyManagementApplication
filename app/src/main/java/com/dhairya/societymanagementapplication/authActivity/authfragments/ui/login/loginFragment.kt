@@ -1,6 +1,8 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
@@ -18,9 +20,16 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel: loginViewModel by viewModels()
     private lateinit var binding: FragmentLoginBinding
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedPreferences = this.activity!!.getSharedPreferences("myprefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        editor.putString("isChangePassWord", "no")
+        editor.putString("isProfileCretaed","no")
 
 
         binding = FragmentLoginBinding.bind(view)
@@ -52,6 +61,8 @@ class loginFragment : Fragment(R.layout.fragment_login) {
             viewModel.loginEvent.collect { events ->
                 when (events) {
                     is loginViewModel.LoginEvent.NavigateBackWithResult -> {
+
+
                         Intent(requireContext(), DashboardActivity::class.java).also {
                             startActivity(it)
                             requireActivity().finish()
