@@ -85,5 +85,17 @@
         <action
             android:id="@+id/action_residentListFragment_to_expenseSheetFragment"
             app:destination="@id/expenseSheetFragment" />
+        <action
+            android:id="@+id/action_residentListFragment_to_residentDetailsDialogFragment"
+            app:destination="@id/residentDetailsDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/residentDetailsDialogFragment"
+        android:name="com.dhairya.societymanagementapplication.residentDetailsDialogFragment"
+        android:label="fragment_resident_details_dialog"
+        tools:layout="@layout/fragment_resident_details_dialog" >
+        <action
+            android:id="@+id/action_residentDetailsDialogFragment_to_residentListFragment"
+            app:destination="@id/residentListFragment" />
     </fragment>
 </navigation>

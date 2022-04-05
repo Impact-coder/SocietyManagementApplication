@@ -11,16 +11,19 @@
         android:layout_marginVertical="5dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginVertical="15dp"
+            >
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/resident_list_item_profile_img"
                 android:layout_width="68dp"
                 android:layout_height="68dp"
