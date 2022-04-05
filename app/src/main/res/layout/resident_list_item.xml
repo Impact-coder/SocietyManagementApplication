@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <ImageView
                 android:id="@+id/resident_list_item_profile_img"
                 android:layout_width="68dp"
@@ -45,6 +46,7 @@
                 app:layout_constraintStart_toEndOf="@+id/resident_list_item_profile_img"
                 app:layout_constraintTop_toTopOf="parent">
 
+
                 <TextView
                     android:id="@+id/residentListItem_name"
                     android:layout_width="wrap_content"
@@ -54,7 +56,6 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/residentListItem_number"
                     android:layout_width="wrap_content"
@@ -63,16 +64,11 @@
                     android:gravity="top|left"
                     android:text="9856321475"
                     android:textColor="@android:color/black"
-                    android:textSize="14sp"
+                    android:textSize="14sp" />
 
-                    />
-
-                <TextView
-                    android:id="@+id/residentList_flatno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
             </LinearLayout>
+
+
 
             <ImageView
                 android:id="@+id/arrow"
