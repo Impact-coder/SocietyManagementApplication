@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import com.dhairya.societymanagementapplication.R
@@ -19,7 +20,7 @@ class changePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        Toast.makeText(context, "this is changePassword!", Toast.LENGTH_SHORT).show()
 
         binding = FragmentChangePasswordBinding.bind(view)
         binding.apply {

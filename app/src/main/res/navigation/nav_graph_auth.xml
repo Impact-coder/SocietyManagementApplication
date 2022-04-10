@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_loginFragment_to_createProfileFragment"
             app:destination="@id/createProfileFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_changePasswordFragment2"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
@@ -44,7 +47,11 @@
         android:id="@+id/changePasswordFragment"
         android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.changePassword.changePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" />
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createProfileFragment"
         android:name="com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile.createProfileFragment"
