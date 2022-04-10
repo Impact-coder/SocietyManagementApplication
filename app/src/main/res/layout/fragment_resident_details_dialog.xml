@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/residentDialog_name" />
 
             <TextView
-                android:id="@+id/residentDialog_emial"
+                android:id="@+id/residentDialog_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/residentDialog_number" />
 
             <TextView
-                android:id="@+id/residentDialog_recidentStates"
+                android:id="@+id/residentDialog_residentStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -77,7 +77,7 @@
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/residentDialog_emial" />
+                app:layout_constraintTop_toBottomOf="@+id/residentDialog_email" />
 
 
             <View
@@ -88,7 +88,7 @@
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/residentDialog_recidentStates"
+                app:layout_constraintTop_toBottomOf="@+id/residentDialog_residentStatus"
                 tools:layout_editor_absoluteX="1dp"
                 tools:layout_editor_absoluteY="242dp" />
 
@@ -116,7 +116,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/divider1" />
 
             <TextView
-                android:id="@+id/residentDialog_recidentAddress"
+                android:id="@+id/residentDialog_residentAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -145,7 +145,7 @@
 
                 app:layout_constraintEnd_toStartOf="@id/residentDialog_msg_btn"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/residentDialog_recidentAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/residentDialog_residentAddress" />
 
             <Button
                 android:id="@+id/residentDialog_msg_btn"
@@ -162,7 +162,7 @@
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/residentDialog_call_btn"
-                app:layout_constraintTop_toBottomOf="@+id/residentDialog_recidentAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/residentDialog_residentAddress" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

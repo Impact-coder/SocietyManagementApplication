@@ -72,6 +72,7 @@ class createProfileViewModel constructor(
                 try {
 
                     if (auth.currentUser != null) {
+
                         val id = profileData.document().id
 
 

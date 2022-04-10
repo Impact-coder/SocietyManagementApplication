@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.residentList
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -40,7 +41,7 @@ class residentListFragment : Fragment(R.layout.fragment_resident_list) {
             recycleView = binding.residentRecycleView
             residentProfileArrayList = arrayListOf()
             recycleView.layoutManager = LinearLayoutManager(context)
-            residentProfileAdapter = residantAdapter(residentProfileArrayList)
+            residentProfileAdapter = residantAdapter(requireContext(),residentProfileArrayList)
 
             recycleView.adapter = residentProfileAdapter
 

@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.adapter
 
+import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -16,29 +17,35 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import android.graphics.BitmapFactory
 
 import android.graphics.Bitmap
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
+import com.dhairya.societymanagementapplication.dashboardActivity.residentDetailsDialog.residentDetailsDialogFragment
+import com.dhairya.societymanagementapplication.dashboardActivity.residentList.residentListFragment
 import com.google.android.gms.common.internal.ImagesContract.URL
 import java.net.URL
 
 
 class residantAdapter(
 
+    private val mcontext: Context,
     private val residentProfileList: ArrayList<profileData>
 
 ) : RecyclerView.Adapter<residantAdapter.residentViewHolder>() {
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): residantAdapter.residentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.resident_list_item, parent, false
-        )
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.resident_list_item, parent, false)
+
+
 
         return residentViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: residantAdapter.residentViewHolder, position: Int) {
         val resident: profileData = residentProfileList[position]
@@ -46,16 +53,35 @@ class residantAdapter(
         holder.fullName.text = resident.fullName
         holder.number.text = resident.mobile
 
-//        val url = URL(resident.profileImg)
-//        val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-//        holder.profileImg.setImageBitmap(bmp)
+        val dialog = Dialog(mcontext)
+        dialog.setContentView(R.layout.fragment_resident_details_dialog)
+
+        val name = dialog.findViewById<TextView>(R.id.residentDialog_name)
+        val mobile = dialog.findViewById<TextView>(R.id.residentDialog_number)
+        val email = dialog.findViewById<TextView>(R.id.residentDialog_email)
+        val address = dialog.findViewById<TextView>(R.id.residentDialog_residentAddress)
+        val profilePic = dialog.findViewById<ImageView>(R.id.residentDialog_profileimg)
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(mcontext, "$position", Toast.LENGTH_SHORT).show()
+
+            Glide.with(profilePic.context)
+                .load(resident.profileImg)
+                .centerCrop()
+                .into(profilePic)
+            name.text = residentProfileList[position].fullName
+            mobile.text = residentProfileList[position].mobile
+            email.text = residentProfileList[position].email
+            address.text = residentProfileList[position].flatNo
+
+            dialog.show()
+        }
+
 
         Glide.with(holder.profileImg.context)
             .load(resident.profileImg)
             .centerCrop()
             .into(holder.profileImg)
-
-           // .error(R.drawable.imagenotfound)
 
     }
 
@@ -63,7 +89,7 @@ class residantAdapter(
         return residentProfileList.size
     }
 
-    public class residentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class residentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val fullName: TextView = itemView.findViewById(R.id.residentListItem_name)
         val number: TextView = itemView.findViewById(R.id.residentListItem_number)
