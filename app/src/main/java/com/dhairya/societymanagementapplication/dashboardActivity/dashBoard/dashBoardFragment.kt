@@ -1,22 +1,16 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
-import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginFragmentDirections
-import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginViewModel
+import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.residentsData
 import com.dhairya.societymanagementapplication.databinding.FragmentDashBoardBinding
-import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -31,9 +25,12 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private val viewModel: dashBoardViewModel by viewModels()
     private lateinit var binding: FragmentDashBoardBinding
     private val resident = FirebaseFirestore.getInstance().collection("residents")
+    private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
+
     //    private lateinit var userRole: String
+    private var userName : MutableList<profileData> = mutableListOf()
     private var resi_Data: MutableList<residentsData> = mutableListOf()
-//    var addUser = findViewById<>()
+//    lateinit var tempName:String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,9 +39,17 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             resi_Data =  resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(residentsData::class.java)
 
-            //Toast.makeText(context, resi_Data[0].toString(), Toast.LENGTH_SHORT).show()
+            userName = profile_data.whereEqualTo("memberid",Firebase.auth.currentUser!!.uid).get()
+                .await().toObjects(profileData::class.java)
+
+            setName(userName[0].fullName)
+//            tempName = userName[0].fullName.toString()
+
+
+          //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
 
             ckeckUserrole(resi_Data[0].role)
+
 
         }
 
@@ -52,6 +57,8 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
         binding = FragmentDashBoardBinding.bind(view)
         binding.apply {
+
+           // dashboardName.setText(tempName)
 
             btnExpenseSheet.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment())
@@ -69,12 +76,14 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
 
-
-
-
-
         }
 
+
+    }
+
+    private fun setName(fullName: String) {
+
+        binding.dashboardName.setText(fullName)
 
     }
 
