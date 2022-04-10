@@ -17,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import android.graphics.BitmapFactory
 
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
@@ -55,15 +57,16 @@ class residantAdapter(
 
         val dialog = Dialog(mcontext)
         dialog.setContentView(R.layout.fragment_resident_details_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val name = dialog.findViewById<TextView>(R.id.residentDialog_name)
         val mobile = dialog.findViewById<TextView>(R.id.residentDialog_number)
         val email = dialog.findViewById<TextView>(R.id.residentDialog_email)
         val address = dialog.findViewById<TextView>(R.id.residentDialog_residentAddress)
+        val ownershipStatus=dialog.findViewById<TextView>(R.id.residentDialog_residentStatus)
         val profilePic = dialog.findViewById<ImageView>(R.id.residentDialog_profileimg)
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(mcontext, "$position", Toast.LENGTH_SHORT).show()
 
             Glide.with(profilePic.context)
                 .load(resident.profileImg)
@@ -72,7 +75,8 @@ class residantAdapter(
             name.text = residentProfileList[position].fullName
             mobile.text = residentProfileList[position].mobile
             email.text = residentProfileList[position].email
-            address.text = residentProfileList[position].flatNo
+            address.text = residentProfileList[position].flatNo + ", Santiniketan Recidency, Kathodara Road, Surat-395006"
+            ownershipStatus.text=residentProfileList[position].ownershipStatus
 
             dialog.show()
         }
