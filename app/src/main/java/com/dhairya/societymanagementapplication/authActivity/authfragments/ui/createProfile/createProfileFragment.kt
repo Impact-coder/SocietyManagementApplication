@@ -38,7 +38,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
     private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
 
-    lateinit var statusRadio: String
+    var statusRadio: String = "Resident Owner"
 
     private val mPickImage = 1
     lateinit var imgUri: Uri

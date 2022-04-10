@@ -26,7 +26,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
     private val viewModel: addMemberViewModel by viewModels()
     private lateinit var binding: FragmentAddMemberBinding
 
-    lateinit var radio: String
+     var radio: String = "member"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,7 +38,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
             radioGroupMemberRoles.setOnCheckedChangeListener { radioGroup, i ->
                 radio = if (radioButton1.id == i) "member" else "Treasurer"
 
-                Snackbar.make(requireView(), radio, Snackbar.LENGTH_LONG).show()
+//                Snackbar.make(requireView(), radio, Snackbar.LENGTH_LONG).show()
             }
 
             addMemberEmailEdittext.setText(viewModel.addMemberEmailEdittext)
@@ -79,6 +79,10 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
                             "Members added Successfully!!",
                             Snackbar.LENGTH_LONG
                         ).show()
+
+                        binding.addMemberEmailEdittext.setText("")
+                        binding.addMemberFlatnoEdittext.setText("")
+
 
                     }
                     is addMemberViewModel.AddMemberEvent.ShowErrorMessage -> {

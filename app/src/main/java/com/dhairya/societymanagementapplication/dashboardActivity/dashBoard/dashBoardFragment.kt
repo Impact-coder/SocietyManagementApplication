@@ -1,10 +1,12 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,7 @@ import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.lo
 import com.dhairya.societymanagementapplication.data.residentsData
 import com.dhairya.societymanagementapplication.databinding.FragmentDashBoardBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -39,7 +42,10 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             resi_Data =  resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(residentsData::class.java)
 
+            //Toast.makeText(context, resi_Data[0].toString(), Toast.LENGTH_SHORT).show()
+
             ckeckUserrole(resi_Data[0].role)
+
         }
 
 
