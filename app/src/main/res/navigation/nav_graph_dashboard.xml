@@ -98,4 +98,9 @@
             android:id="@+id/action_residentDetailsDialogFragment_to_residentListFragment"
             app:destination="@id/residentListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addTransactionFragment"
+        android:name="com.dhairya.societymanagementapplication.AddTransactionFragment"
+        android:label="fragment_add_transaction"
+        tools:layout="@layout/fragment_add_transaction" />
 </navigation>

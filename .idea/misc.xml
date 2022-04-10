@@ -27,6 +27,7 @@
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20260416666666667" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/bottom_navbar.xml" value="0.3828125" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_audit.xml" value="0.2845" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.2835" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2845" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3828125" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.2845" />
@@ -38,9 +39,12 @@
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_forgot_password_confirmation.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_add_member.xml" value="0.3609375" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_add_transaction.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_change_password.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_create_profile.xml" value="0.33" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_dash_board.xml" value="0.3609375" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_expense_sheet.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password_confrimation.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_login.xml" value="0.30085470085470084" />

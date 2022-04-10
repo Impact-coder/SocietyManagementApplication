@@ -85,6 +85,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                 when (events) {
                     is loginViewModel.LoginEvent.NavigateBackWithResult -> {
 
+
                         if (isPasswordReset.isEmpty())
                         {
                             findNavController().navigate(loginFragmentDirections.actionLoginFragmentToChangePasswordFragment())
