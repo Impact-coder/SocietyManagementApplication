@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_changePasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_changePasswordFragment_to_createProfileFragment"
+            app:destination="@id/createProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/createProfileFragment"

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -33,7 +34,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
     private val resident = FirebaseFirestore.getInstance().collection("residents")
     private var resi_Data: MutableList<residentsData> = mutableListOf()
-    var isPasswordReset:String = ""
+    var isPasswordReset: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,13 +47,6 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
 
 
-        CoroutineScope(Dispatchers.Main).launch{
-
-            resi_Data =  resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(residentsData::class.java)
-
-            isPasswordReset = resi_Data[0].password
-        }
 
 
         binding = FragmentLoginBinding.bind(view)
@@ -82,24 +76,33 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.loginEvent.collect { events ->
+                @Suppress("IMPLICIT_CAST_TO_ANY")
                 when (events) {
                     is loginViewModel.LoginEvent.NavigateBackWithResult -> {
 
+                        CoroutineScope(Dispatchers.Main).launch {
 
-                        if (isPasswordReset.isEmpty())
-                        {
-                            findNavController().navigate(loginFragmentDirections.actionLoginFragmentToChangePasswordFragment())
-                        }
-                        else {
-                            Intent(requireContext(), DashboardActivity::class.java).also {
-                                startActivity(it)
-                                requireActivity().finish()
+                            resi_Data = resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
+                                .await().toObjects(residentsData::class.java)
+
+                            isPasswordReset = resi_Data[0].password
+
+                            Toast.makeText(requireContext(), isPasswordReset, Toast.LENGTH_SHORT).show()
+
+                            if (isPasswordReset == "") {
+                                findNavController().navigate(loginFragmentDirections.actionLoginFragmentToChangePasswordFragment())
+                            } else {
+                                Intent(requireContext(), DashboardActivity::class.java).also {
+                                    startActivity(it)
+                                    requireActivity().finish()
+                                }
                             }
                         }
 
 
 
-                        }
+
+                    }
 
                     is loginViewModel.LoginEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()

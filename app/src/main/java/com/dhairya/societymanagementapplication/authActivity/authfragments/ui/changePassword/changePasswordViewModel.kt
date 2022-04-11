@@ -3,13 +3,18 @@ package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.c
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dhairya.societymanagementapplication.authActivity.AUTH_RESULT_OK
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class changePasswordViewModel(
     private val state: SavedStateHandle
@@ -20,7 +25,7 @@ class changePasswordViewModel(
     private val changePasswordEventChannel = Channel<ChangePasswordEvent>()
     val changePasswordEvent = changePasswordEventChannel.receiveAsFlow()
 
-
+    private val resident = FirebaseFirestore.getInstance().collection("residents")
 
     var oldPassword = state.get<String>("oldPassword") ?: ""
         set(value) {
@@ -54,6 +59,11 @@ class changePasswordViewModel(
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 //Redirect to deshboard
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        resident.document(user.uid).update("password",newPassword).await()
+                                        changePasswordEventChannel.send(
+                                            ChangePasswordEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+                                    }
 
                             } else {
                                 showErrorMessage(task.exception.toString())
