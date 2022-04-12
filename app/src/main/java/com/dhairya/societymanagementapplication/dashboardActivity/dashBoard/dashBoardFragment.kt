@@ -89,7 +89,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private fun ckeckUserrole(role: String) {
 
-        if(role == "member" || role == "treasurer")
+        if(role == "member" || role == "Treasurer")
         {
             binding.cvAddMembers.isVisible = false
 

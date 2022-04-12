@@ -30,7 +30,6 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel: loginViewModel by viewModels()
     private lateinit var binding: FragmentLoginBinding
-    lateinit var sharedPreferences: SharedPreferences
 
     private val resident = FirebaseFirestore.getInstance().collection("residents")
     private var resi_Data: MutableList<residentsData> = mutableListOf()
@@ -38,16 +37,6 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        sharedPreferences = this.activity!!.getSharedPreferences("myprefs", Context.MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//
-//        editor.putString("isChangePassWord", "no")
-//        editor.putString("isProfileCretaed","no")
-
-
-
-
 
         binding = FragmentLoginBinding.bind(view)
         binding.apply {
@@ -98,9 +87,6 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                                 }
                             }
                         }
-
-
-
 
                     }
 

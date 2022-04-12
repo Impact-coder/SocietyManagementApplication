@@ -8,7 +8,6 @@
     android:translationZ="1dp"
     tools:context=".dashboardActivity.residentDetailsDialog.residentDetailsDialogFragment">
 
-
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,7 +43,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="896523658"
-
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="abc123@gmail.com"
-
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Recident Owner"
-
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +92,6 @@
                 android:paddingLeft="10dp"
                 android:text="Address"
                 android:textSize="15dp"
-
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +105,6 @@
                 android:paddingLeft="10dp"
 
                 android:text="A-123, Santiniketan Recidency, Kathodara Road, Surat-395006"
-
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -128,15 +122,12 @@
                 android:text="Call"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
-
-
                 app:layout_constraintEnd_toStartOf="@id/residentDialog_msg_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/residentDialog_residentAddress" />
 
             <Button
                 android:id="@+id/residentDialog_msg_btn"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -145,8 +136,6 @@
                 android:drawableLeft="@drawable/ic_baseline_message_24"
                 android:text="Message"
                 android:textSize="14dp"
-
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/residentDialog_call_btn"
                 app:layout_constraintTop_toBottomOf="@+id/residentDialog_residentAddress" />
