@@ -76,7 +76,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
                             isPasswordReset = resi_Data[0].password
 
-                            Toast.makeText(requireContext(), isPasswordReset, Toast.LENGTH_SHORT).show()
+                          //  Toast.makeText(requireContext(), isPasswordReset, Toast.LENGTH_SHORT).show()
 
                             if (isPasswordReset == "") {
                                 findNavController().navigate(loginFragmentDirections.actionLoginFragmentToChangePasswordFragment())

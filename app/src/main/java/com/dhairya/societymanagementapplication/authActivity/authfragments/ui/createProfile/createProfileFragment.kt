@@ -154,6 +154,10 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                                 "Profile Created Successfully!!",
                                 Snackbar.LENGTH_LONG
                             ).show()
+                            Intent(requireContext(), DashboardActivity::class.java).also {
+                                startActivity(it)
+                                requireActivity().finish()
+                            }
                         }
                         is createProfileViewModel.CreateProfileEvent.ShowErrorMessage -> {
                             Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG)

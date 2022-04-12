@@ -35,7 +35,7 @@ class changePasswordFragment : Fragment(R.layout.fragment_change_password) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(context, "this is changePassword!", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "this is changePassword!", Toast.LENGTH_SHORT).show()
 
         binding = FragmentChangePasswordBinding.bind(view)
         binding.apply {
