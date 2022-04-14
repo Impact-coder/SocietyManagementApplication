@@ -1,13 +1,19 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.AuthActivity
+import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
 import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.residentsData
 import com.dhairya.societymanagementapplication.databinding.FragmentDashBoardBinding
@@ -46,7 +52,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 //            tempName = userName[0].fullName.toString()
 
 
-          //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
+            //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
 
             ckeckUserrole(resi_Data[0].role)
 
@@ -58,7 +64,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
         binding = FragmentDashBoardBinding.bind(view)
         binding.apply {
 
-           // dashboardName.setText(tempName)
+            // dashboardName.setText(tempName)
 
             btnExpenseSheet.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment())
@@ -75,7 +81,47 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
             }
 
+            popupMenu.setOnClickListener {
+                val popup=PopupMenu(context,it)
+                popup.setOnMenuItemClickListener { item ->
+                    when(item.itemId){
+                        R.id.btn_about ->{
+                            Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
+                        }
+                        R.id.btn_logout -> {
+                            val builder=AlertDialog.Builder(context)
+                            builder.setTitle("Logout")
+                            builder.setIcon(R.drawable.ic_logout)
+                            builder.setMessage("Are you Sure you want to logout")
+                                .setPositiveButton("Yes"){dialogInterface,which ->
+                                    Intent(requireContext(), AuthActivity::class.java).also {
+                                        startActivity(it)
+                                        requireActivity().finish()
+                                    }
+                                }
+                                .setNeutralButton("Cancel"){dialogInterface,which ->
 
+                                }
+                            val alertDialog:AlertDialog=builder.create()
+                            alertDialog.setCancelable(false)
+                            alertDialog.show()
+                        }
+                    }
+                    true
+                }
+                popup.inflate(R.menu.popup_menu)
+                try {
+                    val fieldMPopup=PopupMenu::class.java.getDeclaredField("mPopup")
+                    fieldMPopup.isAccessible=true
+                    val mPoopup=fieldMPopup.get(popup)
+                    mPoopup.javaClass
+                        .getDeclaredMethod("setForceShowIcon",Boolean::class.java)
+                        .invoke(mPoopup,true)
+                }catch (e:Exception){
+                    Log.e("main","Error Menu Icon")
+                }
+                popup.show()
+            }
         }
 
 
@@ -89,7 +135,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private fun ckeckUserrole(role: String) {
 
-        if(role == "member" || role == "Treasurer")
+        if(role == "member" || role == "treasurer")
         {
             binding.cvAddMembers.isVisible = false
 

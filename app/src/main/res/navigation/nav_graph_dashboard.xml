@@ -22,6 +22,12 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_residentListFragment"
             app:destination="@id/residentListFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_addTransactionFragment"
+            app:destination="@id/addTransactionFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -102,5 +108,18 @@
         android:id="@+id/addTransactionFragment"
         android:name="com.dhairya.societymanagementapplication.AddTransactionFragment"
         android:label="fragment_add_transaction"
-        tools:layout="@layout/fragment_add_transaction" />
+        tools:layout="@layout/fragment_add_transaction" >
+        <action
+            android:id="@+id/action_addTransactionFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.dhairya.societymanagementapplication.profileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
 </navigation>

@@ -21,6 +21,7 @@ class SplashScreen2 : AppCompatActivity() {
         intro2_next_btn.setOnClickListener {
             Intent(this, SplashScreen3::class.java).apply {
                 startActivity(this)
+                this@SplashScreen2.finish()
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         }

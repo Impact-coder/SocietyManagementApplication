@@ -21,9 +21,9 @@ class SplashScreen3 : AppCompatActivity() {
         var intro3_started_btn = findViewById<AppCompatButton>(R.id.intro3_started_btn)
 
         intro3_started_btn.setOnClickListener {
-            this.finish()
             Intent(this, AuthActivity::class.java).apply {
                 startActivity(this)
+                this@SplashScreen3.finish()
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         }
