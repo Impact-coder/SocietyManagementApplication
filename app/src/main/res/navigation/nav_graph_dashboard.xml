@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/residentDetailsDialogFragment"
-        android:name="com.dhairya.societymanagementapplication.residentDetailsDialogFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.residentDetailsDialog.residentDetailsDialogFragment"
         android:label="fragment_resident_details_dialog"
         tools:layout="@layout/fragment_resident_details_dialog" >
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTransactionFragment"
-        android:name="com.dhairya.societymanagementapplication.AddTransactionFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.addTransaction.AddTransactionFragment"
         android:label="fragment_add_transaction"
         tools:layout="@layout/fragment_add_transaction" >
         <action
@@ -115,9 +115,9 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dhairya.societymanagementapplication.profileFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.profile.profileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />

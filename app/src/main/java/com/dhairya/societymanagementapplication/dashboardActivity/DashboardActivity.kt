@@ -35,21 +35,21 @@ class DashboardActivity : AppCompatActivity() {
 
 
 
-//        var nav1=findViewById<BottomNavigationView>(R.id.bottomnavbar)
+        var nav1=findViewById<BottomNavigationView>(R.id.bottomnavbar)
 
 
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_graph_dashboard) as NavHostFragment
         navController = navHostFragment.findNavController()
-//        nav1.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.dashBoardFragment) {
-                actionBar?.hide()
-            } else {
-                actionBar?.show()
-            }
-        }
+        nav1.setupWithNavController(navController)
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            if (destination.id == R.id.dashBoardFragment) {
+//                actionBar?.hide()
+//            } else {
+//                actionBar?.show()
+//            }
+//        }
     }
 
 

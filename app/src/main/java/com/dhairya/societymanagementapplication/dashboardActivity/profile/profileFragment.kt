@@ -1,60 +1,84 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.profile
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.AuthActivity
+import com.dhairya.societymanagementapplication.data.profileData
+import com.dhairya.societymanagementapplication.databinding.FragmentProfileBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class profileFragment:Fragment(R.layout.fragment_profile) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [profileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class profileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding:FragmentProfileBinding
+    private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
+    private var userName : MutableList<profileData> = mutableListOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            userName = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
+                .await().toObjects(profileData::class.java)
+
+            setDetails(userName[0].fullName,userName[0].flatNo,userName[0].mobile,userName[0].ownershipStatus,userName[0].profileImg,userName[0].email)
+
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+        binding= FragmentProfileBinding.bind(view)
+        binding.apply {
+            btnLogout.setOnClickListener {
+                val builder= AlertDialog.Builder(context)
+                builder.setTitle("Logout")
+                builder.setIcon(R.drawable.ic_logout)
+                builder.setMessage("Are you Sure you want to logout")
+                    .setPositiveButton("Yes"){dialogInterface,which ->
+                        Intent(requireContext(), AuthActivity::class.java).also {
+                            startActivity(it)
+                            requireActivity().finish()
+                        }
+                    }
+                    .setNeutralButton("Cancel"){dialogInterface,which ->
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment profileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            profileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+                    }
+                val alertDialog: AlertDialog =builder.create()
+                alertDialog.setCancelable(false)
+                alertDialog.show()
             }
+        }
+
+
     }
+
+    private fun setDetails(
+        fullName: String,
+        flatNo: String,
+        mobile: String,
+        ownershipStatus: String,
+        profileImg: String,
+        email: String
+    ) {
+
+        Glide.with(binding.profileimg.context)
+            .load(profileImg)
+            .centerCrop()
+            .into(binding.profileimg)
+        binding.txtProfileName.text=fullName
+        binding.txtProfileAddress.text=flatNo
+        binding.txtProfileMobile.text=mobile
+        binding.txtProfileEmail.text=email
+        binding.txtProfileResidentStatus.text=ownershipStatus
+
+    }
+
 }

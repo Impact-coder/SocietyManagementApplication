@@ -2,6 +2,7 @@ package com.dhairya.societymanagementapplication.dashboardActivity.adapter
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +20,12 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.provider.ContactsContract.Intents.Insert.ACTION
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.dhairya.societymanagementapplication.dashboardActivity.residentDetailsDialog.residentDetailsDialogFragment
@@ -65,6 +70,14 @@ class residantAdapter(
         val address = dialog.findViewById<TextView>(R.id.residentDialog_residentAddress)
         val ownershipStatus=dialog.findViewById<TextView>(R.id.residentDialog_residentStatus)
         val profilePic = dialog.findViewById<ImageView>(R.id.residentDialog_profileimg)
+        val call=dialog.findViewById<AppCompatButton>(R.id.btn_call)
+        val msg=dialog.findViewById<AppCompatButton>(R.id.btn_message)
+
+        call.setOnClickListener {
+            Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:"+mobile.text)).also {
+                startActivity(mcontext,it,null)
+            }
+        }
 
         holder.itemView.setOnClickListener {
 
