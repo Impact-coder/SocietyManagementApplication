@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.AuthActivity
@@ -37,6 +38,11 @@ class profileFragment:Fragment(R.layout.fragment_profile) {
 
         binding= FragmentProfileBinding.bind(view)
         binding.apply {
+
+            btnEdit.setOnClickListener {
+                findNavController().navigate(profileFragmentDirections.actionProfileFragmentToEditProfileFragment())
+            }
+
             btnLogout.setOnClickListener {
                 val builder= AlertDialog.Builder(context)
                 builder.setTitle("Logout")
