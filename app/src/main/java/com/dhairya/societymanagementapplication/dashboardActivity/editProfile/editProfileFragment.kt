@@ -37,7 +37,6 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                 userName[0].mobile,
                 userName[0].ownershipStatus,
                 userName[0].profileImg,
-                userName[0].email
             )
 
         }
@@ -58,7 +57,6 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
         mobile: String,
         ownershipStatus: String,
         profileImg: String,
-        email: String
     ) {
 
         binding.editProfileName.setText(fullName)
