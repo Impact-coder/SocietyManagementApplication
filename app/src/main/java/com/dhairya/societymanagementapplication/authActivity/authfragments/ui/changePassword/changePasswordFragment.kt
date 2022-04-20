@@ -70,6 +70,7 @@ class changePasswordFragment : Fragment(R.layout.fragment_change_password) {
                 when (events) {
                     is changePasswordViewModel.ChangePasswordEvent.NavigateBackWithResult -> {
                         findNavController().navigate(changePasswordFragmentDirections.actionChangePasswordFragmentToCreateProfileFragment())
+
                     }
                     is changePasswordViewModel.ChangePasswordEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
@@ -79,4 +80,5 @@ class changePasswordFragment : Fragment(R.layout.fragment_change_password) {
             }
         }
     }
+
 }

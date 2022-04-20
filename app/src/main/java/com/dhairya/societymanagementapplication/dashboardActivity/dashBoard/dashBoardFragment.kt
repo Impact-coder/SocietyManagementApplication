@@ -67,7 +67,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             // dashboardName.setText(tempName)
 
             btnExpenseSheet.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment())
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),null)
             }
 
             btnResidents.setOnClickListener {

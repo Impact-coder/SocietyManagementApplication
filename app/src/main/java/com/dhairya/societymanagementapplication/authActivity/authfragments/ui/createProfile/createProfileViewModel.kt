@@ -60,55 +60,51 @@ class createProfileViewModel constructor(
     fun createProfile(imgUri: Uri, roleStatus: String) {
 
 
-        if (createprofilename.isBlank() || createprofileflatno.isBlank() || createprofilemobileno.isBlank() || createprofileemail.isBlank()) {
-            val error = "The field must not be empty"
-            showErrorMessage(error)
-            return
-        } else {
 //            var photoUri =
 //                Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
 
-            viewModelScope.launch(Dispatchers.IO) {
-                try {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
 
-                    if (auth.currentUser != null) {
+                if (auth.currentUser != null) {
 
-                        val id = profileData.document().id
-
-
-                        val postId = UUID.randomUUID().toString()
-                        val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
-                        val imageUrl = imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
+                    val id = profileData.document().id
 
 
-                        val profiledata = profileData(
-                            pid = id,
-                            memberid = Firebase.auth.currentUser!!.uid,
-                            profileImg = imageUrl,
-                            fullName = createprofilename,
-                            mobile = createprofilemobileno,
-                            email = createprofileemail,
-                            flatNo = createprofileflatno,
-                            ownershipStatus = roleStatus
+                    val postId = UUID.randomUUID().toString()
+                    val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
+                    val imageUrl =
+                        imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
 
+
+                    val profiledata = profileData(
+                        pid = id,
+                        memberid = Firebase.auth.currentUser!!.uid,
+                        profileImg = imageUrl,
+                        fullName = createprofilename,
+                        mobile = createprofilemobileno,
+                        email = createprofileemail,
+                        flatNo = createprofileflatno,
+                        ownershipStatus = roleStatus
+
+                    )
+
+                    profileData.document(id).set(profiledata).await()
+                    createprofileEventChannel.send(
+                        CreateProfileEvent.NavigateBackWithResult(
+                            com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
                         )
+                    )
 
-                        profileData.document(id).set(profiledata).await()
-                        createprofileEventChannel.send(
-                            CreateProfileEvent.NavigateBackWithResult(
-                                com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
-                            )
-                        )
-
-                    }
-
-                } catch (e: Exception) {
-                    showErrorMessage(e.message.toString())
                 }
 
-
+            } catch (e: Exception) {
+                showErrorMessage(e.message.toString())
             }
+
+
         }
+
     }
 
 

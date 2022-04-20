@@ -39,16 +39,20 @@
         app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintStart_toEndOf="@id/btn_back" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/btn_edit_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="@drawable/add_pic_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerInside"
         android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view" />
+        app:layout_constraintTop_toBottomOf="@id/view"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_TextField"
@@ -174,7 +178,7 @@
     </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_done"
+        android:id="@+id/btn_edit_done"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30sp"

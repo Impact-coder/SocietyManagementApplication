@@ -61,7 +61,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
             }
 
 
-            btnDone.setOnClickListener {
+            btnEditDone.setOnClickListener {
                 findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
 
                 addMemberEmailEdittext.setText("")
@@ -82,6 +82,8 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
                         binding.addMemberEmailEdittext.setText("")
                         binding.addMemberFlatnoEdittext.setText("")
+                        binding.radioButton1.isSelected = true
+                        binding.radioButton2.isSelected = false
 
 
                     }
