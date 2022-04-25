@@ -295,7 +295,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:drawableTop="@drawable/ic_report"
-                            android:text="\nAdd Expense"
+                            android:text="\nFile Complain"
                             android:textAlignment="center" />
 
                     </androidx.cardview.widget.CardView>
@@ -316,7 +316,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:drawableTop="@drawable/add_expense"
-                            android:text="\nFile complain"
+                            android:text="\nAdd Expense"
                             android:textAlignment="center" />
 
                     </androidx.cardview.widget.CardView>
