@@ -76,7 +76,6 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
         cropActivityResultLauncher = registerForActivityResult(cropActivityResultContract) {
             it?.let { uri ->
 
-
                 imgUri = uri
                 val source = ImageDecoder.createSource(context?.contentResolver!!, uri)
                 mYourBitmap = ImageDecoder.decodeBitmap(source)
@@ -194,7 +193,7 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
         }
 
-
     }
+
 }
 

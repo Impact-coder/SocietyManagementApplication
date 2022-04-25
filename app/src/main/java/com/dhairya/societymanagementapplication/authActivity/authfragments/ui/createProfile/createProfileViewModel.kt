@@ -30,6 +30,7 @@ class createProfileViewModel constructor(
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
     private val storage = Firebase.storage
+    private val uid  = Firebase.auth.currentUser
 
     //fetch data from fregement
     var createprofilename = state.get<String>("createprofilename") ?: ""
@@ -70,12 +71,10 @@ class createProfileViewModel constructor(
 
                     val id = profileData.document().id
 
-
                     val postId = UUID.randomUUID().toString()
                     val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
                     val imageUrl =
                         imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
-
 
                     val profiledata = profileData(
                         pid = id,
@@ -89,7 +88,8 @@ class createProfileViewModel constructor(
 
                     )
 
-                    profileData.document(auth.currentUser.toString()).set(profiledata).await()
+
+                    profileData.document(auth.currentUser!!.uid).set(profiledata).await()
                     createprofileEventChannel.send(
                         CreateProfileEvent.NavigateBackWithResult(
                             com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
@@ -101,7 +101,6 @@ class createProfileViewModel constructor(
             } catch (e: Exception) {
                 showErrorMessage(e.message.toString())
             }
-
 
         }
 

@@ -24,7 +24,7 @@ class editProfileViewModel(
 
     private val editprofileEventChannel = Channel<EditProfileEvent>()
     val editProfileEvent = editprofileEventChannel.receiveAsFlow()
-    var usre = Firebase.auth.currentUser
+    var user = Firebase.auth.currentUser
     private val auth = FirebaseAuth.getInstance()
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
@@ -55,6 +55,7 @@ class editProfileViewModel(
     fun editProfile() {
 
         viewModelScope.launch(Dispatchers.IO) {
+
 
         }
 
