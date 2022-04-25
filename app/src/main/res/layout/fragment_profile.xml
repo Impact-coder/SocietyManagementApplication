@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +27,10 @@
         android:background="@drawable/add_pic_background"
         android:src="@drawable/ic_baseline_person_24"
         android:translationZ="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginStart="20dp"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
         app:layout_constraintBottom_toBottomOf="@id/gradient_view"
         app:layout_constraintEnd_toStartOf="@id/txt_profile_name"
         app:layout_constraintStart_toStartOf="parent"

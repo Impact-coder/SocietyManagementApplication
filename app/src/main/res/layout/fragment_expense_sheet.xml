@@ -22,47 +22,37 @@
         tools:ignore="RtlSymmetry" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <Button
         android:id="@+id/start_date"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Start Date"
+        android:paddingVertical="20dp"
+        android:drawableRight="@drawable/calendar"
+        android:backgroundTint="#0000"
+        android:text="Start Date"
         android:layout_marginTop="20sp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@id/end_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_maintenance"
-        app:layout_constraintWidth_percent="0.4">
+        app:layout_constraintWidth_percent="0.4"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/calendar"
-            android:drawableTint="#8C49EC"
-            android:hint="Start Date    " />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <Button
         android:id="@+id/end_date"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="End Date"
+        android:paddingVertical="20dp"
+        android:drawableRight="@drawable/calendar"
+        android:backgroundTint="#0000"
+        android:text="End Date"
         android:layout_marginTop="20sp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/start_date"
         app:layout_constraintTop_toBottomOf="@id/txt_maintenance"
-        app:layout_constraintWidth_percent="0.4">
+        app:layout_constraintWidth_percent="0.4"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/calendar"
-            android:drawableTint="#8C49EC"
-            android:hint="End Date    " />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_view"
