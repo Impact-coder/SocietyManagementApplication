@@ -81,6 +81,11 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
             }
 
+            btnAddExpense.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
+
+            }
+
             popupMenu.setOnClickListener {
                 val popup=PopupMenu(context,it)
                 popup.setOnMenuItemClickListener { item ->

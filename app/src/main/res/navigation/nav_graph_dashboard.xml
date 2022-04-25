@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_addTransactionFragment"
+            app:destination="@id/addTransactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -74,7 +77,11 @@
         android:id="@+id/addTransactionFragment"
         android:name="com.dhairya.societymanagementapplication.dashboardActivity.addTransaction.AddTransactionFragment"
         android:label="fragment_add_transaction"
-        tools:layout="@layout/fragment_add_transaction" />
+        tools:layout="@layout/fragment_add_transaction" >
+        <action
+            android:id="@+id/action_addTransactionFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.dhairya.societymanagementapplication.dashboardActivity.profile.profileFragment"
