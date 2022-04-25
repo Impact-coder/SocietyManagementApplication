@@ -8,21 +8,28 @@
     tools:context=".dashboardActivity.addMember.addMemberFragment"
     android:background="#fff">
 
-    <TextView
-        android:id="@+id/txt_add_members"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:paddingStart="15sp"
-        android:text="Add Members"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:typeface="normal"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_black"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintEnd_toStartOf="@id/txt_add_members"/>
+
+    <TextView
+        android:id="@+id/txt_add_members"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Members"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"/>
 
 
     <com.google.android.material.textfield.TextInputLayout

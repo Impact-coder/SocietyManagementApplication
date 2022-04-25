@@ -6,20 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".dashboardActivity.expenseSheet.expenseSheetFragment">
 
-    <TextView
-        android:id="@+id/txt_maintenance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:paddingStart="15sp"
-        android:text="Expense Sheet"
-        android:textColor="#445BC3"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_black"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/start_date"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintEnd_toStartOf="@id/txt_ExpenseSheet"/>
+
+    <TextView
+        android:id="@+id/txt_ExpenseSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expense Sheet"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"/>
 
 
 
@@ -35,7 +43,7 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@id/end_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_maintenance"
+        app:layout_constraintTop_toBottomOf="@id/txt_ExpenseSheet"
         app:layout_constraintWidth_percent="0.4"/>
 
     <Button
@@ -50,7 +58,7 @@
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/start_date"
-        app:layout_constraintTop_toBottomOf="@id/txt_maintenance"
+        app:layout_constraintTop_toBottomOf="@id/txt_ExpenseSheet"
         app:layout_constraintWidth_percent="0.4"/>
 
 

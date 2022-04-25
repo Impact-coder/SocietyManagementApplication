@@ -68,6 +68,10 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
                 addMemberFlatnoEdittext.setText("")
             }
 
+            btnBack.setOnClickListener {
+                findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
+            }
+
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

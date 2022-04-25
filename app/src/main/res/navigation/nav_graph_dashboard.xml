@@ -27,7 +27,9 @@
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_dashBoardFragment_to_addTransactionFragment"
-            app:destination="@id/addTransactionFragment" />
+            app:destination="@id/addTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"

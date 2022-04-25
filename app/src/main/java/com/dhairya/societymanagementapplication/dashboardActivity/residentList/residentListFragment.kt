@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
@@ -46,6 +47,10 @@ class residentListFragment : Fragment(R.layout.fragment_resident_list) {
             recycleView.adapter = residentProfileAdapter
 
             EventChangeListener()
+
+            btnBack.setOnClickListener {
+                findNavController().navigate(residentListFragmentDirections.actionResidentListFragmentToDashBoardFragment())
+            }
 
         }
 

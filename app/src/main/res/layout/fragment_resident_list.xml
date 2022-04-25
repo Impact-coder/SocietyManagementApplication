@@ -7,11 +7,34 @@
     tools:context=".dashboardActivity.residentList.residentListFragment"
     android:background="#c3ceef">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_black"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txt_residents"/>
+
+    <TextView
+        android:id="@+id/txt_residents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Residents"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resident_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:dividerHeight="0dp"
         android:divider="#12143b"
         tools:listitem="@layout/resident_list_item"

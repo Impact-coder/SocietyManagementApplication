@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.databinding.FragmentDashBoardBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
@@ -62,6 +63,10 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
             }
 
         }

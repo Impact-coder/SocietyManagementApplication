@@ -1,8 +1,10 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
 import android.widget.PopupMenu
@@ -38,6 +40,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private var resi_Data: MutableList<residentsData> = mutableListOf()
 //    lateinit var tempName:String
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,8 +50,8 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
             userName = profile_data.whereEqualTo("memberid",Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(profileData::class.java)
-
-            setName(userName[0].fullName)
+            comp_name=userName[0].fullName
+            setName(comp_name)
 //            tempName = userName[0].fullName.toString()
 
 
@@ -134,7 +137,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private fun setName(fullName: String) {
 
-        binding.dashboardName.setText(fullName)
+        binding.dashboardName.text = fullName
 
     }
 
@@ -146,6 +149,12 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
         }
 
+
+    }
+
+    companion object{
+
+        lateinit var comp_name:String
 
     }
 
