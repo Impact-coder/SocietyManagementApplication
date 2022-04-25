@@ -89,7 +89,7 @@ class createProfileViewModel constructor(
 
                     )
 
-                    profileData.document(id).set(profiledata).await()
+                    profileData.document(auth.currentUser.toString()).set(profiledata).await()
                     createprofileEventChannel.send(
                         CreateProfileEvent.NavigateBackWithResult(
                             com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
