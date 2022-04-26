@@ -80,7 +80,7 @@ class addTransactionViewModel(private val state: SavedStateHandle) : ViewModel()
                     )
 
                     transactionData.document(transaction_id).set(transaction).await()
-                    transactionData.orderBy(date,Query.Direction.ASCENDING)
+                   // transactionData.orderBy(date,Query.Direction.ASCENDING)
                     AddTransactionEventChannel.send(
                        AddTransactionEvent.NavigateBackWithResult(
                             AUTH_RESULT_OK
@@ -93,31 +93,6 @@ class addTransactionViewModel(private val state: SavedStateHandle) : ViewModel()
         }
     }
 
-//
-//    fun selectDate() {
-//
-//        binding.apply {
-//            val dateSetListener =
-//                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-//                    cal.set(Calendar.YEAR, year)
-//                    cal.set(Calendar.MONTH, monthOfYear)
-//                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-//                    val myFormat = "dd/MM/yyyy" // mention the format you need
-//                    val sdf = SimpleDateFormat(myFormat, Locale.US)
-//                    btnSelectDate.textSize= 20F
-//                    date=sdf.format(cal.getTime())
-//                    btnSelectDate.text = sdf.format(cal.getTime())
-//                }
-//
-//            DatePickerDialog(btnSelectDate.context,
-//                dateSetListener,
-//                // set DatePickerDialog to point to today's date when it loads up
-//                cal.get(Calendar.YEAR),
-//                cal.get(Calendar.MONTH),
-//                cal.get(Calendar.DAY_OF_MONTH)).show()
-//        }
-//
-//    }
 
     sealed class AddTransactionEvent {
         data class ShowErrorMessage(val msg: String) : AddTransactionEvent()

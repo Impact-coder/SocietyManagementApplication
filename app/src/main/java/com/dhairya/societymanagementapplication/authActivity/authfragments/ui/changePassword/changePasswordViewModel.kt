@@ -52,29 +52,65 @@ class changePasswordViewModel(
         val credential = EmailAuthProvider
             .getCredential(user?.email!!, oldPassword)
 
-        viewModelScope.launch(Dispatchers.IO) {
-            user.reauthenticate(credential).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    user.updatePassword(newPassword)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                //Redirect to deshboard
-                                    CoroutineScope(Dispatchers.IO).launch {
-                                        resident.document(user.uid).update("password",newPassword).await()
-                                        changePasswordEventChannel.send(
-                                            ChangePasswordEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+        if (oldPassword.isEmpty())
+        {
+            val error = "Old Password can't be empty!!"
+            showErrorMessage(error)
+            return
+        }
+        else if (newPassword.isEmpty())
+        {
+            val error = "New Password can't be empty!!"
+            showErrorMessage(error)
+            return
+        }
+        else if (confirmPassword.isEmpty())
+        {
+            val error = "Confirm Password can't be empty!!"
+            showErrorMessage(error)
+            return
+
+        }
+        else
+        {
+            if (newPassword == confirmPassword)
+            {
+                viewModelScope.launch(Dispatchers.IO) {
+
+
+                    user.reauthenticate(credential).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            user.updatePassword(newPassword)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        //Redirect to deshboard
+                                        CoroutineScope(Dispatchers.IO).launch {
+                                            resident.document(user.uid).update("password",newPassword).await()
+                                            changePasswordEventChannel.send(
+                                                ChangePasswordEvent.NavigateBackWithResult(AUTH_RESULT_OK))
+                                        }
+
+                                    } else {
+                                        showErrorMessage(task.exception.toString())
                                     }
+                                }
 
-                            } else {
-                                showErrorMessage(task.exception.toString())
-                            }
+                        } else {
+                            showErrorMessage(it.exception.toString())
                         }
-
-                } else {
-                    showErrorMessage(it.exception.toString())
+                    }
                 }
+
+            }
+            else
+            {
+                val error = "New password and Confirm password must be same!!"
+                showErrorMessage(error)
+                return
             }
         }
+
+
     }
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {

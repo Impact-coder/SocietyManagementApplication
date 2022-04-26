@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile
 
 import android.net.Uri
+import android.widget.Toast
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -61,48 +62,93 @@ class createProfileViewModel constructor(
     fun createProfile(imgUri: Uri, roleStatus: String) {
 
 
+
+        if(createprofilename.isEmpty())
+        {
+           val error = "Name can't be empty!!"
+            showErrorMessage(error)
+            return
+
+        }
+        else if(createprofilemobileno.isEmpty())
+        {
+            val error = "Mobile can't be empty!!"
+            showErrorMessage(error)
+            return
+        }
+        else if(createprofileemail.isEmpty())
+        {
+            val error = "Email can't be empty!!"
+            showErrorMessage(error)
+            return
+
+        }
+        else if(createprofileflatno.isEmpty())
+        {
+            val error = "Flat No can't be empty!!"
+            showErrorMessage(error)
+            return
+        }
+        else if(imgUri == null)
+        {
+            val error = "Please select the profile image!!"
+            showErrorMessage(error)
+            return
+        }
+        else if (createprofilemobileno.length != 10)
+        {
+            val error = "Please enter valid mobile no!!"
+            showErrorMessage(error)
+            return
+        }
+        else
+        {
+            viewModelScope.launch(Dispatchers.IO) {
+                try {
+
+                    if (auth.currentUser != null) {
+
+                        val id = profileData.document().id
+
+                        val postId = UUID.randomUUID().toString()
+                        val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
+                        val imageUrl =
+                            imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
+
+                        val profiledata = profileData(
+                            pid = id,
+                            memberid = Firebase.auth.currentUser!!.uid,
+                            profileImg = imageUrl,
+                            fullName = createprofilename,
+                            mobile = createprofilemobileno,
+                            email = createprofileemail,
+                            flatNo = createprofileflatno,
+                            ownershipStatus = roleStatus
+
+                        )
+
+
+                        profileData.document(auth.currentUser!!.uid).set(profiledata).await()
+                        createprofileEventChannel.send(
+                            CreateProfileEvent.NavigateBackWithResult(
+                                com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
+                            )
+                        )
+
+                    }
+
+                } catch (e: Exception) {
+                    showErrorMessage(e.message.toString())
+                }
+
+            }
+        }
+
+
 //            var photoUri =
 //                Uri.parse("android.resource://com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile/$imgUri")
 
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
 
-                if (auth.currentUser != null) {
-
-                    val id = profileData.document().id
-
-                    val postId = UUID.randomUUID().toString()
-                    val imageUploadResult = storage.getReference(postId).putFile(imgUri).await()
-                    val imageUrl =
-                        imageUploadResult?.metadata?.reference?.downloadUrl?.await().toString()
-
-                    val profiledata = profileData(
-                        pid = id,
-                        memberid = Firebase.auth.currentUser!!.uid,
-                        profileImg = imageUrl,
-                        fullName = createprofilename,
-                        mobile = createprofilemobileno,
-                        email = createprofileemail,
-                        flatNo = createprofileflatno,
-                        ownershipStatus = roleStatus
-
-                    )
-
-
-                    profileData.document(auth.currentUser!!.uid).set(profiledata).await()
-                    createprofileEventChannel.send(
-                        CreateProfileEvent.NavigateBackWithResult(
-                            com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
-                        )
-                    )
-
-                }
-
-            } catch (e: Exception) {
-                showErrorMessage(e.message.toString())
-            }
-
-        }
 
     }
 

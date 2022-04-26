@@ -27,7 +27,7 @@ class forgotPasswordViewModel constructor(
 
     fun forgotPassword() {
         if (email.isBlank()) {
-            val error = "The field must not be empty"
+            val error = "The field must not be empty!!"
             showErrorMessage(error)
             return
         } else {

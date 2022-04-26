@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 
-class addMemberViewModel (
+class addMemberViewModel(
     private val state: SavedStateHandle
 ) : ViewModel() {
     private val auth = FirebaseAuth.getInstance()
@@ -28,9 +28,7 @@ class addMemberViewModel (
     var member_password: String = "SMA@cp2"
 
 
-
-
-    var addMemberEmailEdittext= state.get<String>("addMemberEmailEdittext") ?: ""
+    var addMemberEmailEdittext = state.get<String>("addMemberEmailEdittext") ?: ""
         set(value) {
             field = value
             state.set("addMemberEmailEdittext", value)
@@ -43,14 +41,17 @@ class addMemberViewModel (
         }
 
 
+    fun addMember(radio_str: String) {
 
-    fun addMember(radio_str: String){
-
-        if (addMemberEmailEdittext.isBlank() || addMemberFlatnoEdittext.isBlank()) {
-            val error = "The field must not be empty"
+        if (addMemberEmailEdittext.isBlank()) {
+            val error = "Email address must not be empty!!"
             showErrorMessage(error)
             return
-        }else {
+        } else if (addMemberFlatnoEdittext.isBlank()) {
+            val error = "Flat number must not be empty!!"
+            showErrorMessage(error)
+            return
+        } else {
 
             viewModelScope.launch(Dispatchers.IO) {
                 try {
@@ -79,7 +80,7 @@ class addMemberViewModel (
 
             }
         }
-        
+
 
     }
 
