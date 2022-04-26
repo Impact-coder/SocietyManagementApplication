@@ -30,7 +30,7 @@ class createProfileViewModel constructor(
     private val residents = FirebaseFirestore.getInstance().collection("residents")
     private val profileData = FirebaseFirestore.getInstance().collection("profileData")
     private val storage = Firebase.storage
-    private val uid  = Firebase.auth.currentUser
+
 
     //fetch data from fregement
     var createprofilename = state.get<String>("createprofilename") ?: ""

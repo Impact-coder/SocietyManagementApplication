@@ -14,16 +14,10 @@ import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheet
 import java.text.SimpleDateFormat
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [expenseSheetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
     private lateinit var binding : FragmentExpenseSheetBinding
