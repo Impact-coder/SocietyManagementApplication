@@ -12,16 +12,24 @@
         tools:layout="@layout/fragment_dash_board" >
         <action
             android:id="@+id/action_dashBoardFragment_to_expenseSheetFragment"
-            app:destination="@id/expenseSheetFragment" />
+            app:destination="@id/expenseSheetFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_residentListFragment"
-            app:destination="@id/residentListFragment" />
+            app:destination="@id/residentListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_maintenanceInvoiceFragment"
-            app:destination="@id/maintenanceInvoiceFragment" />
+            app:destination="@id/maintenanceInvoiceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_addMemberFragment"
-            app:destination="@id/addMemberFragment" />
+            app:destination="@id/addMemberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -38,7 +46,9 @@
         tools:layout="@layout/fragment_expense_sheet" >
         <action
             android:id="@+id/action_expenseSheetFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addMemberFragment"
@@ -47,7 +57,9 @@
         tools:layout="@layout/fragment_add_member" >
         <action
             android:id="@+id/action_addMemberFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/maintenanceInvoiceFragment"
@@ -56,7 +68,9 @@
         tools:layout="@layout/fragment_maintenance_invoice" >
         <action
             android:id="@+id/action_maintenanceInvoiceFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/residentListFragment"
@@ -68,7 +82,9 @@
             app:destination="@id/residentDetailsDialogFragment" />
         <action
             android:id="@+id/action_residentListFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/residentDetailsDialogFragment"
@@ -82,7 +98,9 @@
         tools:layout="@layout/fragment_add_transaction" >
         <action
             android:id="@+id/action_addTransactionFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
