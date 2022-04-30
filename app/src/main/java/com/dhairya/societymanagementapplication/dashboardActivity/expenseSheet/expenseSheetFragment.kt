@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
 import com.dhairya.societymanagementapplication.data.transactionData
@@ -31,7 +33,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     private var expense_data = FirebaseFirestore.getInstance().collection("transactionData")
     private lateinit var expenseDataArrayList: ArrayList<transactionData>
     private lateinit var tableRowAdapter: TableRowAdapter
-    private lateinit var tarsactionData: transactionData
+    private lateinit var transactionData: transactionData
 
     var sDate = ""
     var eDate = ""
@@ -119,50 +121,53 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
                     if (startingDate.before(endingDate) || startingDate.equals(endingDate)) {
 
-                        tableRowAdapter = TableRowAdapter(requireContext(),expenseDataArrayList)
+
                         CoroutineScope(Dispatchers.IO).launch {
-                            tarsactionData = expense_data.document().get().await()
+                            transactionData = expense_data.document().get().await()
                                 .toObject(transactionData::class.java)!!
 
-                            for(t in transactionData){
+//                            for(t in transactionData){
+//
+//                            }
 
-                            }
+//                            expenseList = transactionData
+                            EventChangeListener()
+                            tableRowAdapter = TableRowAdapter(expenseDataArrayList)
+//                        tableRowAdapter = TableRowAdapter(transactionData)
+                            binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
+                            binding.tableRecyclerView.adapter = tableRowAdapter
 
-                            expenseList = transactionData
+
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "Please enter valid ending date!!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
 
-
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Please enter valid ending date!!",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
+                }
 
+                btnBack.setOnClickListener {
+                    findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
                 }
             }
 
-            btnBack.setOnClickListener {
-                findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
-            }
+
         }
-
-
-
     }
 
-    private fun EventChangeListener() {
+    fun EventChangeListener() {
         expense_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null){
+                if (error != null) {
                     Log.e("FireStore error", error.message.toString())
                     return
                 }
 
-                for (dc: DocumentChange in value?.documentChanges!!)
-                {
-                    if(dc.type == DocumentChange.Type.ADDED){
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
 
                         expenseDataArrayList.add(dc.document.toObject(transactionData::class.java)!!)
 
@@ -173,5 +178,6 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
         })
     }
+
 
 }

@@ -14,7 +14,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_user_name"
+                android:id="@+id/date"
                 style="@style/table_row_item"
                 android:layout_width="0dp"
                 android:layout_column="0"
@@ -24,7 +24,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/tv_user_age"
+                android:id="@+id/particular"
                 style="@style/table_row_item"
                 android:layout_width="0dp"
                 android:layout_column="1"
@@ -34,7 +34,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/tv_user_designation"
+                android:id="@+id/amount"
                 style="@style/table_row_item"
                 android:layout_width="0dp"
                 android:layout_column="2"
