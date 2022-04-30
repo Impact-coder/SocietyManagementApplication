@@ -138,24 +138,24 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                             binding.tableRecyclerView.adapter = tableRowAdapter
 
 
-                        } else {
-                            Toast.makeText(
-                                context,
-                                "Please enter valid ending date!!",
-                                Toast.LENGTH_SHORT
-                            ).show()
                         }
-
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Please enter valid ending date!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                }
 
-                btnBack.setOnClickListener {
-                    findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
                 }
             }
 
-
+            btnBack.setOnClickListener {
+                findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
+            }
         }
+
+
     }
 
     fun EventChangeListener() {
