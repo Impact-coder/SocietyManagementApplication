@@ -71,6 +71,8 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                     endDate.text = sdf.format(cal.getTime())
                 }
 
+
+
             startDate.setOnClickListener {
                 DatePickerDialog(
                     requireContext(),

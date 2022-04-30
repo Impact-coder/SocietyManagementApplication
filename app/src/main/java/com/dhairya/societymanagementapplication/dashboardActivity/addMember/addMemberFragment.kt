@@ -19,9 +19,6 @@ import com.dhairya.societymanagementapplication.databinding.FragmentAddMemberBin
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 
-
-
-
 class addMemberFragment : Fragment(R.layout.fragment_add_member) {
     private val viewModel: addMemberViewModel by viewModels()
     private lateinit var binding: FragmentAddMemberBinding
