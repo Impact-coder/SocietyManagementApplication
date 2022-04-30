@@ -2,6 +2,7 @@ package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
@@ -9,23 +10,33 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
+import com.dhairya.societymanagementapplication.data.transactionData
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
+import com.google.firebase.firestore.EventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
     private val viewModel: expenseSheetViewModel by viewModels()
     private lateinit var binding: FragmentExpenseSheetBinding
-
     private var expense_data = FirebaseFirestore.getInstance().collection("transactionData")
+    private lateinit var expenseDataArrayList: ArrayList<transactionData>
+    private lateinit var tableRowAdapter: TableRowAdapter
+    private lateinit var tarsactionData: transactionData
+
     var sDate = ""
     var eDate = ""
     val myFormat = "dd/MM/yyyy" // mention the format you need
     val sdf = SimpleDateFormat(myFormat, Locale.US)
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,15 +114,30 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                     Toast.makeText(context, "Please enter ending date!!", Toast.LENGTH_SHORT).show()
                 } else {
 
-                    var startingDate:Date = sdf.parse(sDate)
-                    var endingDate:Date = sdf.parse(eDate)
+                    var startingDate: Date = sdf.parse(sDate)
+                    var endingDate: Date = sdf.parse(eDate)
 
-                    if (startingDate.before(endingDate) || startingDate.equals(endingDate))
-                    {
+                    if (startingDate.before(endingDate) || startingDate.equals(endingDate)) {
 
-                    }
-                    else{
-                        Toast.makeText(context, "Please enter valid ending date!!", Toast.LENGTH_SHORT).show()
+                        tableRowAdapter = TableRowAdapter(requireContext(),expenseDataArrayList)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            tarsactionData = expense_data.document().get().await()
+                                .toObject(transactionData::class.java)!!
+
+                            for(t in transactionData){
+
+                            }
+
+                            expenseList = transactionData
+                        }
+
+
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Please enter valid ending date!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 }
@@ -122,6 +148,30 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
             }
         }
 
+
+
+    }
+
+    private fun EventChangeListener() {
+        expense_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null){
+                    Log.e("FireStore error", error.message.toString())
+                    return
+                }
+
+                for (dc: DocumentChange in value?.documentChanges!!)
+                {
+                    if(dc.type == DocumentChange.Type.ADDED){
+
+                        expenseDataArrayList.add(dc.document.toObject(transactionData::class.java)!!)
+
+                    }
+                }
+                tableRowAdapter.notifyDataSetChanged()
+            }
+
+        })
     }
 
 }
