@@ -98,14 +98,14 @@
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20sp"
         android:layout_marginTop="30sp"
         android:background="#e9edfb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_view">
 
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="5dp">
 
             <TextView
                 style="@style/table_header"
@@ -114,29 +114,32 @@
                 android:layout_column="0"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
+                android:textSize="17sp"
                 android:gravity="center"
                 android:text="Date"
                 android:textColor="#000" />
 
             <TextView
                 style="@style/table_header"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textSize="17sp"
                 android:text="Particular"
                 android:textColor="#000" />
 
             <TextView
                 style="@style/table_header"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textSize="17sp"
                 android:text="Amount"
                 android:textColor="#000" />
 
@@ -149,9 +152,6 @@
         android:id="@+id/table_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5sp"
-        android:layout_marginHorizontal="20sp"
-        android:layout_marginEnd="5sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/table_layout"/>

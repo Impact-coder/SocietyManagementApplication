@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
+import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.transactionData
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
 import com.google.firebase.firestore.*
@@ -31,9 +32,9 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     private val viewModel: expenseSheetViewModel by viewModels()
     private lateinit var binding: FragmentExpenseSheetBinding
     private var expense_data = FirebaseFirestore.getInstance().collection("transactionData")
-    private lateinit var expenseDataArrayList: ArrayList<transactionData>
+    private var expenseDataArrayList: MutableList<transactionData> = mutableListOf()
     private lateinit var tableRowAdapter: TableRowAdapter
-    private lateinit var transactionData: transactionData
+
 
     var sDate = ""
     var eDate = ""
@@ -123,22 +124,35 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
 
                         CoroutineScope(Dispatchers.IO).launch {
-                            transactionData = expense_data.document().get().await()
-                                .toObject(transactionData::class.java)!!
-
+                            expenseDataArrayList = expense_data.get().await()
+                                .toObjects(transactionData::class.java) as MutableList<transactionData>
+                        }
 //                            for(t in transactionData){
 //
 //                            }
 
 //                            expenseList = transactionData
-                            EventChangeListener()
-                            tableRowAdapter = TableRowAdapter(expenseDataArrayList)
+//                           expenseDataArrayList = arrayListOf()
+
+                        tableRowAdapter = TableRowAdapter(expenseDataArrayList as ArrayList<transactionData>)
 //                        tableRowAdapter = TableRowAdapter(transactionData)
                             binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
                             binding.tableRecyclerView.adapter = tableRowAdapter
 
+//                        EventChangeListener()
 
-                        }
+//                        recycleView = binding.residentRecycleView
+//                        residentProfileArrayList = arrayListOf()
+//                        recycleView.layoutManager = LinearLayoutManager(context)
+//                        residentProfileAdapter = residantAdapter(requireContext(),residentProfileArrayList)
+//
+//                        recycleView.adapter = residentProfileAdapter
+//
+//                        EventChangeListener()
+
+
+
+
                     } else {
                         Toast.makeText(
                             context,
