@@ -20,7 +20,5 @@ class residentListViewModel(
 
     fun showResidentList() {
 
-
-
     }
 }

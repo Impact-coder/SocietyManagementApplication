@@ -97,6 +97,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.addTransactionEvent.collect { events ->
                     when(events){
+
                         is addTransactionViewModel.AddTransactionEvent.NavigateBackWithResult -> {
                             Snackbar.make(
                                 requireView(),
@@ -108,8 +109,9 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
                             binding.amountEditText.setText("")
                         }
                         is addTransactionViewModel.AddTransactionEvent.ShowErrorMessage -> {
-                            Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
-                        }
+                    Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+
+                }
                     }.exhaustive
                 }
 
