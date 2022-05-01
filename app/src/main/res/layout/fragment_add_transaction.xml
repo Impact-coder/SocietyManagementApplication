@@ -87,7 +87,7 @@
             android:id="@+id/amountEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:drawableRight="@drawable/ic_baseline_attach_money_24"
             android:drawableTint="#445BC3"
             android:hint="Enter Amount    " />

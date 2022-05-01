@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,17 @@ class TableRowAdapter(private var expenseArrayList: ArrayList<transactionData>) 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         viewHolder.date.text = expenseArrayList[i].date
         viewHolder.particular.text = expenseArrayList[i].particular.toString()
-        viewHolder.amount.text = "Rs. "+expenseArrayList[i].amount
+        val amt:String=expenseArrayList[i].amount.toString()
+        viewHolder.amount.text="Rs. "+expenseArrayList[i].amount
+        if(amt.first()=='-')
+        {
+            viewHolder.amount.setTextColor(Color.parseColor("#FF2E2E"))
+        }
+        else
+        {
+            viewHolder.amount.setTextColor(Color.parseColor("#299617"))
+        }
+
     }
 
     override fun getItemCount(): Int {

@@ -54,8 +54,8 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
             userName = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(profileData::class.java)
-            comp_name = userName[0].fullName
-            setName(comp_name)
+//            comp_name = userName[0].fullName
+//            setName(comp_name)
 //            tempName = userName[0].fullName.toString()
 
 
@@ -94,6 +94,9 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             btnAddExpense.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
 
+            }
+            btnNotices.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
             }
 
             popupMenu.setOnClickListener {

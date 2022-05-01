@@ -38,6 +38,9 @@
             app:destination="@id/addTransactionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -122,5 +125,14 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.notice.NoticeFragment"
+        android:label="fragment_notice"
+        tools:layout="@layout/fragment_notice" >
+        <action
+            android:id="@+id/action_noticeFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>

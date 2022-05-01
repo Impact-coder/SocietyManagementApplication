@@ -79,7 +79,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mobile_TextField"
+        android:id="@+id/message_TextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -93,7 +93,7 @@
         app:layout_constraintWidth_percent="0.75">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editProfile_mobile_no"
+            android:id="@+id/editProfile_mobileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -104,7 +104,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/flatNo_TextField"
+        android:id="@+id/token_TextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mobile_TextField"
+        app:layout_constraintTop_toBottomOf="@id/message_TextField"
         app:layout_constraintWidth_percent="0.75">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flatNo_TextField" />
+        app:layout_constraintTop_toBottomOf="@id/token_TextField" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
