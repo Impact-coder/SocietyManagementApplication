@@ -2,18 +2,22 @@ package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
+import android.print.PrintDocumentAdapter
+import android.print.PrintManager
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
-import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.transactionData
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
 import com.google.firebase.firestore.*
@@ -24,7 +28,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
@@ -164,6 +167,10 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                 }
             }
 
+            btnDownload.setOnClickListener {
+
+            }
+
             btnBack.setOnClickListener {
                 findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
             }
@@ -171,6 +178,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
 
     }
+
 
     fun EventChangeListener() {
         expense_data.addSnapshotListener(object : EventListener<QuerySnapshot> {

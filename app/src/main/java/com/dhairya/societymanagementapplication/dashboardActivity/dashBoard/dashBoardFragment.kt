@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -36,21 +37,24 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
 
     //    private lateinit var userRole: String
-    private var userName : MutableList<profileData> = mutableListOf()
+    private var userName: MutableList<profileData> = mutableListOf()
     private var resi_Data: MutableList<residentsData> = mutableListOf()
 //    lateinit var tempName:String
+
 
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         CoroutineScope(Dispatchers.Main).launch {
-            resi_Data =  resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
+
+            showProgress(true)
+            resi_Data = resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(residentsData::class.java)
 
-            userName = profile_data.whereEqualTo("memberid",Firebase.auth.currentUser!!.uid).get()
+            userName = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
                 .await().toObjects(profileData::class.java)
-            comp_name=userName[0].fullName
+            comp_name = userName[0].fullName
             setName(comp_name)
 //            tempName = userName[0].fullName.toString()
 
@@ -59,7 +63,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
             ckeckUserrole(resi_Data[0].role)
 
-
+            showProgress(false)
         }
 
 
@@ -70,7 +74,10 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             // dashboardName.setText(tempName)
 
             btnExpenseSheet.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),null)
+                findNavController().navigate(
+                    dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
+                    null
+                )
             }
 
             btnResidents.setOnClickListener {
@@ -90,27 +97,27 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
             popupMenu.setOnClickListener {
-                val popup=PopupMenu(context,it)
+                val popup = PopupMenu(context, it)
                 popup.setOnMenuItemClickListener { item ->
-                    when(item.itemId){
-                        R.id.btn_about ->{
+                    when (item.itemId) {
+                        R.id.btn_about -> {
                             Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
                         }
                         R.id.btn_logout -> {
-                            val builder=AlertDialog.Builder(context)
+                            val builder = AlertDialog.Builder(context)
                             builder.setTitle("Logout")
                             builder.setIcon(R.drawable.ic_logout)
                             builder.setMessage("Are you Sure you want to logout")
-                                .setPositiveButton("Yes"){dialogInterface,which ->
+                                .setPositiveButton("Yes") { dialogInterface, which ->
                                     Intent(requireContext(), AuthActivity::class.java).also {
                                         startActivity(it)
                                         requireActivity().finish()
                                     }
                                 }
-                                .setNeutralButton("Cancel"){dialogInterface,which ->
+                                .setNeutralButton("Cancel") { dialogInterface, which ->
 
                                 }
-                            val alertDialog:AlertDialog=builder.create()
+                            val alertDialog: AlertDialog = builder.create()
                             alertDialog.setCancelable(false)
                             alertDialog.show()
                         }
@@ -119,14 +126,14 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 }
                 popup.inflate(R.menu.popup_menu)
                 try {
-                    val fieldMPopup=PopupMenu::class.java.getDeclaredField("mPopup")
-                    fieldMPopup.isAccessible=true
-                    val mPoopup=fieldMPopup.get(popup)
+                    val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+                    fieldMPopup.isAccessible = true
+                    val mPoopup = fieldMPopup.get(popup)
                     mPoopup.javaClass
-                        .getDeclaredMethod("setForceShowIcon",Boolean::class.java)
-                        .invoke(mPoopup,true)
-                }catch (e:Exception){
-                    Log.e("main","Error Menu Icon")
+                        .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                        .invoke(mPoopup, true)
+                } catch (e: Exception) {
+                    Log.e("main", "Error Menu Icon")
                 }
                 popup.show()
             }
@@ -143,8 +150,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private fun ckeckUserrole(role: String) {
 
-        if(role == "member" || role == "treasurer")
-        {
+        if (role == "member" || role == "treasurer") {
             binding.cvAddMembers.isVisible = false
 
         }
@@ -152,9 +158,26 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     }
 
-    companion object{
+    private fun showProgress(bool: Boolean) {
+        binding.apply {
+            animationView.isVisible = bool
+            if (bool) {
+                parentLayoutDashboard.alpha = 0.5f
+                activity?.window!!.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                )
+            } else {
+                parentLayoutDashboard.alpha = 1f
+                activity?.window!!.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+            }
+        }
+    }
 
-        lateinit var comp_name:String
+
+    companion object {
+
+        lateinit var comp_name: String
 
     }
 

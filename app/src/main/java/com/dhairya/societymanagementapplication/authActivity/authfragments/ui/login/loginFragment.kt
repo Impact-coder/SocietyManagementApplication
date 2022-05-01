@@ -5,7 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -53,6 +55,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
             }
 
             btnLogin.setOnClickListener {
+                showProgress(true)
                 viewModel.login()
             }
 
@@ -71,6 +74,8 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
                         CoroutineScope(Dispatchers.Main).launch {
 
+                            showProgress(true)
+
                             resi_Data = resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
                                 .await().toObjects(residentsData::class.java)
 
@@ -86,6 +91,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                                     requireActivity().finish()
                                 }
                             }
+                            showProgress(false)
                         }
 
                     }
@@ -98,6 +104,23 @@ class loginFragment : Fragment(R.layout.fragment_login) {
             }
         }
     }
+
+    private fun showProgress(bool: Boolean) {
+        binding.apply {
+            animationView.isVisible = bool
+            if (bool) {
+                parentLayoutLogin.alpha = 0.5f
+                activity?.window!!.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                )
+            } else {
+                parentLayoutLogin.alpha = 1f
+                activity?.window!!.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+            }
+        }
+    }
+
 }
 
 val <T> T.exhaustive: T
