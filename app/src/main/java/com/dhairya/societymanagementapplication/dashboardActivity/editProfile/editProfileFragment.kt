@@ -173,7 +173,6 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
         profileImg: String,
     ) {
 
-        statusRadio = ownershipStatus
         binding.editProfileName.setText(fullName)
         binding.editProfileFlatNo.setText(flatNo)
         binding.editProfileMobileNo.setText(mobile)
@@ -184,12 +183,12 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
             .into(binding.btnEditPic)
 
         if (ownershipStatus == "Resident Owner") {
-            binding.radioButton1.isSelected = true
-            binding.radioButton2.isSelected = false
-        } else if (ownershipStatus == "Renting Appartment") {
+            binding.radioButton1.isChecked = true
+            binding.radioButton2.isChecked = false
+        } else if (ownershipStatus == "Renting Apartment") {
 
-            binding.radioButton1.isSelected = false
-            binding.radioButton2.isSelected = true
+            binding.radioButton1.isChecked = false
+            binding.radioButton2.isChecked = true
 
         }
 
