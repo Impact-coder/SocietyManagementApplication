@@ -118,15 +118,21 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
             btnCreateProfile.setOnClickListener {
 
-
-//                if(imgUri == null)
+                    try {
+                        //                if(imgUri == null)
 //                {
 //                    Toast.makeText(context, "Flat number field cannot be empty", Toast.LENGTH_SHORT).show()
 //                }
 //                else
 //                {
-                    viewModel.createProfile(imgUri, statusRadio)
-                //}
+                        viewModel.createProfile(imgUri, statusRadio)
+                        //}
+
+                    }catch (e:Exception)
+                    {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
+                    }
+
 
             }
 

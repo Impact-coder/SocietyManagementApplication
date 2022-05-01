@@ -32,7 +32,6 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     private var expenseDataArrayList: MutableList<transactionData> = mutableListOf()
     private lateinit var tableRowAdapter: TableRowAdapter
 
-
     var sDate = ""
     var eDate = ""
     val myFormat = "dd/MM/yyyy" // mention the format you need
@@ -124,30 +123,12 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                             expenseDataArrayList = expense_data.get().await()
                                 .toObjects(transactionData::class.java) as MutableList<transactionData>
                         }
-//                            for(t in transactionData){
-//
-//                            }
-
-//                            expenseList = transactionData
-//                           expenseDataArrayList = arrayListOf()
-
-                        tableRowAdapter = TableRowAdapter(expenseDataArrayList as ArrayList<transactionData>)
-//                        tableRowAdapter = TableRowAdapter(transactionData)
-                            binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
-                            binding.tableRecyclerView.adapter = tableRowAdapter
-
-//                        EventChangeListener()
-
-//                        recycleView = binding.residentRecycleView
-//                        residentProfileArrayList = arrayListOf()
-//                        recycleView.layoutManager = LinearLayoutManager(context)
-//                        residentProfileAdapter = residantAdapter(requireContext(),residentProfileArrayList)
-//
-//                        recycleView.adapter = residentProfileAdapter
-//
-//                        EventChangeListener()
 
 
+                        tableRowAdapter =
+                            TableRowAdapter(expenseDataArrayList as ArrayList<transactionData>)
+                        binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
+                        binding.tableRecyclerView.adapter = tableRowAdapter
 
 
                     } else {
@@ -169,30 +150,6 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                 findNavController().navigate(expenseSheetFragmentDirections.actionExpenseSheetFragmentToDashBoardFragment())
             }
         }
-
-
-    }
-
-
-    fun EventChangeListener() {
-        expense_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null) {
-                    Log.e("FireStore error", error.message.toString())
-                    return
-                }
-
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-
-                        expenseDataArrayList.add(dc.document.toObject(transactionData::class.java)!!)
-
-                    }
-                }
-                tableRowAdapter.notifyDataSetChanged()
-            }
-
-        })
     }
 
 

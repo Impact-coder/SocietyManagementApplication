@@ -8,22 +8,22 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dhairya.societymanagementapplication.R
-import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.createProfile.createProfileViewModel
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
+import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberViewModel
 import com.dhairya.societymanagementapplication.data.profileData
-import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfileBinding
 import com.dhairya.societymanagementapplication.databinding.FragmentEditProfileBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -32,6 +32,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import android.R.attr.name
+
+
+
 
 class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
@@ -45,17 +49,18 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
     private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
 
-    lateinit var statusRadio: String
+   var statusRadio: String = ""
 
     private val mPickImage = 1
-    lateinit var imgUri: Uri
-    private lateinit var mYourBitmap: Bitmap
+    var imgUri: Uri=Uri.EMPTY
+    var conf = Bitmap.Config.ARGB_8888
+    private  var mYourBitmap: Bitmap = Bitmap.createBitmap(1, 1, conf)
 
 
     private val cropActivityResultContract = object : ActivityResultContract<Any?, Uri?>() {
         override fun createIntent(context: Context, input: Any?): Intent {
             return CropImage.activity()
-                .setAspectRatio(16, 9)
+                .setAspectRatio(1, 1)
                 .getIntent(context)
 
         }
@@ -100,9 +105,17 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
         }
 
+
         binding = FragmentEditProfileBinding.bind(view)
 
+        statusRadio = (if (binding.radioButton1.isChecked){"Resident Owner"} else {"Renting Apartment"}).toString()
+
+        Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
+
         binding.apply {
+
+
+
             btnBack.setOnClickListener {
                 findNavController().navigate(editProfileFragmentDirections.actionEditProfileFragmentToProfileFragment())
             }
@@ -141,25 +154,44 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
             btnEditDone.setOnClickListener {
 
-                if (editProfileName.text == null) {
-                    Toast.makeText(context, "Name field cannot be empty", Toast.LENGTH_SHORT).show()
-                } else if (editProfileMobileNo.text == null) {
-                    Toast.makeText(
-                        context,
-                        "Mobile Number field cannot be empty",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                } else if (editProfileFlatNo.text == null) {
-                    Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT)
-                        .show()
-                } else if (imgUri == null) {
-                    Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
+
+//                else if (imgUri == null) {
+//                    Toast.makeText(context, "Flat Number field cannot be empty", Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+
                  //   viewModel.editProfile(imgUri, statusRadio)
-                    viewModel.editProfile()
+
+                if(imgUri.equals(Uri.EMPTY))
+                {
+                    viewModel.editProfile(statusRadio)
                 }
+                else
+                {
+                    viewModel.updateProfile(imgUri,statusRadio)
+                }
+
+            }
+
+        }
+
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.editProfileEvent.collect { events ->
+                when (events) {
+                    is editProfileViewModel.EditProfileEvent.NavigateBackWithResult -> {
+
+                        Snackbar.make(
+                            requireView(),
+                            "Profile Edited Successfully!!",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                    }
+                    is editProfileViewModel.EditProfileEvent.ShowErrorMessage -> {
+                        Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+
+                    }
+                }.exhaustive
             }
 
         }
@@ -182,7 +214,10 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
             .centerCrop()
             .into(binding.btnEditPic)
 
+        statusRadio =ownershipStatus.toString()
+
         if (ownershipStatus == "Resident Owner") {
+
             binding.radioButton1.isChecked = true
             binding.radioButton2.isChecked = false
         } else if (ownershipStatus == "Renting Apartment") {

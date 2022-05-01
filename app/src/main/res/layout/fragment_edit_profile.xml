@@ -39,13 +39,14 @@
         app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintStart_toEndOf="@id/btn_back" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btn_edit_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="@drawable/add_pic_background"
         android:clickable="true"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
         android:focusable="true"
         android:scaleType="centerInside"
         android:src="@drawable/ic_baseline_add_a_photo_24"

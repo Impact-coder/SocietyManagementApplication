@@ -54,8 +54,6 @@ class residentListFragment : Fragment(R.layout.fragment_resident_list) {
 
         }
 
-
-
     }
 
     private fun EventChangeListener() {

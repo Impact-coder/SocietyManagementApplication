@@ -33,7 +33,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
         binding.apply {
 
             radioGroupMemberRoles.setOnCheckedChangeListener { radioGroup, i ->
-                radio = if (radioButton1.id == i) "member" else "Treasurer"
+                radio = if (radioButton1.id == i) "member" else "treasurer"
 
 //                Snackbar.make(requireView(), radio, Snackbar.LENGTH_LONG).show()
             }
@@ -52,6 +52,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
             }
 
             btnAddMember.setOnClickListener {
+
 
                 viewModel.addMember(radio)
 

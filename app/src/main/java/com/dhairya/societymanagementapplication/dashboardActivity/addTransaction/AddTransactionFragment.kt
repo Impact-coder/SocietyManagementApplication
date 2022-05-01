@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -31,6 +32,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
         binding = FragmentAddTransactionBinding.bind(view)
         binding.apply {
+            btnSelectDate.setText("Select Date")
 
             btnSelectDate.setText(viewModel.btnSelectDate)
             particularsEditText.setText(viewModel.paricularasEditText)
@@ -52,10 +54,6 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
             }
 
 
-//            btnSelectDate.setOnClickListener {
-//                viewModel.selectDate()
-//            }
-
             binding.apply {
                 val dateSetListener =
                     DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -69,10 +67,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
                         btnSelectDate.text = sdf.format(cal.getTime())
                     }
 
-
-
                 btnSelectDate.setOnClickListener {
-
 
                     DatePickerDialog(
                         btnSelectDate.context,
@@ -96,22 +91,22 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.addTransactionEvent.collect { events ->
-                    when(events){
+                    when (events) {
 
                         is addTransactionViewModel.AddTransactionEvent.NavigateBackWithResult -> {
-                            Snackbar.make(
-                                requireView(),
+                            Toast.makeText(
+                                context,
                                 "Transaction added Successfully!!",
-                                Snackbar.LENGTH_LONG
+                                Toast.LENGTH_SHORT
                             ).show()
 
                             binding.particularsEditText.setText("")
                             binding.amountEditText.setText("")
                         }
                         is addTransactionViewModel.AddTransactionEvent.ShowErrorMessage -> {
-                    Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
 
-                }
+                        }
                     }.exhaustive
                 }
 
