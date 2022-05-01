@@ -30,14 +30,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/start_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:backgroundTint="#0000"
         android:drawableRight="@drawable/calendar"
-        android:paddingVertical="20dp"
+        android:paddingVertical="25dp"
         android:text="Start Date"
         android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@id/end_date"
@@ -45,14 +45,14 @@
         app:layout_constraintTop_toBottomOf="@id/txt_ExpenseSheet"
         app:layout_constraintWidth_percent="0.4" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/end_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:backgroundTint="#0000"
         android:drawableRight="@drawable/calendar"
-        android:paddingVertical="20dp"
+        android:paddingVertical="25dp"
         android:text="End Date"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,73 +94,38 @@
         app:layout_constraintTop_toBottomOf="@id/start_date"
         app:layout_constraintWidth_percent="0.4" />
 
-    <TableLayout
-        android:id="@+id/table_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:background="#e9edfb"
-        app:layout_constraintEnd_toEndOf="parent"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        app:layout_constraintWidth_percent="0.95"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_view">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_view" />
 
-        <TableRow
-            android:layout_marginVertical="5dp">
-
-            <TextView
-                style="@style/table_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:textSize="17sp"
-                android:gravity="center"
-                android:text="Date"
-                android:textColor="#000" />
-
-            <TextView
-                style="@style/table_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:text="Particular"
-                android:textColor="#000" />
-
-            <TextView
-                style="@style/table_header"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:text="Amount"
-                android:textColor="#000" />
-
-        </TableRow>
-
-
-    </TableLayout>
+    <TextView
+        android:id="@+id/txt_statement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statement"
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/table_recycler_view"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/table_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_layout"/>
+        app:layout_constraintTop_toBottomOf="@+id/txt_statement"/>
 
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/table_recycler_view"
-        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.pdf.PdfDocument
 import android.os.Bundle
-import android.print.PrintDocumentAdapter
-import android.print.PrintManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast

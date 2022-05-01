@@ -1,55 +1,55 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TableLayout
-        android:id="@+id/table_heading_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#e9edfb"
-        >
+ <TextView
+     android:id="@+id/date"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:layout_marginStart="20dp"
+     android:text="Date"
+     android:textSize="18sp"
+     android:textColor="#656363"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintStart_toStartOf="parent"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/particular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:text="Expense Details"
+        android:textSize="18sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-            <TextView
-                android:id="@+id/date"
-                style="@style/table_row_item"
-                android:layout_width="0dp"
-                android:layout_column="0"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:textSize="17sp"
-                android:textColor="#000"
-                android:background="@color/white"
-                android:textAlignment="center" />
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="10000"
+        android:textSize="18sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-            <TextView
-                android:id="@+id/particular"
-                style="@style/table_row_item"
-                android:layout_width="0dp"
-                android:layout_column="1"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:textSize="17sp"
-                android:textColor="#000"
-                android:background="@color/white"
-                android:textAlignment="center" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintWidth_percent="0.92"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/particular" />
 
-            <TextView
-                android:id="@+id/amount"
-                style="@style/table_row_item"
-                android:layout_width="0dp"
-                android:layout_column="2"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:textSize="17sp"
-                android:textColor="#000"
-                android:background="@color/white"
-                android:baselineAligned="false"
-                android:textAlignment="center" />
-        </TableRow>
-    </TableLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

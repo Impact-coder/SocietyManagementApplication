@@ -21,7 +21,7 @@ class TableRowAdapter(private var expenseArrayList: ArrayList<transactionData>) 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         viewHolder.date.text = expenseArrayList[i].date
         viewHolder.particular.text = expenseArrayList[i].particular.toString()
-        viewHolder.amount.text = expenseArrayList[i].amount
+        viewHolder.amount.text = "Rs. "+expenseArrayList[i].amount
     }
 
     override fun getItemCount(): Int {
