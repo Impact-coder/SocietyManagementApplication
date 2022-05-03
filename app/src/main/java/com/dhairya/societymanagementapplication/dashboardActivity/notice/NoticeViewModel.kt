@@ -90,12 +90,12 @@ class noticeViewModel(
                             AUTH_RESULT_OK
                         ))
 
-                    PushNotification(
-                        NotificationData(title, message),
-                        TOPIC
-                    ).also {
-                        sendNotification(it)
-                    }
+//                    PushNotification(
+//                        NotificationData(title, message),
+//                        TOPIC
+//                    ).also {
+//                        sendNotification(it)
+//                    }
 
 
                 }
@@ -110,19 +110,19 @@ class noticeViewModel(
 
     }
 
-    private fun sendNotification(notification: PushNotification)= CoroutineScope(Dispatchers.IO).launch {
-        try{
-            val response=RetrofitInstance.api.postNotification(notification)
-            if(response.isSuccessful)
-            {
-                Log.d(TAG,"response:${Gson().toJson(response)}")
-            }else{
-                Log.e(TAG,response.errorBody().toString())
-            }
-        }catch (e:Exception){
-            Log.e(TAG,e.toString())
-        }
-    }
+//    private fun sendNotification(notification: PushNotification)= CoroutineScope(Dispatchers.IO).launch {
+//        try{
+//            val response=RetrofitInstance.api.postNotification(notification)
+//            if(response.isSuccessful)
+//            {
+//                Log.d(TAG,"response:${Gson().toJson(response)}")
+//            }else{
+//                Log.e(TAG,response.errorBody().toString())
+//            }
+//        }catch (e:Exception){
+//            Log.e(TAG,e.toString())
+//        }
+//    }
 
 
     sealed class NoticeEvent {
