@@ -26,7 +26,6 @@ class addTransactionViewModel(private val state: SavedStateHandle) : ViewModel()
     var cal = Calendar.getInstance()
     var date = ""
 
-    private val auth = FirebaseAuth.getInstance()
     private val transactionData = FirebaseFirestore.getInstance().collection("transactionData")
 
 

@@ -1,7 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
+import com.dhairya.societymanagementapplication.dashboardActivity.notice.noticeViewModel
 import com.dhairya.societymanagementapplication.data.transactionData
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,12 +25,12 @@ import java.util.*
 
 class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
-    private val viewModel: expenseSheetViewModel by viewModels()
+    private val viewModel: noticeViewModel by viewModels()
     private lateinit var binding: FragmentExpenseSheetBinding
     private var expense_data = FirebaseFirestore.getInstance().collection("transactionData")
     private var expenseDataArrayList: MutableList<transactionData> = mutableListOf()
     private lateinit var tableRowAdapter: TableRowAdapter
-    private var newArrayList: MutableList<transactionData> = mutableListOf()
+
 
     var sDate = ""
     var eDate = ""
@@ -47,16 +47,16 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
         binding = FragmentExpenseSheetBinding.bind(view)
         binding.apply {
 
-            startDate.setText(viewModel.startDate)
-            endDate.setText(viewModel.endDate)
-
-            startDate.addTextChangedListener {
-                viewModel.startDate = it.toString()
-            }
-
-            endDate.addTextChangedListener {
-                viewModel.endDate = it.toString()
-            }
+//            startDate.setText(viewModel.startDate)
+//            endDate.setText(viewModel.endDate)
+//
+//            startDate.addTextChangedListener {
+//                viewModel.startDate = it.toString()
+//            }
+//
+//            endDate.addTextChangedListener {
+//                viewModel.endDate = it.toString()
+//            }
 
             val dateSetListener =
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -105,6 +105,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
             }
 
             btnView.setOnClickListener {
+                var newArrayList: MutableList<transactionData> = mutableListOf()
 
                 if (startDate.text.isEmpty()) {
                     Toast.makeText(context, "Please enter starting date!!", Toast.LENGTH_SHORT)
@@ -134,12 +135,11 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
                         }
 
-
-
                         tableRowAdapter =
                             TableRowAdapter(newArrayList as ArrayList<transactionData>)
                         binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
                         binding.tableRecyclerView.adapter = tableRowAdapter
+
 
 
                     } else {
