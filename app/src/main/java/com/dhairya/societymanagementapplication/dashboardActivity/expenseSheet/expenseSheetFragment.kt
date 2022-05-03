@@ -1,8 +1,8 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.expenseSheet
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -14,8 +14,7 @@ import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.TableRowAdapter
 import com.dhairya.societymanagementapplication.data.transactionData
 import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheetBinding
-import com.google.firebase.firestore.*
-import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +30,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     private var expense_data = FirebaseFirestore.getInstance().collection("transactionData")
     private var expenseDataArrayList: MutableList<transactionData> = mutableListOf()
     private lateinit var tableRowAdapter: TableRowAdapter
+    private var newArrayList: MutableList<transactionData> = mutableListOf()
 
     var sDate = ""
     var eDate = ""
@@ -123,10 +123,21 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                             expenseDataArrayList = expense_data.get().await()
                                 .toObjects(transactionData::class.java) as MutableList<transactionData>
                         }
+                        for (i in expenseDataArrayList) {
+                            var dat: String = i.date
+                            var d = sdf.parse(dat)
+
+                            if (d.before(endingDate) && d.after(startingDate)) {
+                                newArrayList.add(i)
+                            }
+
+
+                        }
+
 
 
                         tableRowAdapter =
-                            TableRowAdapter(expenseDataArrayList as ArrayList<transactionData>)
+                            TableRowAdapter(newArrayList as ArrayList<transactionData>)
                         binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
                         binding.tableRecyclerView.adapter = tableRowAdapter
 

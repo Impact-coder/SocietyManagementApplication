@@ -6,12 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.data.transactionData
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class TableRowAdapter(private var expenseArrayList: ArrayList<transactionData>) :
+class TableRowAdapter(
+    private var expenseArrayList: ArrayList<transactionData>,
+) :
     RecyclerView.Adapter<TableRowAdapter.ViewHolder>() {
+
+    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.US)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v: View = LayoutInflater.from(viewGroup.context)
@@ -20,18 +28,12 @@ class TableRowAdapter(private var expenseArrayList: ArrayList<transactionData>) 
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
+
+
         viewHolder.date.text = expenseArrayList[i].date
-        viewHolder.particular.text = expenseArrayList[i].particular.toString()
-        val amt:String=expenseArrayList[i].amount.toString()
-        viewHolder.amount.text="Rs. "+expenseArrayList[i].amount
-        if(amt.first()=='-')
-        {
-            viewHolder.amount.setTextColor(Color.parseColor("#FF2E2E"))
-        }
-        else
-        {
-            viewHolder.amount.setTextColor(Color.parseColor("#299617"))
-        }
+        viewHolder.particular.text = expenseArrayList[i].particular
+        viewHolder.amount.text = expenseArrayList[i].amount
+
 
     }
 
