@@ -22,7 +22,7 @@ class addTransactionViewModel(private val state: SavedStateHandle) : ViewModel()
 
     private val AddTransactionEventChannel = Channel<AddTransactionEvent>()
     val addTransactionEvent = AddTransactionEventChannel.receiveAsFlow()
-    private lateinit var binding: FragmentAddTransactionBinding
+
     var cal = Calendar.getInstance()
     var date = ""
 

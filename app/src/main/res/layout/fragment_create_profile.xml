@@ -70,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_TextField"
+            android:id="@+id/complainSubject_TextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -95,7 +95,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/message_TextField"
+            android:id="@+id/complainMessage_TextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_TextField"
+            app:layout_constraintTop_toBottomOf="@id/complainSubject_TextField"
             app:layout_constraintWidth_percent="0.75">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -131,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/message_TextField"
+            app:layout_constraintTop_toBottomOf="@id/complainMessage_TextField"
             app:layout_constraintWidth_percent="0.75">
 
             <com.google.android.material.textfield.TextInputEditText

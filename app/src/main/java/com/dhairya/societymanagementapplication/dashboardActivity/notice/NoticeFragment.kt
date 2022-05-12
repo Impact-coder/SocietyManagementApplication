@@ -4,13 +4,18 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
+import com.dhairya.societymanagementapplication.dashboardActivity.addTransaction.addTransactionViewModel
 import com.dhairya.societymanagementapplication.data.NotificationData
 import com.dhairya.societymanagementapplication.databinding.FragmentNoticeBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -64,6 +69,30 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
                         sendNotification(it)
                     }
                 }
+            }
+
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.noticeEvent.collect { events ->
+                when (events) {
+
+                    is noticeViewModel.NoticeEvent.NavigateBackWithResult ->  {
+                        Toast.makeText(
+                            context,
+                            "Transaction added Successfully!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        binding.noticeTitle.setText("")
+                        binding.noticeMessage.setText("")
+                    }
+                    is noticeViewModel.NoticeEvent.ShowErrorMessage -> {
+                        Toast.makeText(requireContext(), events.msg, Toast.LENGTH_SHORT).show()
+
+
+                    }
+                }.exhaustive
             }
 
         }

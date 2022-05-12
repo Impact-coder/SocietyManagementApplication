@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboardActivity.notice.NoticeFragment">
+    tools:context=".dashboardActivity.fieComplain.fileComplainFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/complainSubject_TextField"
@@ -13,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="30sp"
         android:elevation="10sp"
-        android:hint="Title"
+        android:hint="Complain Subject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +22,7 @@
         app:layout_constraintWidth_percent="0.75">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notice_title"
+            android:id="@+id/complain_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -44,7 +45,7 @@
         app:layout_constraintWidth_percent="0.75">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notice_message"
+            android:id="@+id/complain_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -54,13 +55,12 @@
 
 
     <Button
-        android:id="@+id/btn_send"
+        android:id="@+id/btn_send_complain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Send"
+        android:layout_marginTop="30dp"
+        android:text="File Complain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/complainMessage_TextField" />
 

@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="@id/view" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_TextField"
+            android:id="@+id/complainSubject_TextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -85,7 +85,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/message_TextField"
+            android:id="@+id/complainMessage_TextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -96,7 +96,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.08"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_TextField"
+            app:layout_constraintTop_toBottomOf="@id/complainSubject_TextField"
             app:layout_constraintWidth_percent="0.7"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="#717070">
@@ -137,7 +137,7 @@
 
             app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/message_TextField"
+            app:layout_constraintTop_toBottomOf="@id/complainMessage_TextField"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton

@@ -90,14 +90,6 @@ class noticeViewModel(
                             AUTH_RESULT_OK
                         ))
 
-//                    PushNotification(
-//                        NotificationData(title, message),
-//                        TOPIC
-//                    ).also {
-//                        sendNotification(it)
-//                    }
-
-
                 }
                 catch (e:Exception)
                 {
