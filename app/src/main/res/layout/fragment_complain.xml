@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".dashboardActivity.complain.ComplainFragment">
 
-    
-    <TextView
-        android:layout_width=""
-        android:layout_height=""
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
