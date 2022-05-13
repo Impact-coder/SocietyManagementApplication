@@ -19,10 +19,11 @@ import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.data.complainData
 
 class complainListAdapter(
-    private val requireContext: Context,
+    private val mcontext: Context,
     private  val complainArrayList: ArrayList<complainData>
 ) : RecyclerView.Adapter<complainListAdapter.complainsViewHolder>() {
 
+    private var itemOnClick: ((complainData)->Unit)? = null
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -39,6 +40,13 @@ class complainListAdapter(
         Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO
         holder.date.text = complain.complainDate
+
+        holder.itemView.setOnClickListener{
+            itemOnClick?.let { click->
+                click(complain)
+
+            }
+        }
 
 //        val dialog = Dialog(mcontext)
 //        dialog.setContentView(R.layout.fragment_resident_details_dialog)
@@ -71,6 +79,10 @@ class complainListAdapter(
 //        }
 
 
+    }
+
+    fun setOnItemClickListner(listner:(complainData)->Unit){
+        itemOnClick = listner
     }
 
     override fun getItemCount(): Int {

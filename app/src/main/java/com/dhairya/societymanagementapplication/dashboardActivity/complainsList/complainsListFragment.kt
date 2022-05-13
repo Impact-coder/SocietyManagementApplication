@@ -42,6 +42,11 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             complainDisplayListAdapter = complainListAdapter(requireContext(),complainArrayList)
 
             recycleView.adapter = complainDisplayListAdapter
+            complainDisplayListAdapter.setOnItemClickListner { complainData ->
+                Log.d("ComplainsListFragment: ", complainData.toString())
+                val action = complainsListFragmentDirections.actionComplainsListFragmentToComplainFragment(complainData)
+                findNavController().navigate(action)
+            }
             Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
             EventChangeListener()
             

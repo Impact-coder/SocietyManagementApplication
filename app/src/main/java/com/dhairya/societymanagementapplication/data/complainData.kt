@@ -1,5 +1,9 @@
 package com.dhairya.societymanagementapplication.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class complainData(
     val complainDate: String= "",
     val flatNO:String="",
@@ -10,4 +14,4 @@ data class complainData(
     val complainResponse: String="",
     val cid: String=""
 
-)
+):Parcelable

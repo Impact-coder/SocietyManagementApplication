@@ -158,5 +158,20 @@
         <action
             android:id="@+id/action_complainsListFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_complainsListFragment_to_complainFragment"
+            app:destination="@id/complainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complainFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.complain.ComplainFragment"
+        android:label="fragment_complain"
+        tools:layout="@layout/fragment_complain" >
+        <action
+            android:id="@+id/action_complainFragment_to_complainsListFragment"
+            app:destination="@id/complainsListFragment" />
+        <argument
+            android:name="complain"
+            app:argType="com.dhairya.societymanagementapplication.data.complainData" />
     </fragment>
 </navigation>
