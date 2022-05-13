@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,21 +32,11 @@ class complainListAdapter(
         return complainsViewHolder(view)
     }
 
-
-    override fun getItemCount(): Int {
-        return complainArrayList.size
-    }
-
-    inner class complainsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        val flatNo: TextView = itemView.findViewById(R.id.complainList_flatNo)
-        val date: TextView = itemView.findViewById(R.id.complainList_date)
-
-    }
-
     override fun onBindViewHolder(holder: complainsViewHolder, position: Int) {
         val complain: complainData = complainArrayList[position]
 
+        Log.d("TAG",complain.flatNO)
+        Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO
         holder.date.text = complain.complainDate
 
@@ -79,6 +70,18 @@ class complainListAdapter(
 //            dialog.show()
 //        }
 
+
+    }
+
+    override fun getItemCount(): Int {
+        return complainArrayList.size
+    }
+
+
+    class complainsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val flatNo: TextView = itemView.findViewById(R.id.complainList_flatNo)
+        val date: TextView = itemView.findViewById(R.id.complainList_date)
 
     }
 

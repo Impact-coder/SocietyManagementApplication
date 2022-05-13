@@ -103,7 +103,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
             btnShowComplains.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToShowComplains())
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
             }
 
             popupMenu.setOnClickListener {

@@ -98,7 +98,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
                     is loginViewModel.LoginEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
-
+                        showProgress(false)
                     }
                 }.exhaustive
             }

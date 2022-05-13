@@ -3,7 +3,9 @@ package com.dhairya.societymanagementapplication.dashboardActivity.complainsList
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,15 +19,18 @@ import com.google.firebase.firestore.*
 
 class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
+    private val viewModel: complainsListViewModel by viewModels()
+
     private lateinit var binding: FragmentComplainsListBinding
 
     private lateinit var complainArrayList: ArrayList<complainData>
-    private lateinit var complainListAdapter: complainListAdapter
+    private lateinit var complainDisplayListAdapter: complainListAdapter
     private lateinit var recycleView: RecyclerView
     private val complain_data = FirebaseFirestore.getInstance().collection("complainData")
 
-    fun onCreate(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
 
         binding = FragmentComplainsListBinding.bind(view)
 
@@ -34,20 +39,22 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             recycleView = binding.complainRecycleView
             complainArrayList = arrayListOf()
             recycleView.layoutManager = LinearLayoutManager(context)
-            complainListAdapter = complainListAdapter(requireContext(),complainArrayList)
+            complainDisplayListAdapter = complainListAdapter(requireContext(),complainArrayList)
 
-            recycleView.adapter = complainListAdapter
-
+            recycleView.adapter = complainDisplayListAdapter
+            Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
             EventChangeListener()
+            
 
             btnBack.setOnClickListener {
-                findNavController().navigate(residentListFragmentDirections.actionResidentListFragmentToDashBoardFragment())
+                findNavController().navigate(complainsListFragmentDirections.actionComplainsListFragmentToDashBoardFragment())
             }
 
         }
     }
 
     private fun EventChangeListener() {
+
         complain_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null){
@@ -61,9 +68,12 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
                         complainArrayList.add(dc.document.toObject(complainData::class.java))
 
+                        Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
+
                     }
                 }
-                complainListAdapter.notifyDataSetChanged()
+                complainDisplayListAdapter.notifyDataSetChanged()
+                Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
             }
 
         })

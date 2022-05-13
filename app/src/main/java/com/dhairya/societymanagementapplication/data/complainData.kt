@@ -1,7 +1,5 @@
 package com.dhairya.societymanagementapplication.data
 
-import com.google.android.gms.common.api.Response
-
 data class complainData(
     val complainDate: String,
     val flatNO:String,

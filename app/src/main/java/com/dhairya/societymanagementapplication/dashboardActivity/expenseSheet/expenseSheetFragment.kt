@@ -81,8 +81,6 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                     endDate.text = sdf.format(cal.getTime())
                 }
 
-
-
             startDate.setOnClickListener {
                 DatePickerDialog(
                     requireContext(),
@@ -131,15 +129,12 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                             if (d.before(endingDate) && d.after(startingDate)) {
                                 newArrayList.add(i)
                             }
-
-
                         }
 
                         tableRowAdapter =
                             TableRowAdapter(newArrayList as ArrayList<transactionData>)
                         binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
                         binding.tableRecyclerView.adapter = tableRowAdapter
-
 
 
                     } else {

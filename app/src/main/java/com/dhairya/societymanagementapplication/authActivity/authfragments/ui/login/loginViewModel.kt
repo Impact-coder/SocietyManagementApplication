@@ -51,6 +51,7 @@ class loginViewModel constructor(
                     auth.signInWithEmailAndPassword(email, password).await()
                     loginEventChannel.send(LoginEvent.NavigateBackWithResult(AUTH_RESULT_OK))
                 } catch (e: Exception) {
+
                     showErrorMessage(e.message.toString())
                 }
             }
