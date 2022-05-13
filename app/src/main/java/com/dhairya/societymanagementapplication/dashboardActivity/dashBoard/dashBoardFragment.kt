@@ -102,6 +102,10 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
             }
 
+            btnShowComplains.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToShowComplains())
+            }
+
             popupMenu.setOnClickListener {
                 val popup = PopupMenu(context, it)
                 popup.setOnMenuItemClickListener { item ->

@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_fileComplain"
             app:destination="@id/fileComplain" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_showComplains"
+            app:destination="@id/showComplains" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -145,6 +148,15 @@
         tools:layout="@layout/fragment_file_complain" >
         <action
             android:id="@+id/action_fileComplain_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showComplains"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.complainsList.complainsListFragment"
+        android:label="fragment_show_complains"
+        tools:layout="@layout/fragment_complains_list" >
+        <action
+            android:id="@+id/action_showComplains_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>

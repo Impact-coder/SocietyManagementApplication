@@ -340,6 +340,27 @@
 
                         </androidx.cardview.widget.CardView>
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_show_complains"
+                            android:layout_width="150dp"
+                            android:layout_height="150sp"
+                            android:layout_gravity="right|top"
+                            android:layout_marginTop="20sp"
+                            android:backgroundTint="#fff"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="30dp">
+
+                            <TextView
+                                android:id="@+id/btn_show_complains"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableTop="@drawable/ic_report"
+                                android:text="\nShow Complains"
+                                android:textAlignment="center" />
+
+                        </androidx.cardview.widget.CardView>
+
 
 
                     </GridLayout>

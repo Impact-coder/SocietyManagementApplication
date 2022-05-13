@@ -16,9 +16,11 @@
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen1.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen2.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen3.xml" value="0.14145299145299145" />
+        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/complain_list_item.xml" value="0.1" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_add_member.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_add_transaction.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_change_password.xml" value="0.152991452991453" />
+        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_complain.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_create_profile.xml" value="0.18" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_dash_board.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
@@ -32,6 +34,7 @@
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_profile.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_resident_details_dialog.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_resident_list.xml" value="0.152991452991453" />
+        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_show_complains.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/navigation_header.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/resident_list_item.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20260416666666667" />
