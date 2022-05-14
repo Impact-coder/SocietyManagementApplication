@@ -59,19 +59,19 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
 
                 viewModel.addNotice()
 
-
-
                 if(title.isNotEmpty() && message.isNotEmpty()){
                     PushNotification(
                         NotificationData(title, message),
                         TOPIC
                     ).also {
+
                         sendNotification(it)
+                    }
                     }
                 }
             }
 
-        }
+
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.noticeEvent.collect { events ->

@@ -93,14 +93,14 @@
         android:elevation="10sp"
         android:layout_marginStart="10dp"
         android:hint="Complain Reply"
-        app:layout_constraintEnd_toStartOf="@id/btn_send"
+        app:layout_constraintEnd_toStartOf="@id/btn_reply"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintWidth_percent="0.8">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/complain_subject"
+            android:id="@+id/complain_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -109,7 +109,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_send"
+        android:id="@+id/btn_reply"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
