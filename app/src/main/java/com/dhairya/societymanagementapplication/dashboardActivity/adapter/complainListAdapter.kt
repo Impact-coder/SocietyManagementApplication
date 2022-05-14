@@ -40,7 +40,7 @@ class complainListAdapter(
         Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO
         holder.date.text = complain.complainDate
-        h
+
 
         holder.itemView.setOnClickListener{
             itemOnClick?.let { click->

@@ -7,7 +7,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        android:minSdkVersion="30" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +21,7 @@
         android:theme="@style/Theme.SocietyManagementApplication">
 
 
-    <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity
             android:name=".dashboardActivity.DashboardActivity"
             android:exported="true">
@@ -39,19 +42,21 @@
             android:exported="true" />
         <activity
             android:name=".SplashScreen1"
-            android:exported="true"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".dashboardActivity.notice.FirebaseService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="false">
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                <action android:name="com.google.android.c2dm.permission.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.permission.RECEIVE" />
             </intent-filter>
         </service>
 
