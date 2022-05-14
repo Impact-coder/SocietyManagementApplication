@@ -36,6 +36,8 @@ class complainListAdapter(
     override fun onBindViewHolder(holder: complainsViewHolder, position: Int) {
         val complain: complainData = complainArrayList[position]
 
+
+
         Log.d("TAG",complain.flatNO)
         Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO

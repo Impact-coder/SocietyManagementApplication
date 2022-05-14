@@ -107,18 +107,24 @@ class fileComplainViewModel(
     }
 
     private fun getUserdata() {
-        CoroutineScope(Dispatchers.IO).launch {
-            residents = resident_data.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(residentsData::class.java)
 
-            profile = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(profileData::class.java)
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                residents = resident_data.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
+                    .await().toObjects(residentsData::class.java)
 
-            flatNo = residents[0].flatNo
-            userName = profile[0].fullName
+                profile = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
+                    .await().toObjects(profileData::class.java)
 
-            showErrorMessage(flatNo)
-            showErrorMessage(userName)
+                flatNo = residents[0].flatNo
+                userName = profile[0].fullName
+
+
+            }
+        }
+        catch(e:Exception)
+        {
+            showErrorMessage(e.message.toString())
         }
     }
 
