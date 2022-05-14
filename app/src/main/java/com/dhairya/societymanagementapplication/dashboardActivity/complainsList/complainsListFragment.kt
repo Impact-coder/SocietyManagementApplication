@@ -31,7 +31,6 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
 
         binding = FragmentComplainsListBinding.bind(view)
 
@@ -52,7 +51,6 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
                     )
                 findNavController().navigate(action)
             }
-            Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
             EventChangeListener()
 
 
@@ -81,7 +79,6 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
                     }
                 }
                 complainDisplayListAdapter.notifyDataSetChanged()
-                Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
             }
 
         })

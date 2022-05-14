@@ -36,8 +36,8 @@ class fileComplainViewModel(
 
     private var profile: MutableList<profileData> = mutableListOf()
     private var residents: MutableList<residentsData> = mutableListOf()
-    lateinit var flatNo:String
-    lateinit var userName:String
+    lateinit var flatNo: String
+    lateinit var userName: String
 
 
     var complainMessage = state.get<String>("complainMessage") ?: ""
@@ -70,7 +70,16 @@ class fileComplainViewModel(
 
             CoroutineScope(Dispatchers.IO).launch {
 
-                getUserdata()
+
+                residents = resident_data.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
+                    .await().toObjects(residentsData::class.java)
+
+                profile =
+                    profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
+                        .await().toObjects(profileData::class.java)
+
+                flatNo = residents[0].flatNo
+                userName = profile[0].fullName
 
                 try {
 
@@ -81,7 +90,7 @@ class fileComplainViewModel(
                         complain = complainMessage,
                         complainResponse = "",
                         cid = cId,
-                        memberId= Firebase.auth.currentUser!!.uid,
+                        memberId = Firebase.auth.currentUser!!.uid,
                         flatNO = flatNo,
                         memberName = userName
 
@@ -90,13 +99,12 @@ class fileComplainViewModel(
                     complain_data.document(cId).set(complain).await()
                     // transactionData.orderBy(date,Query.Direction.ASCENDING)
                     FileComplainEventChannel.send(
-                       fileComplainViewModel.FileComplainEvent.NavigateBackWithResult(
+                        fileComplainViewModel.FileComplainEvent.NavigateBackWithResult(
                             AUTH_RESULT_OK
-                        ))
+                        )
+                    )
 
-                }
-                catch (e:Exception)
-                {
+                } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
                 }
 
@@ -106,27 +114,26 @@ class fileComplainViewModel(
         }
     }
 
-    private fun getUserdata() {
-
-        try {
-            CoroutineScope(Dispatchers.IO).launch {
-                residents = resident_data.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
-                    .await().toObjects(residentsData::class.java)
-
-                profile = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
-                    .await().toObjects(profileData::class.java)
-
-                flatNo = residents[0].flatNo
-                userName = profile[0].fullName
-
-
-            }
-        }
-        catch(e:Exception)
-        {
-            showErrorMessage(e.message.toString())
-        }
-    }
+//    private fun getUserdata() {
+//
+//        try {
+//            CoroutineScope(Dispatchers.IO).launch {
+//                residents = resident_data.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
+//                    .await().toObjects(residentsData::class.java)
+//
+//                profile =
+//                    profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
+//                        .await().toObjects(profileData::class.java)
+//
+//                flatNo = residents[0].flatNo
+//                userName = profile[0].fullName
+//
+//
+//            }
+//        } catch (e: Exception) {
+//            showErrorMessage(e.message.toString())
+//        }
+//    }
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {
         FileComplainEventChannel.send(FileComplainEvent.ShowErrorMessage(text))

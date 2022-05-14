@@ -33,45 +33,54 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     private val viewModel: dashBoardViewModel by viewModels()
     private lateinit var binding: FragmentDashBoardBinding
-    private val resident = FirebaseFirestore.getInstance().collection("residents")
+    private val resident_data = FirebaseFirestore.getInstance().collection("residents")
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
+    private var username = ""
 
     //    private lateinit var userRole: String
-    private var userName: MutableList<profileData> = mutableListOf()
-    private var resi_Data: MutableList<residentsData> = mutableListOf()
-//    lateinit var tempName:String
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val userName =
+                resident_data.document(Firebase.auth.currentUser!!.uid).get().await().toObject(residentsData::class.java)!!
+            username = userName.email
+
+
+            //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
+
+
+        }
+
+    }
 
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding = FragmentDashBoardBinding.bind(view)
+
+
         CoroutineScope(Dispatchers.Main).launch {
+            val resident = resident_data.document(Firebase.auth.currentUser!!.uid).get().await().toObject(residentsData::class.java)!!
+            if (resident.role == "member") {
+                binding.cvAddMembers.isVisible = false
+                binding.cvAddExpense.isVisible = false
 
-            showProgress(true)
-            resi_Data = resident.whereEqualTo("uid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(residentsData::class.java)
+            }
 
-            userName = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(profileData::class.java)
-//            comp_name = userName[0].fullName
-//            setName(comp_name)
-//            tempName = userName[0].fullName.toString()
-
-
-            //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
-
-            ckeckUserrole(resi_Data[0].role)
-
-            showProgress(false)
+            if (resident.role == "treasurer") {
+                binding.cvAddMembers.isVisible = false
+            }
         }
 
-
-
-        binding = FragmentDashBoardBinding.bind(view)
         binding.apply {
 
-            // dashboardName.setText(tempName)
+            //
+
+            dashboardName.text = username
 
             btnExpenseSheet.setOnClickListener {
                 findNavController().navigate(
@@ -152,13 +161,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
     }
 
-    private fun setName(fullName: String) {
-
-        binding.dashboardName.text = fullName
-
-    }
-
-    private fun ckeckUserrole(role: String) {
+    private fun checkUserrole(role: String) {
 
         if (role == "member") {
             binding.cvAddMembers.isVisible = false
@@ -166,8 +169,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
         }
 
-        if(role == "treasurer")
-        {
+        if (role == "treasurer") {
             binding.cvAddMembers.isVisible = false
         }
 
