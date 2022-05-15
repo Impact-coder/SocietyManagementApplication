@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.AuthActivity
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.loginViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
@@ -23,7 +24,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
     private val viewModel: addMemberViewModel by viewModels()
     private lateinit var binding: FragmentAddMemberBinding
 
-     var radio: String = "member"
+    var radio: String = "member"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,7 +64,10 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
                 addMemberEmailEdittext.setText("")
                 addMemberFlatnoEdittext.setText("")
-                findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
+                Intent(requireActivity(), AuthActivity::class.java).also {
+                    startActivity(it)
+                    requireActivity().finish()
+                }
 
             }
 
