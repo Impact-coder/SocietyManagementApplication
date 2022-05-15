@@ -100,7 +100,7 @@ class fileComplainViewModel(
                     // transactionData.orderBy(date,Query.Direction.ASCENDING)
                     FileComplainEventChannel.send(
                         fileComplainViewModel.FileComplainEvent.NavigateBackWithResult(
-                            AUTH_RESULT_OK
+                            AUTH_RESULT_OK/*, listOf()*/
                         )
                     )
 
@@ -141,6 +141,6 @@ class fileComplainViewModel(
 
     sealed class FileComplainEvent {
         data class ShowErrorMessage(val msg: String) : FileComplainEvent()
-        data class NavigateBackWithResult(val result: Int) : FileComplainEvent()
+        data class NavigateBackWithResult(val result: Int,/* val list: List<complainData>*/) : FileComplainEvent()
     }
 }

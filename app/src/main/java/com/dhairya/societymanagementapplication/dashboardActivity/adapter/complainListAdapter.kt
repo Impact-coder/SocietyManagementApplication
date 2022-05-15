@@ -42,6 +42,7 @@ class complainListAdapter(
         Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO
         holder.date.text = complain.complainDate
+        holder.complainSub.text = complain.complainSubject
 
 
         holder.itemView.setOnClickListener{
@@ -97,6 +98,7 @@ class complainListAdapter(
 
         val flatNo: TextView = itemView.findViewById(R.id.complainList_flatNo)
         val date: TextView = itemView.findViewById(R.id.complainList_date)
+        val complainSub:TextView = itemView.findViewById(R.id.complainList_subject)
 
     }
 
