@@ -39,7 +39,7 @@
 
 
             <LinearLayout
-                android:id="@+id/sunliner1"
+                android:id="@+id/linearLayout"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-30dp"
@@ -80,7 +80,7 @@
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sunliner1"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

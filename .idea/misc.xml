@@ -16,38 +16,35 @@
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen1.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen2.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/activity_splash_screen3.xml" value="0.14145299145299145" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/complain_list_item.xml" value="0.1" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_add_member.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_add_transaction.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_change_password.xml" value="0.152991452991453" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_complain.xml" value="0.22" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_complains_list.xml" value="0.22" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_create_profile.xml" value="0.18" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_dash_board.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_expense_sheet.xml" value="0.152991452991453" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_file_complain.xml" value="0.22" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password.xml" value="0.1" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password_confrimation.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_login.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_maintenance_invoice.xml" value="0.152991452991453" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_notice.xml" value="0.1" />
+        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_notice.xml" value="0.22" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_profile.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_resident_details_dialog.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_resident_list.xml" value="0.152991452991453" />
-        <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/fragment_show_complains.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/navigation_header.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/layout/resident_list_item.xml" value="0.152991452991453" />
         <entry key="..\:/CP/SocietyManagementApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20260416666666667" />
-        <entry key="..\:/Users/om/AndroidStudioProjects/SocietyManagementApplication/app/src/main/res/layout/fragment_expense_sheet.xml" value="0.1796875" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable-v24/ic_baseline_arrow_back_black.xml" value="0.286" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/bottom_navbar.xml" value="0.3828125" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_audit.xml" value="0.2845" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.286" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.2835" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.28" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2845" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3828125" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.2845" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.28" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/ic_complain.xml" value="0.28" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/rounded_image_view.xml" value="0.286" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/table_border.xml" value="0.286" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/drawable/table_row_layout.xml" value="0.286" />
@@ -59,13 +56,17 @@
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_forgot_password_confirmation.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/complain_list_item.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_add_member.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_add_transaction.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_change_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_complain.xml" value="0.3609375" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_complains_list.xml" value="0.33" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_create_profile.xml" value="0.33" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_dash_board.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_edit_profile.xml" value="0.3609375" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_expense_sheet.xml" value="0.3609375" />
+        <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_file_complain.xml" value="0.33" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_forgot_password_confrimation.xml" value="0.36666666666666664" />
         <entry key="..\:/college/SEM 6/SocietyManagementApplication/app/src/main/res/layout/fragment_login.xml" value="0.30085470085470084" />
@@ -80,7 +81,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
