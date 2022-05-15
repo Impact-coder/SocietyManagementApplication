@@ -197,7 +197,7 @@
     </fragment>
     <fragment
         android:id="@+id/notices"
-        android:name="com.dhairya.societymanagementapplication.noticeListFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.noticeList.noticeListFragment"
         android:label="fragment_notice_list"
         tools:layout="@layout/fragment_notice_list" >
         <action
