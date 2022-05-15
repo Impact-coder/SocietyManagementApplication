@@ -15,6 +15,10 @@ import com.dhairya.societymanagementapplication.dashboardActivity.residentList.r
 import com.dhairya.societymanagementapplication.data.complainData
 import com.dhairya.societymanagementapplication.databinding.FragmentComplainsListBinding
 import com.google.firebase.firestore.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 
 class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
@@ -27,7 +31,7 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
     private lateinit var complainDisplayListAdapter: complainListAdapter
     private lateinit var recycleView: RecyclerView
     private val complain_data =
-        FirebaseFirestore.getInstance().collection("complainData").orderBy("complainDate")
+        FirebaseFirestore.getInstance().collection("complainData")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,18 +44,22 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             complainArrayList = arrayListOf()
             recycleView.layoutManager = LinearLayoutManager(context)
 
-            complainDisplayListAdapter = complainListAdapter(requireContext(), complainArrayList)
 
-            recycleView.adapter = complainDisplayListAdapter
-            complainDisplayListAdapter.setOnItemClickListner { complainData ->
-                Log.d("ComplainsListFragment: ", complainData.toString())
-                val action =
-                    complainsListFragmentDirections.actionComplainsListFragmentToComplainFragment(
-                        complainData
-                    )
-                findNavController().navigate(action)
+            CoroutineScope(Dispatchers.Main).launch {
+                val list = complain_data.orderBy("complainDate").get().await().toObjects(complainData::class.java)
+                complainDisplayListAdapter = complainListAdapter(requireContext(), list.toList())
+                recycleView.adapter = complainDisplayListAdapter
+                complainDisplayListAdapter.setOnItemClickListner { complainData ->
+                    Log.d("ComplainsListFragment: ", complainData.toString())
+                    val action =
+                        complainsListFragmentDirections.actionComplainsListFragmentToComplainFragment(
+                            complainData
+                        )
+                    findNavController().navigate(action)
+                }
             }
-            EventChangeListener()
+
+//            EventChangeListener()
 
 
             btnBack.setOnClickListener {
@@ -61,27 +69,29 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
         }
     }
 
-    private fun EventChangeListener() {
-
-        complain_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null) {
-                    Log.e("FireStore error", error.message.toString())
-                    return
-                }
-
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-
-                        complainArrayList.add(dc.document.toObject(complainData::class.java))
-
-                    }
-                }
-                complainDisplayListAdapter.notifyDataSetChanged()
-            }
-
-        })
-    }
+//    private fun EventChangeListener() {
+//
+//        complain_data.addSnapshotListener(object : EventListener<QuerySnapshot> {
+//            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+//                if (error != null) {
+//                    Log.e("FireStore error", error.message.toString())
+//                    return
+//                }
+//
+//                for (dc: DocumentChange in value?.documentChanges!!) {
+//                    if (dc.type == DocumentChange.Type.ADDED) {
+//
+//                        Log.d("TAG_COMPLAIN_LIST", "onEvent: ${dc.document}")
+//
+//                        complainArrayList.add(dc.document.toObject(complainData::class.java))
+//
+//                    }
+//                }
+//                complainDisplayListAdapter.notifyDataSetChanged()
+//            }
+//
+//        })
+//    }
 
 
 }

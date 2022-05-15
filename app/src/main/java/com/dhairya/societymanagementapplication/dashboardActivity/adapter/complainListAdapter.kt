@@ -20,7 +20,7 @@ import com.dhairya.societymanagementapplication.data.complainData
 
 class complainListAdapter(
     private val mcontext: Context,
-    private  val complainArrayList: ArrayList<complainData>
+    private  val complainArrayList: List<complainData>
 ) : RecyclerView.Adapter<complainListAdapter.complainsViewHolder>() {
 
     private var itemOnClick: ((complainData)->Unit)? = null

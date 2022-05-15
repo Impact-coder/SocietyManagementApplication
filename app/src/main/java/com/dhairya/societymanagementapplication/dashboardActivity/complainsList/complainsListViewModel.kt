@@ -6,4 +6,6 @@ import androidx.lifecycle.ViewModel
 class complainsListViewModel(
     private val state: SavedStateHandle
 ) : ViewModel() {
+
+
 }
