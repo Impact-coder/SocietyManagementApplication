@@ -68,7 +68,6 @@ class addMemberViewModel(
                         )
                         viewModelScope.launch(Dispatchers.IO) {
                             residents.document(uid).set(resident).await()
-                            auth.signOut()
                             AddMemberEventChannel.send(
                                 AddMemberEvent.NavigateBackWithResult(
                                     AUTH_RESULT_OK

@@ -18,6 +18,7 @@ import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.lo
 import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
 import com.dhairya.societymanagementapplication.databinding.FragmentAddMemberBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 
 class addMemberFragment : Fragment(R.layout.fragment_add_member) {
@@ -64,6 +65,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
                 addMemberEmailEdittext.setText("")
                 addMemberFlatnoEdittext.setText("")
+                FirebaseAuth.getInstance().signOut()
                 Intent(requireActivity(), AuthActivity::class.java).also {
                     startActivity(it)
                     requireActivity().finish()
