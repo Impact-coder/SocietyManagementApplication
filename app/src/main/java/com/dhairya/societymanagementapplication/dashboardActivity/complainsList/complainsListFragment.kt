@@ -46,9 +46,11 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
 
             CoroutineScope(Dispatchers.Main).launch {
-                val list = complain_data.orderBy("complainDate").get().await().toObjects(complainData::class.java)
+                val list = complain_data.orderBy("complainDate").get().await()
+                    .toObjects(complainData::class.java)
                 complainDisplayListAdapter = complainListAdapter(requireContext(), list.toList())
                 recycleView.adapter = complainDisplayListAdapter
+
                 complainDisplayListAdapter.setOnItemClickListner { complainData ->
                     Log.d("ComplainsListFragment: ", complainData.toString())
                     val action =

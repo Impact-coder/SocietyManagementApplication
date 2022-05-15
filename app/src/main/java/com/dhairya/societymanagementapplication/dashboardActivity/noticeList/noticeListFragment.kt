@@ -1,26 +1,15 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.noticeList
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
-import com.dhairya.societymanagementapplication.dashboardActivity.adapter.complainListAdapter
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.noticeAdapter
-import com.dhairya.societymanagementapplication.dashboardActivity.adapter.residantAdapter
-import com.dhairya.societymanagementapplication.dashboardActivity.residentList.residentListFragmentDirections
-import com.dhairya.societymanagementapplication.dashboardActivity.residentList.residentListViewModel
-import com.dhairya.societymanagementapplication.data.complainData
 import com.dhairya.societymanagementapplication.data.noticeData
-import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.databinding.FragmentNoticeListBinding
-import com.dhairya.societymanagementapplication.databinding.FragmentResidentListBinding
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +22,7 @@ class noticeListFragment : Fragment(R.layout.fragment_notice_list) {
     private lateinit var binding: FragmentNoticeListBinding
 
     private lateinit var noticeArrayList: ArrayList<noticeData>
-    private lateinit var noticesAdapter: noticeAdapter
+    private lateinit var noticesDisplayAdapter: noticeAdapter
     private lateinit var recycleView: RecyclerView
 
     private val notice_data = FirebaseFirestore.getInstance().collection("noticeData")
@@ -44,17 +33,20 @@ class noticeListFragment : Fragment(R.layout.fragment_notice_list) {
         binding = FragmentNoticeListBinding.bind(view)
 
         binding.apply {
+
+
             recycleView = binding.noticeRecyclerview
             noticeArrayList = arrayListOf()
             recycleView.layoutManager = LinearLayoutManager(context)
 
             CoroutineScope(Dispatchers.Main).launch {
-                val list = notice_data.get().await().toObjects(
-                    noticeData::class.java
+
+                val list = notice_data.orderBy("dateTime",Query.Direction.DESCENDING).get().await().toObjects(noticeData::class.java)
+                noticesDisplayAdapter = noticeAdapter(
+                    requireContext(),
+                    list.toList()
                 )
-                noticesAdapter = noticeAdapter(requireContext(),
-                    list.toList())
-                recycleView.adapter = noticesAdapter
+                recycleView.adapter = noticesDisplayAdapter
 
             }
 

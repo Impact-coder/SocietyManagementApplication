@@ -31,9 +31,7 @@ class noticeAdapter(
         viewType: Int
     ): noticeAdapter.noticeViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.resident_list_item, parent, false)
-
-
+            LayoutInflater.from(parent.context).inflate(R.layout.notice_list_item, parent, false)
 
         return noticeViewHolder(view)
     }
@@ -41,19 +39,23 @@ class noticeAdapter(
 
     override fun onBindViewHolder(holder: noticeAdapter.noticeViewHolder, position: Int) {
         val notice: noticeData = noticeList[position]
+        holder.arrow.isVisible = false
 
         holder.subject.text = notice.title
         holder.date.text = notice.dateTime
-        holder.message.text= notice.message
+        holder.message.text = notice.message
 
 
         holder.itemView.setOnClickListener {
-
-            holder.message.isVisible=true
+            holder.message.isVisible = true
+            holder.arrow.isVisible = true
 
         }
 
-
+        holder.arrow.setOnClickListener {
+            holder.message.isVisible = false
+            holder.arrow.isVisible = false
+        }
     }
 
     override fun getItemCount(): Int {
@@ -65,6 +67,7 @@ class noticeAdapter(
         val subject: TextView = itemView.findViewById(R.id.noticeList_subject)
         val date: TextView = itemView.findViewById(R.id.noticeList_date)
         val message: TextView = itemView.findViewById(R.id.expandable_textview)
+        val arrow:ImageView = itemView.findViewById(R.id.arrow)
     }
 
 
