@@ -58,24 +58,29 @@ class addMemberViewModel(
                     auth.createUserWithEmailAndPassword(
                         addMemberEmailEdittext,
                         member_password
-                    ).await()
+                    ).addOnSuccessListener {
+                        val uid = it.user!!.uid
+                        val resident = residentsData(
+                            uid = uid,
+                            email = addMemberEmailEdittext,
+                            flatNo = addMemberFlatnoEdittext,
+                            role = radio_str
+                        )
+                        viewModelScope.launch(Dispatchers.IO) {
+                            residents.document(uid).set(resident).await()
+                            auth.signOut()
+                            AddMemberEventChannel.send(
+                                AddMemberEvent.NavigateBackWithResult(
+                                    AUTH_RESULT_OK
+                                )
+                            )
+                        }
+                    }.addOnFailureListener {
+                        showErrorMessage(it.message.toString())
+                    }
 
                 } catch (e: Exception) {
                     showErrorMessage(e.message.toString())
-                }
-
-                if (auth.currentUser != null) {
-                    val uid = auth.currentUser!!.uid
-                    val resident = residentsData(
-                        uid = uid,
-                        email = addMemberEmailEdittext,
-                        flatNo = addMemberFlatnoEdittext,
-                        role = radio_str
-
-                    )
-                    residents.document(uid).set(resident).await()
-                    AddMemberEventChannel.send(AddMemberEvent.NavigateBackWithResult(AUTH_RESULT_OK))
-
                 }
 
             }

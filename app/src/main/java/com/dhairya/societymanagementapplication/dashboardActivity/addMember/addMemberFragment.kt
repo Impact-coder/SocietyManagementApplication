@@ -60,10 +60,11 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
 
             btnEditDone.setOnClickListener {
-                findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
 
                 addMemberEmailEdittext.setText("")
                 addMemberFlatnoEdittext.setText("")
+                findNavController().navigate(addMemberFragmentDirections.actionAddMemberFragmentToDashBoardFragment())
+
             }
 
             btnBack.setOnClickListener {

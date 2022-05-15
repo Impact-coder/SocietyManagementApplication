@@ -35,26 +35,8 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private lateinit var binding: FragmentDashBoardBinding
     private val resident_data = FirebaseFirestore.getInstance().collection("residents")
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
-    private var username = ""
 
     //    private lateinit var userRole: String
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        CoroutineScope(Dispatchers.IO).launch {
-
-            val userName =
-                resident_data.document(Firebase.auth.currentUser!!.uid).get().await().toObject(residentsData::class.java)!!
-            username = userName.email
-
-
-            //  Toast.makeText(context, userName[0].fullName.toString(), Toast.LENGTH_SHORT).show()
-
-
-        }
-
-    }
 
     @SuppressLint("ResourceType")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +46,16 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
 
         CoroutineScope(Dispatchers.Main).launch {
-            val resident = resident_data.document(Firebase.auth.currentUser!!.uid).get().await().toObject(residentsData::class.java)!!
+
+//            val userName =
+//                profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
+//                    .toObject(profileData::class.java)!!
+//            binding.dashboardName.text = userName.fullName
+
+
+            val resident = resident_data.document(Firebase.auth.currentUser!!.uid).get().await()
+                .toObject(residentsData::class.java)!!
+            binding.dashboardName.text = resident.email
             if (resident.role == "member") {
                 binding.cvAddMembers.isVisible = false
                 binding.cvAddExpense.isVisible = false
@@ -74,106 +65,91 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             if (resident.role == "treasurer") {
                 binding.cvAddMembers.isVisible = false
             }
-        }
 
-        binding.apply {
 
-            //
+            binding.apply {
 
-            dashboardName.text = username
+                btnExpenseSheet.setOnClickListener {
+                    findNavController().navigate(
+                        dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
+                        null
+                    )
+                }
 
-            btnExpenseSheet.setOnClickListener {
-                findNavController().navigate(
-                    dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
-                    null
-                )
-            }
+                btnResidents.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
+                }
+                btnPayMaintenance.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
+                }
 
-            btnResidents.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
-            }
-            btnPayMaintenance.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
-            }
+                btnAddMember.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
+                }
 
-            btnAddMember.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
-            }
+                btnAddExpense.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
 
-            btnAddExpense.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
+                }
+                btnNotices.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
+                }
+                btnFileComplain.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
+                }
 
-            }
-            btnNotices.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
-            }
-            btnFileComplain.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
-            }
+                btnShowComplains.setOnClickListener {
+                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
+                }
 
-            btnShowComplains.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
-            }
 
-            popupMenu.setOnClickListener {
-                val popup = PopupMenu(context, it)
-                popup.setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.btn_about -> {
-                            Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
-                        }
-                        R.id.btn_logout -> {
-                            val builder = AlertDialog.Builder(context)
-                            builder.setTitle("Logout")
-                            builder.setIcon(R.drawable.ic_logout)
-                            builder.setMessage("Are you Sure you want to logout")
-                                .setPositiveButton("Yes") { dialogInterface, which ->
-                                    Intent(requireContext(), AuthActivity::class.java).also {
-                                        startActivity(it)
-                                        requireActivity().finish()
+                popupMenu.setOnClickListener {
+                    val popup = PopupMenu(context, it)
+                    popup.setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.btn_about -> {
+                                Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
+                            }
+                            R.id.btn_logout -> {
+                                val builder = AlertDialog.Builder(context)
+                                builder.setTitle("Logout")
+                                builder.setIcon(R.drawable.ic_logout)
+                                builder.setMessage("Are you Sure you want to logout")
+                                    .setPositiveButton("Yes") { dialogInterface, which ->
+                                        Intent(requireContext(), AuthActivity::class.java).also {
+                                            startActivity(it)
+                                            requireActivity().finish()
+                                        }
                                     }
-                                }
-                                .setNeutralButton("Cancel") { dialogInterface, which ->
+                                    .setNeutralButton("Cancel") { dialogInterface, which ->
 
-                                }
-                            val alertDialog: AlertDialog = builder.create()
-                            alertDialog.setCancelable(false)
-                            alertDialog.show()
+                                    }
+                                val alertDialog: AlertDialog = builder.create()
+                                alertDialog.setCancelable(false)
+                                alertDialog.show()
+                            }
                         }
+                        true
                     }
-                    true
+                    popup.inflate(R.menu.popup_menu)
+                    try {
+                        val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+                        fieldMPopup.isAccessible = true
+                        val mPoopup = fieldMPopup.get(popup)
+                        mPoopup.javaClass
+                            .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                            .invoke(mPoopup, true)
+                    } catch (e: Exception) {
+                        Log.e("main", "Error Menu Icon")
+                    }
+                    popup.show()
                 }
-                popup.inflate(R.menu.popup_menu)
-                try {
-                    val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-                    fieldMPopup.isAccessible = true
-                    val mPoopup = fieldMPopup.get(popup)
-                    mPoopup.javaClass
-                        .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                        .invoke(mPoopup, true)
-                } catch (e: Exception) {
-                    Log.e("main", "Error Menu Icon")
-                }
-                popup.show()
             }
         }
 
 
     }
 
-    private fun checkUserrole(role: String) {
-
-        if (role == "member") {
-            binding.cvAddMembers.isVisible = false
-            binding.cvAddExpense.isVisible = false
-
-        }
-
-        if (role == "treasurer") {
-            binding.cvAddMembers.isVisible = false
-        }
-
-    }
 
     private fun showProgress(bool: Boolean) {
         binding.apply {
@@ -191,11 +167,5 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
         }
     }
 
-
-    companion object {
-
-        lateinit var comp_name: String
-
-    }
 
 }
