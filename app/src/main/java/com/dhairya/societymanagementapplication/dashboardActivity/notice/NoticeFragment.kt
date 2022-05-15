@@ -10,9 +10,11 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
 import com.dhairya.societymanagementapplication.dashboardActivity.addTransaction.addTransactionViewModel
+import com.dhairya.societymanagementapplication.dashboardActivity.fieComplain.fileComplainFragmentDirections
 import com.dhairya.societymanagementapplication.data.NotificationData
 import com.dhairya.societymanagementapplication.databinding.FragmentNoticeBinding
 import com.google.android.material.snackbar.Snackbar
@@ -69,6 +71,9 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
                     }
                     }
                 }
+            btnBack.setOnClickListener {
+                findNavController().navigate(NoticeFragmentDirections.actionNoticeFragmentToDashBoardFragment())
+            }
             }
 
 

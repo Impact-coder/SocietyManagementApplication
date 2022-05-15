@@ -23,71 +23,71 @@
             android:layout_marginVertical="5dp">
 
             <ImageView
-                android:id="@+id/img_complain"
+                android:id="@+id/img_notice"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/ic_complain"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/linearLayout"
                 app:layout_constraintEnd_toStartOf="@id/linearLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/linearLayout" />
 
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="240dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/arrow"
-                app:layout_constraintStart_toEndOf="@id/img_complain"
+                app:layout_constraintBottom_toTopOf="@id/expandable_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_notice"
                 app:layout_constraintTop_toTopOf="parent">
 
 
                 <TextView
-                    android:id="@+id/complainList_subject"
+                    android:id="@+id/noticeList_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:maxWidth="200dp"
-                    android:text="RE: Complain Subject"
+                    android:text="RE: Notice Subject"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="19dp" />
 
                 <TextView
-                    android:id="@+id/complainList_flatNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="A-129"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/complainList_date"
+                    android:id="@+id/noticeList_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="top|left"
+                    android:layout_marginTop="5dp"
                     android:text="13-09-2022"
                     android:textColor="#423A3A"
                     android:textSize="15sp" />
 
             </LinearLayout>
 
-
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/expandable_textview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="15dp"
+                android:visibility="gone"
+                android:textSize="17dp"
+                android:hint="This is an expandable textview when you click on the carview the cardview will expand"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

@@ -85,7 +85,7 @@
         android:layout_marginTop="50sp"
         android:background="@drawable/button_corner"
         android:elevation="10sp"
-        android:text="Login"
+        android:text="Complain"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"

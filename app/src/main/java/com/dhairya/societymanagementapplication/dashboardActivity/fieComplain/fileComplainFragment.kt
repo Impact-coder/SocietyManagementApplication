@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
+import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberFragmentDirections
 import com.dhairya.societymanagementapplication.dashboardActivity.addTransaction.addTransactionViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.notice.noticeViewModel
 import com.dhairya.societymanagementapplication.databinding.FragmentAddTransactionBinding
@@ -50,6 +52,10 @@ class fileComplainFragment : Fragment(R.layout.fragment_file_complain) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     viewModel.fileComplain()
                 }
+            }
+
+            btnBack.setOnClickListener {
+                findNavController().navigate(fileComplainFragmentDirections.actionFileComplainToDashBoardFragment())
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {

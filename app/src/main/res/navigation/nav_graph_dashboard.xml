@@ -40,13 +40,24 @@
             app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_noticeFragment"
-            app:destination="@id/noticeFragment" />
+            app:destination="@id/noticeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_fileComplain"
-            app:destination="@id/fileComplain" />
+            app:destination="@id/fileComplain"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_dashBoardFragment_to_complainsListFragment"
-            app:destination="@id/complainsListFragment" />
+            app:destination="@id/complainsListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_noticeListFragment"
+            app:destination="@id/notices"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -139,7 +150,9 @@
         tools:layout="@layout/fragment_notice" >
         <action
             android:id="@+id/action_noticeFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fileComplain"
@@ -148,7 +161,9 @@
         tools:layout="@layout/fragment_file_complain" >
         <action
             android:id="@+id/action_fileComplain_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/complainsListFragment"
@@ -157,10 +172,14 @@
         tools:layout="@layout/fragment_complains_list" >
         <action
             android:id="@+id/action_complainsListFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_complainsListFragment_to_complainFragment"
-            app:destination="@id/complainFragment" />
+            app:destination="@id/complainFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/complainFragment"
@@ -169,9 +188,22 @@
         tools:layout="@layout/fragment_complain" >
         <action
             android:id="@+id/action_complainFragment_to_complainsListFragment"
-            app:destination="@id/complainsListFragment" />
+            app:destination="@id/complainsListFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
         <argument
             android:name="complain"
             app:argType="com.dhairya.societymanagementapplication.data.complainData" />
+    </fragment>
+    <fragment
+        android:id="@+id/notices"
+        android:name="com.dhairya.societymanagementapplication.noticeListFragment"
+        android:label="fragment_notice_list"
+        tools:layout="@layout/fragment_notice_list" >
+        <action
+            android:id="@+id/action_noticeListFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>
