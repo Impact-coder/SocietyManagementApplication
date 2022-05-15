@@ -47,15 +47,15 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
         CoroutineScope(Dispatchers.Main).launch {
 
-//            val userName =
-//                profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
-//                    .toObject(profileData::class.java)!!
-//            binding.dashboardName.text = userName.fullName
+            val userName =
+                profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
+                    .toObject(profileData::class.java)!!
+            binding.dashboardName.text = userName.fullName
 
 
             val resident = resident_data.document(Firebase.auth.currentUser!!.uid).get().await()
                 .toObject(residentsData::class.java)!!
-            binding.dashboardName.text = resident.email
+//            binding.dashboardName.text = resident.email
             if (resident.role == "member") {
                 binding.cvAddMembers.isVisible = false
                 binding.cvAddExpense.isVisible = false

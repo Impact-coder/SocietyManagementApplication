@@ -19,24 +19,31 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class profileFragment:Fragment(R.layout.fragment_profile) {
+class profileFragment : Fragment(R.layout.fragment_profile) {
 
-    private lateinit var binding:FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
-    private var userName : MutableList<profileData> = mutableListOf()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         CoroutineScope(Dispatchers.Main).launch {
-            userName = profile_data.whereEqualTo("memberid", Firebase.auth.currentUser!!.uid).get()
-                .await().toObjects(profileData::class.java)
+            val userName = profile_data.document(Firebase.auth.currentUser!!.uid).get()
+                .await().toObject(profileData::class.java)!!
 
-            setDetails(userName[0].fullName,userName[0].flatNo,userName[0].mobile,userName[0].ownershipStatus,userName[0].profileImg,userName[0].email)
+            setDetails(
+                userName.fullName,
+                userName.flatNo,
+                userName.mobile,
+                userName.ownershipStatus,
+                userName.profileImg,
+                userName.email
+            )
 
         }
 
-        binding= FragmentProfileBinding.bind(view)
+        binding = FragmentProfileBinding.bind(view)
         binding.apply {
 
             btnEdit.setOnClickListener {
@@ -44,20 +51,20 @@ class profileFragment:Fragment(R.layout.fragment_profile) {
             }
 
             btnLogout.setOnClickListener {
-                val builder= AlertDialog.Builder(context)
+                val builder = AlertDialog.Builder(context)
                 builder.setTitle("Logout")
                 builder.setIcon(R.drawable.ic_logout)
                 builder.setMessage("Are you Sure you want to logout")
-                    .setPositiveButton("Yes"){dialogInterface,which ->
+                    .setPositiveButton("Yes") { dialogInterface, which ->
                         Intent(requireContext(), AuthActivity::class.java).also {
                             startActivity(it)
                             requireActivity().finish()
                         }
                     }
-                    .setNeutralButton("Cancel"){dialogInterface,which ->
+                    .setNeutralButton("Cancel") { dialogInterface, which ->
 
                     }
-                val alertDialog: AlertDialog =builder.create()
+                val alertDialog: AlertDialog = builder.create()
                 alertDialog.setCancelable(false)
                 alertDialog.show()
             }
@@ -79,11 +86,11 @@ class profileFragment:Fragment(R.layout.fragment_profile) {
             .load(profileImg)
             .centerCrop()
             .into(binding.profileimg)
-        binding.txtProfileName.text=fullName
-        binding.txtProfileAddress.text=flatNo
-        binding.txtProfileMobile.text=mobile
-        binding.txtProfileEmail.text=email
-        binding.txtProfileResidentStatus.text=ownershipStatus
+        binding.txtProfileName.text = fullName
+        binding.txtProfileAddress.text = flatNo
+        binding.txtProfileMobile.text = mobile
+        binding.txtProfileEmail.text = email
+        binding.txtProfileResidentStatus.text = ownershipStatus
 
     }
 

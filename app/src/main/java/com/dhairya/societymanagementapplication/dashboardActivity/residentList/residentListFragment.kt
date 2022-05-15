@@ -63,13 +63,11 @@ class residentListFragment : Fragment(R.layout.fragment_resident_list) {
                         Log.e("FireStore error", error.message.toString())
                         return
                     }
-
                 for (dc: DocumentChange in value?.documentChanges!!)
                 {
                     if(dc.type == DocumentChange.Type.ADDED){
 
                         residentProfileArrayList.add(dc.document.toObject(profileData::class.java))
-
                     }
                 }
                 residentProfileAdapter.notifyDataSetChanged()

@@ -7,6 +7,7 @@ import com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
 import com.dhairya.societymanagementapplication.dashboardActivity.editProfile.editProfileViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.fieComplain.fileComplainViewModel
 import com.dhairya.societymanagementapplication.data.complainData
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,17 +43,17 @@ class ComplainViewModel( private val state: SavedStateHandle
         {
             try {
 
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    complain_data.document(complainId).update(
-//
-//                    )
-//
-//                    ComplainEventChannel.send(
-//                        ComplainViewModel.ComplainEvent.NavigateBackWithResult(
-//                            AUTH_RESULT_OK
-//                        )
-//                }
+                CoroutineScope(Dispatchers.IO).launch {
+                    complain_data.document(complainId).update(
+                            "complainResponse",complainreply
+                    )
 
+                    ComplainEventChannel.send(
+                        ComplainViewModel.ComplainEvent.NavigateBackWithResult(
+                            AUTH_RESULT_OK
+                        )
+                    )
+                }
 
             }
             catch (e:Exception)

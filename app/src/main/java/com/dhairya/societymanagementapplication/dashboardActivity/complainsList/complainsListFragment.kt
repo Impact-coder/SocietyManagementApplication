@@ -75,7 +75,6 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
                         complainArrayList.add(dc.document.toObject(complainData::class.java))
 
-
                     }
                 }
                 complainDisplayListAdapter.notifyDataSetChanged()
