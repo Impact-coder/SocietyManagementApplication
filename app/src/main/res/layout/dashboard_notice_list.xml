@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:padding="10dp"
+    android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        app:layout_constraintHeight_percent="0.789"
         android:backgroundTint="#FAF1F1F1"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.789"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,7 +26,7 @@
                 android:id="@+id/img_notice"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="80dp"
 
                 android:src="@drawable/ic_complain"
                 app:layout_constraintBottom_toBottomOf="@id/linearLayout"
@@ -42,7 +42,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/expandable_textview"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_notice"
                 app:layout_constraintTop_toTopOf="parent">
@@ -55,52 +55,24 @@
                     android:layout_marginTop="10dp"
                     android:maxWidth="200dp"
                     android:text="RE: Notice Subject"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="19dp" />
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dashNoticeList_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="top|left"
-                    android:layout_marginTop="5dp"
                     android:text="13-09-2022"
                     android:textColor="#423A3A"
                     android:textSize="15sp" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:focusable="true"
-                android:src="@drawable/ic_arrow_up_24"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/expandable_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="15dp"
-                android:visibility="gone"
-                android:textSize="17dp"
-                android:hint="This is an expandable textview when you click on the carview the cardview will expand"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

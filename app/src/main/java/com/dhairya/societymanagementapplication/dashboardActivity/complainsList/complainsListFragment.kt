@@ -6,14 +6,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
+import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
 import com.dhairya.societymanagementapplication.dashboardActivity.adapter.complainListAdapter
+import com.dhairya.societymanagementapplication.dashboardActivity.fieComplain.fileComplainViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.residentList.residentListFragmentDirections
 import com.dhairya.societymanagementapplication.data.complainData
 import com.dhairya.societymanagementapplication.databinding.FragmentComplainsListBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,11 +34,16 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
     private lateinit var complainArrayList: ArrayList<complainData>
     private lateinit var complainDisplayListAdapter: complainListAdapter
     private lateinit var recycleView: RecyclerView
+    private lateinit var complainList: List<complainData>
     private val complain_data =
         FirebaseFirestore.getInstance().collection("complainData")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        CoroutineScope(Dispatchers.Main).launch {
+//            viewModel.getUpdatedList()
+//        }
 
         binding = FragmentComplainsListBinding.bind(view)
 
@@ -43,6 +52,8 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             recycleView = binding.complainRecycleView
             complainArrayList = arrayListOf()
             recycleView.layoutManager = LinearLayoutManager(context)
+
+
 
 
             CoroutineScope(Dispatchers.Main).launch {
@@ -69,6 +80,28 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             }
 
         }
+//        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+//            viewModel.complainsListEvent.collect { events ->
+//                when (events) {
+//
+//                    is complainsListViewModel.ComplainsListEvent.NavigateBackWithResult -> {
+////                        Toast.makeText(
+////                            context,
+////                            "Complain Filed Successfully!!",
+////                            Toast.LENGTH_SHORT
+////                        ).show()
+//                            complainList = events.list
+//
+//
+//                    }
+//                    is complainsListViewModel.ComplainsListEvent.ShowErrorMessage -> {
+//                        Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
+//
+//                    }
+//                }.exhaustive
+//            }
+//
+//        }
     }
 
 //    private fun EventChangeListener() {
@@ -94,6 +127,8 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 //
 //        })
 //    }
+
+
 
 
 }

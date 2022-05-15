@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -14,14 +13,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.AuthActivity
-import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
+import com.dhairya.societymanagementapplication.dashboardActivity.adapter.dashboardNoticeAdapter
+import com.dhairya.societymanagementapplication.data.noticeData
 import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.residentsData
 import com.dhairya.societymanagementapplication.databinding.FragmentDashBoardBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,6 +38,12 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private lateinit var binding: FragmentDashBoardBinding
     private val resident_data = FirebaseFirestore.getInstance().collection("residents")
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
+
+    private lateinit var dashboardnoticeArrayList: ArrayList<noticeData>
+    private lateinit var dashboardnoticesDisplayAdapter: dashboardNoticeAdapter
+    private lateinit var recycleView: RecyclerView
+
+    private val notice_data = FirebaseFirestore.getInstance().collection("noticeData")
 
     //    private lateinit var userRole: String
 
@@ -68,6 +77,23 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
 
             binding.apply {
+
+                recycleView = binding.dashboardRecycleView
+                dashboardnoticeArrayList = arrayListOf()
+                recycleView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+
+                CoroutineScope(Dispatchers.Main).launch {
+
+                    val list =
+                        notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(5).get()
+                            .await().toObjects(noticeData::class.java)!!
+                    dashboardnoticesDisplayAdapter = dashboardNoticeAdapter(
+                        requireContext(),
+                        list.toList()
+                    )
+                    recycleView.adapter = dashboardnoticesDisplayAdapter
+
+                }
 
                 btnExpenseSheet.setOnClickListener {
                     findNavController().navigate(

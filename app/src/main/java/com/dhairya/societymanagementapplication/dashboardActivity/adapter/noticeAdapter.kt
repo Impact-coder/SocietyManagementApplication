@@ -1,24 +1,15 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.adapter
 
-import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.data.noticeData
-import com.dhairya.societymanagementapplication.data.profileData
 
 class noticeAdapter(
     private val mcontext: Context,
@@ -64,8 +55,8 @@ class noticeAdapter(
 
     inner class noticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val subject: TextView = itemView.findViewById(R.id.noticeList_subject)
-        val date: TextView = itemView.findViewById(R.id.noticeList_date)
+        val subject: TextView = itemView.findViewById(R.id.dashNoticeList_subject)
+        val date: TextView = itemView.findViewById(R.id.dashNoticeList_date)
         val message: TextView = itemView.findViewById(R.id.expandable_textview)
         val arrow:ImageView = itemView.findViewById(R.id.arrow)
     }
