@@ -45,6 +45,7 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 //            viewModel.getUpdatedList()
 //        }
 
+
         binding = FragmentComplainsListBinding.bind(view)
 
         binding.apply {
@@ -54,10 +55,8 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
             recycleView.layoutManager = LinearLayoutManager(context)
 
 
-
-
             CoroutineScope(Dispatchers.Main).launch {
-                val list = complain_data.orderBy("complainDate").get().await()
+                val list = complain_data.orderBy("complainDate",Query.Direction.DESCENDING).get().await()
                     .toObjects(complainData::class.java)
                 complainDisplayListAdapter = complainListAdapter(requireContext(), list.toList())
                 recycleView.adapter = complainDisplayListAdapter

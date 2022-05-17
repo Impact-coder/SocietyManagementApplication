@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.data.complainData
@@ -37,13 +38,13 @@ class complainListAdapter(
         val complain: complainData = complainArrayList[position]
 
 
-
         Log.d("TAG",complain.flatNO)
         Log.d("TAG",complain.complainDate)
         holder.flatNo.text = complain.flatNO
         holder.date.text = complain.complainDate
         holder.complainSub.text = complain.complainSubject
 
+        holder.complainStatus.isVisible = complain.complainResponse.isNotEmpty()
 
         holder.itemView.setOnClickListener{
             itemOnClick?.let { click->
@@ -51,37 +52,6 @@ class complainListAdapter(
 
             }
         }
-
-//        val dialog = Dialog(mcontext)
-//        dialog.setContentView(R.layout.fragment_resident_details_dialog)
-//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//
-//        val name = dialog.findViewById<TextView>(R.id.residentDialog_name)
-//        val mobile = dialog.findViewById<TextView>(R.id.residentDialog_number)
-//        val email = dialog.findViewById<TextView>(R.id.residentDialog_email)
-//        val address = dialog.findViewById<TextView>(R.id.residentDialog_residentAddress)
-//        val ownershipStatus=dialog.findViewById<TextView>(R.id.residentDialog_residentStatus)
-//        val profilePic = dialog.findViewById<ImageView>(R.id.residentDialog_profileimg)
-//        val call=dialog.findViewById<AppCompatButton>(R.id.btn_call)
-//        val msg=dialog.findViewById<AppCompatButton>(R.id.btn_message)
-//
-//        call.setOnClickListener {
-//            Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:"+mobile.text)).also {
-//                ContextCompat.startActivity(mcontext, it, null)
-//            }
-//        }
-//
-//        holder.itemView.setOnClickListener {
-//
-//            name.text = residentProfileList[position].fullName
-//            mobile.text = residentProfileList[position].mobile
-//            email.text = residentProfileList[position].email
-//            address.text = residentProfileList[position].flatNo + ", Santiniketan Recidency, Kathodara Road, Surat-395006"
-//            ownershipStatus.text=residentProfileList[position].ownershipStatus
-//
-//            dialog.show()
-//        }
-
 
     }
 
@@ -99,6 +69,7 @@ class complainListAdapter(
         val flatNo: TextView = itemView.findViewById(R.id.complainList_flatNo)
         val date: TextView = itemView.findViewById(R.id.complainList_date)
         val complainSub:TextView = itemView.findViewById(R.id.complainList_subject)
+        val complainStatus:TextView = itemView.findViewById(R.id.complainlist_status)
 
     }
 

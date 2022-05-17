@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboardActivity.complain.ComplainFragment">
+    tools:context=".dashboardActivity.myComplainDisplay.myComplainDisplayFragment">
 
 
     <TextView
@@ -148,43 +148,7 @@
         app:layout_constraintTop_toBottomOf="@id/txt_response" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/complainReply_TextField"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:elevation="10sp"
-        android:hint="Complain Reply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_reply"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.8">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/complain_reply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="18sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_reply"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/btn_edit"
-        android:drawableTop="@drawable/ic_baseline_send_24"
-        android:paddingStart="5dp"
-        android:paddingTop="15dp"
-        app:layout_constraintBottom_toBottomOf="@id/complainReply_TextField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/complainReply_TextField"
-        app:layout_constraintTop_toTopOf="@id/complainReply_TextField" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

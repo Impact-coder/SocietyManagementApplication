@@ -74,102 +74,103 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             if (resident.role == "treasurer") {
                 binding.cvAddMembers.isVisible = false
             }
+        }
 
-
-            binding.apply {
+        binding.apply {
 
 //                recycleView = binding.dashboardRecycleView
 //                dashboardnoticeArrayList = arrayListOf()
 //                recycleView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 //
-//                CoroutineScope(Dispatchers.Main).launch {
-//
-//                    val list =
-//                        notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(5).get()
-//                            .await().toObjects(noticeData::class.java)!!
-//                    dashboardnoticesDisplayAdapter = dashboardNoticeAdapter(
-//                        requireContext(),
-//                        list.toList()
-//                    )
-//                    recycleView.adapter = dashboardnoticesDisplayAdapter
-//
-//                }
+            CoroutineScope(Dispatchers.Main).launch {
 
-                btnExpenseSheet.setOnClickListener {
-                    findNavController().navigate(
-                        dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
-                        null
-                    )
-                }
+                val list =
+                    notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(1).get()
+                        .await().toObjects(noticeData::class.java)!!
 
-                btnResidents.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
-                }
-                btnPayMaintenance.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
-                }
+                dashboardNoticeDate.text = list[0].dateTime.toString()
+                dashboardNoticeSubject.text = list[0].title.toString()
 
-                btnAddMember.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
-                }
+            }
 
-                btnAddExpense.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
+            btnExpenseSheet.setOnClickListener {
+                findNavController().navigate(
+                    dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
+                    null
+                )
+            }
 
-                }
-                btnNotices.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
-                }
-                btnFileComplain.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
-                }
+            btnResidents.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
+            }
+            btnPayMaintenance.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
+            }
 
-                btnShowComplains.setOnClickListener {
-                    findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
-                }
+            btnAddMember.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
+            }
+
+            btnAddExpense.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
+
+            }
+            btnNotices.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
+            }
+            btnFileComplain.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
+            }
+
+            btnShowComplains.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
+            }
+
+            btnMyComplain.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMyComplainsFragment())
+            }
 
 
-                popupMenu.setOnClickListener {
-                    val popup = PopupMenu(context, it)
-                    popup.setOnMenuItemClickListener { item ->
-                        when (item.itemId) {
-                            R.id.btn_about -> {
-                                Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
-                            }
-                            R.id.btn_logout -> {
-                                val builder = AlertDialog.Builder(context)
-                                builder.setTitle("Logout")
-                                builder.setIcon(R.drawable.ic_logout)
-                                builder.setMessage("Are you Sure you want to logout")
-                                    .setPositiveButton("Yes") { dialogInterface, which ->
-                                        Intent(requireContext(), AuthActivity::class.java).also {
-                                            startActivity(it)
-                                            requireActivity().finish()
-                                        }
-                                    }
-                                    .setNeutralButton("Cancel") { dialogInterface, which ->
-
-                                    }
-                                val alertDialog: AlertDialog = builder.create()
-                                alertDialog.setCancelable(false)
-                                alertDialog.show()
-                            }
+            popupMenu.setOnClickListener {
+                val popup = PopupMenu(context, it)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.btn_about -> {
+                            Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
                         }
-                        true
+                        R.id.btn_logout -> {
+                            val builder = AlertDialog.Builder(context)
+                            builder.setTitle("Logout")
+                            builder.setIcon(R.drawable.ic_logout)
+                            builder.setMessage("Are you Sure you want to logout")
+                                .setPositiveButton("Yes") { dialogInterface, which ->
+                                    Intent(requireContext(), AuthActivity::class.java).also {
+                                        startActivity(it)
+                                        requireActivity().finish()
+                                    }
+                                }
+                                .setNeutralButton("Cancel") { dialogInterface, which ->
+
+                                }
+                            val alertDialog: AlertDialog = builder.create()
+                            alertDialog.setCancelable(false)
+                            alertDialog.show()
+                        }
                     }
-                    popup.inflate(R.menu.popup_menu)
-                    try {
-                        val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
-                        fieldMPopup.isAccessible = true
-                        val mPoopup = fieldMPopup.get(popup)
-                        mPoopup.javaClass
-                            .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                            .invoke(mPoopup, true)
-                    } catch (e: Exception) {
-                        Log.e("main", "Error Menu Icon")
-                    }
-                    popup.show()
+                    true
                 }
+                popup.inflate(R.menu.popup_menu)
+                try {
+                    val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+                    fieldMPopup.isAccessible = true
+                    val mPoopup = fieldMPopup.get(popup)
+                    mPoopup.javaClass
+                        .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                        .invoke(mPoopup, true)
+                } catch (e: Exception) {
+                    Log.e("main", "Error Menu Icon")
+                }
+                popup.show()
             }
         }
 

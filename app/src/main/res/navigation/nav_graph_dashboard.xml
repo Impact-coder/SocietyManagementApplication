@@ -58,6 +58,9 @@
             app:destination="@id/notices"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_myComplainsFragment"
+            app:destination="@id/myComplainsFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -205,5 +208,29 @@
             app:destination="@id/dashBoardFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/myComplainsFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.myComplains.myComplainsFragment"
+        android:label="fragment_my_complains"
+        tools:layout="@layout/fragment_my_complains" >
+        <action
+            android:id="@+id/action_myComplainsFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_myComplainsFragment_to_myComplainDisplayFragment"
+            app:destination="@id/myComplainDisplayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myComplainDisplayFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.myComplainDisplay.myComplainDisplayFragment"
+        android:label="fragment_my_complain_display"
+        tools:layout="@layout/fragment_my_complain_display" >
+        <action
+            android:id="@+id/action_myComplainDisplayFragment_to_myComplainsFragment"
+            app:destination="@id/myComplainsFragment" />
+        <argument
+            android:name="complain"
+            app:argType="com.dhairya.societymanagementapplication.data.complainData" />
     </fragment>
 </navigation>

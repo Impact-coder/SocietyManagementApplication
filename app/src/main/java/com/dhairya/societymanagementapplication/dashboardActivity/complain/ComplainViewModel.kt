@@ -7,6 +7,7 @@ import com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
 import com.dhairya.societymanagementapplication.dashboardActivity.editProfile.editProfileViewModel
 import com.dhairya.societymanagementapplication.dashboardActivity.fieComplain.fileComplainViewModel
 import com.dhairya.societymanagementapplication.data.complainData
+import com.dhairya.societymanagementapplication.databinding.FragmentComplainBinding
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -27,11 +28,19 @@ class ComplainViewModel( private val state: SavedStateHandle
             state.set("complainreply", value)
         }
 
+    var complainreponse = state.get<String>("complainreponse") ?: ""
+        set(value) {
+            field = value
+            state.set("complainreponse", value)
+        }
+
     private fun showErrorMessage(text: String) = viewModelScope.launch {
         ComplainEventChannel.send(ComplainEvent.ShowErrorMessage(text))
     }
 
     fun setComplainReply(complainId:String) {
+
+
 
         if (complainreply.isEmpty())
         {
@@ -47,6 +56,8 @@ class ComplainViewModel( private val state: SavedStateHandle
                     complain_data.document(complainId).update(
                             "complainResponse",complainreply
                     )
+
+
 
                     ComplainEventChannel.send(
                         ComplainViewModel.ComplainEvent.NavigateBackWithResult(
