@@ -4,30 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:padding="10dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        app:cardCornerRadius="10dp"
         android:backgroundTint="#FAF1F1F1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.789"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:layout_marginVertical="5dp">
 
             <ImageView
                 android:id="@+id/img_notice"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:layout_marginStart="80dp"
-
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_complain"
                 app:layout_constraintBottom_toBottomOf="@id/linearLayout"
                 app:layout_constraintEnd_toStartOf="@id/linearLayout"
