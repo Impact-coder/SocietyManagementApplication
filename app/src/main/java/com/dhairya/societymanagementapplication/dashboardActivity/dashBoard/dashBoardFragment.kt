@@ -39,9 +39,9 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private val resident_data = FirebaseFirestore.getInstance().collection("residents")
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
 
-    private lateinit var dashboardnoticeArrayList: ArrayList<noticeData>
-    private lateinit var dashboardnoticesDisplayAdapter: dashboardNoticeAdapter
-    private lateinit var recycleView: RecyclerView
+//    private lateinit var dashboardnoticeArrayList: ArrayList<noticeData>
+//    private lateinit var dashboardnoticesDisplayAdapter: dashboardNoticeAdapter
+//    private lateinit var recycleView: RecyclerView
 
     private val notice_data = FirebaseFirestore.getInstance().collection("noticeData")
 
@@ -78,22 +78,22 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
             binding.apply {
 
-                recycleView = binding.dashboardRecycleView
-                dashboardnoticeArrayList = arrayListOf()
-                recycleView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-
-                CoroutineScope(Dispatchers.Main).launch {
-
-                    val list =
-                        notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(5).get()
-                            .await().toObjects(noticeData::class.java)!!
-                    dashboardnoticesDisplayAdapter = dashboardNoticeAdapter(
-                        requireContext(),
-                        list.toList()
-                    )
-                    recycleView.adapter = dashboardnoticesDisplayAdapter
-
-                }
+//                recycleView = binding.dashboardRecycleView
+//                dashboardnoticeArrayList = arrayListOf()
+//                recycleView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+//
+//                CoroutineScope(Dispatchers.Main).launch {
+//
+//                    val list =
+//                        notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(5).get()
+//                            .await().toObjects(noticeData::class.java)!!
+//                    dashboardnoticesDisplayAdapter = dashboardNoticeAdapter(
+//                        requireContext(),
+//                        list.toList()
+//                    )
+//                    recycleView.adapter = dashboardnoticesDisplayAdapter
+//
+//                }
 
                 btnExpenseSheet.setOnClickListener {
                     findNavController().navigate(
