@@ -28,19 +28,30 @@
         android:textSize="18dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/subject"
         app:layout_constraintTop_toBottomOf="@id/txt_complainFrom"/>
 
     <TextView
         android:id="@+id/txt_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="Date:"
         android:textSize="18dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@id/date"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_complainFrom"/>
+
+    <TextView
+        android:id="@+id/flatno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flat No:"
+        android:textSize="18dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_date"/>
 
     <TextView
         android:id="@+id/txt_flatno"
@@ -50,8 +61,19 @@
         android:textSize="18dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/subject"
         app:layout_constraintTop_toBottomOf="@id/txt_date"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textSize="18dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_flatno"/>
 
     <TextView
         android:id="@+id/txt_name"
@@ -61,7 +83,7 @@
         android:textSize="18dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/subject"
         app:layout_constraintTop_toBottomOf="@id/txt_flatno"/>
 
     <TextView
@@ -69,6 +91,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Subject"
+        android:textSize="18dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@id/subject"
+        app:layout_constraintTop_toBottomOf="@id/txt_name"/>
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject:"
         android:textSize="18dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
@@ -87,13 +120,16 @@
         app:layout_constraintTop_toBottomOf="@id/txt_subject"/>
 
     <TextView
+        android:id="@+id/txt_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reply"
         android:textSize="17dp"
-        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/complainReply_TextField"/>
+        app:layout_constraintTop_toBottomOf="@id/txt_complain"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/complainReply_TextField"

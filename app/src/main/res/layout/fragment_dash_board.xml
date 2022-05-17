@@ -179,15 +179,26 @@
                     app:layout_constraintTop_toTopOf="@id/divider2"/>
 
                 <TextView
+                    android:id="@+id/txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13/05/2022"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toEndOf="@id/divider3"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"/>
+
+                <TextView
+                    android:id="@+id/txt_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hello there"
                     android:textSize="18dp"
                     android:textStyle="bold"
+                    android:layout_marginTop="2dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
                     app:layout_constraintStart_toEndOf="@id/divider3"
-                    app:layout_constraintTop_toBottomOf="@id/divider2"/>
+                    app:layout_constraintTop_toBottomOf="@id/txt_date"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
