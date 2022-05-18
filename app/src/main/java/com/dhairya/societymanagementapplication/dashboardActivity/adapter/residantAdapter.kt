@@ -64,6 +64,11 @@ class residantAdapter(
                 startActivity(mcontext,it,null)
             }
         }
+        msg.setOnClickListener {
+            Intent(Intent.ACTION_SEND).also {
+            startActivity(mcontext,it,null)
+            }
+        }
 
         holder.itemView.setOnClickListener {
 

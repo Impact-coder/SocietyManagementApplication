@@ -47,6 +47,7 @@ class noticeAdapter(
             holder.message.isVisible = false
             holder.arrow.isVisible = false
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -60,6 +61,5 @@ class noticeAdapter(
         val message: TextView = itemView.findViewById(R.id.expandable_textview)
         val arrow:ImageView = itemView.findViewById(R.id.arrow)
     }
-
 
 }

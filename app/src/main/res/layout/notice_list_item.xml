@@ -20,7 +20,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="5dp">
+            android:layout_marginVertical="5dp"
+            android:animateLayoutChanges="true">
 
             <ImageView
                 android:id="@+id/img_notice"

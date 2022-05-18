@@ -77,4 +77,5 @@ class noticeListFragment : Fragment(R.layout.fragment_notice_list) {
 //        })
 //    }
 
+
 }

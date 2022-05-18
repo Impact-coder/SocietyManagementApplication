@@ -70,11 +70,15 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             if (resident.role == "member") {
                 binding.cvAddMembers.isVisible = false
                 binding.cvAddExpense.isVisible = false
+                binding.cvNotices.isVisible = false
+                binding.cvShowComplains.isVisible=false
 
             }
 
             if (resident.role == "treasurer") {
                 binding.cvAddMembers.isVisible = false
+                binding.cvNotices.isVisible = false
+                binding.cvShowComplains.isVisible=false
             }
         }
 
@@ -94,9 +98,14 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 dashboardNoticeSubject.text = list[0].title.toString()
 
             }
-
+            cvNotice.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeListFragment() )
+            }
             btnExpenseSheet.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(
                     dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
                     null
@@ -104,40 +113,64 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
             btnResidents.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
             }
             btnPayMaintenance.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
             }
 
             btnAddMember.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
             }
 
             btnAddExpense.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
 
             }
             btnNotices.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
             }
             btnFileComplain.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
             }
 
             btnShowComplains.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
             }
 
             btnMyComplain.setOnClickListener {
-                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMyComplainsFragment())
             }
 

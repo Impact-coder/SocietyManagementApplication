@@ -122,6 +122,7 @@
             app:strokeWidth="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cv_notice"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -315,8 +316,74 @@
 
                         </androidx.cardview.widget.CardView>
 
+
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/five"
+                            android:id="@+id/six"
+                            android:layout_width="150dp"
+                            android:layout_height="150sp"
+                            android:layout_gravity="right|top"
+                            android:layout_marginTop="20sp"
+                            android:backgroundTint="#fff"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:id="@+id/btn_rules"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableTop="@drawable/ic_filling_files"
+                                android:text="\nRules"
+                                android:textAlignment="center" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_my_complin"
+                            android:layout_width="150dp"
+                            android:layout_height="150sp"
+                            android:layout_gravity="right|top"
+                            android:layout_marginTop="20sp"
+                            android:backgroundTint="#fff"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:id="@+id/btn_my_complain"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableTop="@drawable/ic_report"
+                                android:text="\nMy Complains"
+                                android:textAlignment="center" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_file_complain"
+                            android:layout_width="150dp"
+                            android:layout_height="150sp"
+                            android:layout_gravity="right|top"
+                            android:layout_marginTop="20sp"
+                            android:backgroundTint="#fff"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+
+                            <TextView
+                                android:id="@+id/btn_file_complain"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableTop="@drawable/ic_file_complain"
+                                android:text="\nFile Complain"
+                                android:textAlignment="center" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_notices"
                             android:layout_width="150dp"
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
@@ -336,8 +403,10 @@
 
                         </androidx.cardview.widget.CardView>
 
+
+
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/six"
+                            android:id="@+id/cv_show_complains"
                             android:layout_width="150dp"
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
@@ -347,12 +416,12 @@
                             app:cardElevation="0dp">
 
                             <TextView
-                                android:id="@+id/btn_rules"
+                                android:id="@+id/btn_show_complains"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_filling_files"
-                                android:text="\nRules"
+                                android:drawableTop="@drawable/ic_report"
+                                android:text="\nShow Complains"
                                 android:textAlignment="center" />
 
                         </androidx.cardview.widget.CardView>
@@ -379,27 +448,6 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_file_complain"
-                            android:layout_width="150dp"
-                            android:layout_height="150sp"
-                            android:layout_gravity="right|top"
-                            android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
-
-                            <TextView
-                                android:id="@+id/btn_file_complain"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_report"
-                                android:text="\nFile Complain"
-                                android:textAlignment="center" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
                             android:id="@+id/cv_add_expense"
                             android:layout_width="150dp"
                             android:layout_height="150sp"
@@ -420,47 +468,7 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_show_complains"
-                            android:layout_width="150dp"
-                            android:layout_height="150sp"
-                            android:layout_gravity="right|top"
-                            android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
 
-                            <TextView
-                                android:id="@+id/btn_show_complains"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_report"
-                                android:text="\nShow Complains"
-                                android:textAlignment="center" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_my_complin"
-                            android:layout_width="150dp"
-                            android:layout_height="150sp"
-                            android:layout_gravity="right|top"
-                            android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
-
-                            <TextView
-                                android:id="@+id/btn_my_complain"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_report"
-                                android:text="\nMy Complains"
-                                android:textAlignment="center" />
-
-                        </androidx.cardview.widget.CardView>
 
 
                     </GridLayout>
