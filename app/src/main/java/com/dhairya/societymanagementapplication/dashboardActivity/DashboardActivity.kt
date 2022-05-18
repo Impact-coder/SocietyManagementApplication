@@ -46,7 +46,7 @@ class DashboardActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
         nav1.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.dashBoardFragment) {
+            if (destination.id == R.id.dashBoardFragment ) {
                 actionBar?.hide()
                 bottomnavbar.visibility= View.VISIBLE
             } else {

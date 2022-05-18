@@ -71,14 +71,14 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 binding.cvAddMembers.isVisible = false
                 binding.cvAddExpense.isVisible = false
                 binding.cvNotices.isVisible = false
-                binding.cvShowComplains.isVisible=false
+                binding.cvShowComplains.isVisible = false
 
             }
 
             if (resident.role == "treasurer") {
                 binding.cvAddMembers.isVisible = false
                 binding.cvNotices.isVisible = false
-                binding.cvShowComplains.isVisible=false
+                binding.cvShowComplains.isVisible = false
             }
         }
 
@@ -93,13 +93,19 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 val list =
                     notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(1).get()
                         .await().toObjects(noticeData::class.java)!!
+                if (list.isEmpty()) {
+                    dashboardNoticeDate.text = ""
+                    dashboardNoticeSubject.text = "No new Notices"
 
-                dashboardNoticeDate.text = list[0].dateTime.toString()
-                dashboardNoticeSubject.text = list[0].title.toString()
+                } else {
+                    dashboardNoticeDate.text = list[0].dateTime.toString()
+                    dashboardNoticeSubject.text = list[0].title.toString()
+                }
+
 
             }
             cvNotice.setOnClickListener {
-                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeListFragment() )
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeListFragment())
             }
             btnExpenseSheet.setOnClickListener {
                 getView()?.performHapticFeedback(

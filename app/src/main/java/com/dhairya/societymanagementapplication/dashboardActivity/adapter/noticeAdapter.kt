@@ -30,7 +30,6 @@ class noticeAdapter(
 
     override fun onBindViewHolder(holder: noticeAdapter.noticeViewHolder, position: Int) {
         val notice: noticeData = noticeList[position]
-        holder.arrow.isVisible = false
 
         holder.subject.text = notice.title
         holder.date.text = notice.dateTime
@@ -39,13 +38,13 @@ class noticeAdapter(
 
         holder.itemView.setOnClickListener {
             holder.message.isVisible = true
-            holder.arrow.isVisible = true
+            holder.arrow.animate().rotation(360f).start()
 
         }
 
         holder.arrow.setOnClickListener {
             holder.message.isVisible = false
-            holder.arrow.isVisible = false
+            holder.arrow.animate().rotation(180f).start()
         }
 
     }
