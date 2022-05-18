@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_myComplainsFragment"
             app:destination="@id/myComplainsFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_communicationFragment"
+            app:destination="@id/communicationFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -232,5 +235,14 @@
         <argument
             android:name="complain"
             app:argType="com.dhairya.societymanagementapplication.data.complainData" />
+    </fragment>
+    <fragment
+        android:id="@+id/communicationFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.communication.communicationFragment"
+        android:label="fragment_communication"
+        tools:layout="@layout/fragment_communication" >
+        <action
+            android:id="@+id/action_communicationFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>

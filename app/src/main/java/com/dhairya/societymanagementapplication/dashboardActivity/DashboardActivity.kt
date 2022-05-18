@@ -26,19 +26,13 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         supportActionBar?.hide()
 
 
-
-
-
-
-        var nav1=findViewById<BottomNavigationView>(R.id.bottomnavbar)
-
+        var nav1 = findViewById<BottomNavigationView>(R.id.bottomnavbar)
 
 
         val navHostFragment =
@@ -46,12 +40,14 @@ class DashboardActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
         nav1.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.dashBoardFragment) {
+            if (destination.id == R.id.dashBoardFragment || destination.id == R.id.notices
+                || destination.id == R.id.communicationFragment || destination.id == R.id.profileFragment
+            ) {
                 actionBar?.hide()
-                bottomnavbar.visibility= View.VISIBLE
+                bottomnavbar.visibility = View.VISIBLE
             } else {
                 actionBar?.show()
-                bottomnavbar.visibility=View.GONE
+                bottomnavbar.visibility = View.GONE
             }
         }
     }

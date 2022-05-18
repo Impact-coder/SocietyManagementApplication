@@ -84,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#3c405d"
+        android:clickable="true"
         android:paddingVertical="10dp"
         android:text="View"
         android:textAllCaps="false"
