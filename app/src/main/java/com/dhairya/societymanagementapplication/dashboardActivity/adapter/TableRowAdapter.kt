@@ -29,10 +29,22 @@ class TableRowAdapter(
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
+        val amt=expenseArrayList[i].amount.toString()
 
         viewHolder.date.text = expenseArrayList[i].date
         viewHolder.particular.text = expenseArrayList[i].particular
-        viewHolder.amount.text = expenseArrayList[i].amount
+
+
+        if(amt[0]=='-')
+        {
+            viewHolder.amount.text = expenseArrayList[i].amount
+            viewHolder.amount.setTextColor(Color.parseColor("#FF0000"))
+        }
+        else
+        {
+            viewHolder.amount.text = expenseArrayList[i].amount
+            viewHolder.amount.setTextColor(Color.parseColor("#4cbb17"))
+        }
 
 
     }
