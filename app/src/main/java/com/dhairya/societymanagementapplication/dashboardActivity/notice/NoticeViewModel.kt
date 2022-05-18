@@ -67,7 +67,7 @@ class noticeViewModel(
         else{
 
             val currentDateTime = LocalDateTime.now()
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            val formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
             val formattedDateTime = currentDateTime.format(formatter)
             CoroutineScope(Dispatchers.IO).launch {
 

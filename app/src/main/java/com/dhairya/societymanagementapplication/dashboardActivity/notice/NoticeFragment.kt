@@ -85,7 +85,7 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
                     is noticeViewModel.NoticeEvent.NavigateBackWithResult ->  {
                         Toast.makeText(
                             context,
-                            "Transaction added Successfully!!",
+                            "Notice Send Successfully!!",
                             Toast.LENGTH_SHORT
                         ).show()
 
