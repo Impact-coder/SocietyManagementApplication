@@ -35,6 +35,7 @@
         android:layout_marginTop="80dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_rule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_add_rule"
