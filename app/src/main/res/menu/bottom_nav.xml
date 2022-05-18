@@ -11,7 +11,7 @@
         android:iconTint="@color/black"
         android:title="Notices" />
     <item
-        android:id="@+id/communications"
+        android:id="@+id/communicationFragment"
         android:icon="@drawable/ic_baseline_chat_24"
         android:iconTint="@color/black"
         android:title="Communications" />

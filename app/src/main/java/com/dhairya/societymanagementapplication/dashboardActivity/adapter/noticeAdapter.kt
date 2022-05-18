@@ -43,8 +43,17 @@ class noticeAdapter(
         }
 
         holder.arrow.setOnClickListener {
-            holder.message.isVisible = false
-            holder.arrow.animate().rotation(180f).start()
+            if(holder.message.isVisible)
+            {
+                holder.message.isVisible = false
+                holder.arrow.animate().rotation(180f).start()
+            }
+            else
+            {
+                holder.message.isVisible = true
+                holder.arrow.animate().rotation(360f).start()
+            }
+
         }
 
     }

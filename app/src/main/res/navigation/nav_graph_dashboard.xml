@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_communicationFragment"
             app:destination="@id/communicationFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment" />
     </fragment>
     <fragment
         android:id="@+id/expenseSheetFragment"
@@ -243,6 +246,15 @@
         tools:layout="@layout/fragment_communication" >
         <action
             android:id="@+id/action_communicationFragment_to_dashBoardFragment"
+            app:destination="@id/dashBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.rules.rulesFragment"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" >
+        <action
+            android:id="@+id/action_rulesFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
     </fragment>
 </navigation>

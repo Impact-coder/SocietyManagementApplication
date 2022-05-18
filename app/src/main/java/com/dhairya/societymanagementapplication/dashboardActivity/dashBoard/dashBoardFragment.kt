@@ -104,6 +104,9 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
 
             }
+            cvRules.setOnClickListener {
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToRulesFragment())
+            }
             cvNotice.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeListFragment())
             }
