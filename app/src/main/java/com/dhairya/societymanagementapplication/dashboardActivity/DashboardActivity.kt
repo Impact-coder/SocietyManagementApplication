@@ -3,6 +3,7 @@ package com.dhairya.societymanagementapplication.dashboardActivity
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -14,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,8 +48,10 @@ class DashboardActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.dashBoardFragment) {
                 actionBar?.hide()
+                bottomnavbar.visibility= View.VISIBLE
             } else {
                 actionBar?.show()
+                bottomnavbar.visibility=View.GONE
             }
         }
     }

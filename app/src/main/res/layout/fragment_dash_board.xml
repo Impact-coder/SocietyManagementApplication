@@ -221,7 +221,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbarSize="0dp"
-
                 android:translationZ="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

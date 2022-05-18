@@ -13,11 +13,13 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -30,6 +32,7 @@ import com.dhairya.societymanagementapplication.databinding.FragmentExpenseSheet
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import org.apache.poi.hssf.usermodel.HSSFCell
@@ -142,11 +145,11 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
 
                     if (startingDate.before(endingDate) || startingDate.equals(endingDate)) {
 
-
                         CoroutineScope(Dispatchers.IO).launch {
                             expenseDataArrayList = expense_data.get().await()
                                 .toObjects(transactionData::class.java) as MutableList<transactionData>
                         }
+
                         for (i in expenseDataArrayList) {
                             var dat: String = i.date
                             var d = sdf.parse(dat)
@@ -255,5 +258,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
             e.printStackTrace()
         }
     }
+
+
 
 }

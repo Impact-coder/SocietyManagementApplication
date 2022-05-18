@@ -2,22 +2,23 @@ package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.WindowManager
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.AuthActivity
-import com.dhairya.societymanagementapplication.dashboardActivity.adapter.dashboardNoticeAdapter
 import com.dhairya.societymanagementapplication.data.noticeData
 import com.dhairya.societymanagementapplication.data.profileData
 import com.dhairya.societymanagementapplication.data.residentsData
@@ -38,6 +39,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     private lateinit var binding: FragmentDashBoardBinding
     private val resident_data = FirebaseFirestore.getInstance().collection("residents")
     private val profile_data = FirebaseFirestore.getInstance().collection("profileData")
+
 
 //    private lateinit var dashboardnoticeArrayList: ArrayList<noticeData>
 //    private lateinit var dashboardnoticesDisplayAdapter: dashboardNoticeAdapter
@@ -94,6 +96,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
             btnExpenseSheet.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(
                     dashBoardFragmentDirections.actionDashBoardFragmentToExpenseSheetFragment(),
                     null
@@ -101,32 +104,40 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             }
 
             btnResidents.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToResidentListFragment())
             }
             btnPayMaintenance.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMaintenanceInvoiceFragment())
             }
 
             btnAddMember.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddMemberFragment())
             }
 
             btnAddExpense.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
 
             }
             btnNotices.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToNoticeFragment())
             }
             btnFileComplain.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
             }
 
             btnShowComplains.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToComplainsListFragment())
             }
 
             btnMyComplain.setOnClickListener {
+                getView()?.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToMyComplainsFragment())
             }
 
