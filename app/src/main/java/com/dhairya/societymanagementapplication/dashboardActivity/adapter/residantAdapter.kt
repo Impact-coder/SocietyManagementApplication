@@ -65,7 +65,7 @@ class residantAdapter(
             }
         }
         msg.setOnClickListener {
-            Intent(Intent.ACTION_SEND).also {
+            Intent(Intent.ACTION_SEND).setData(Uri.parse("smsto:"+mobile.text)).also {
             startActivity(mcontext,it,null)
             }
         }
