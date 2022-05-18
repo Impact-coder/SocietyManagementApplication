@@ -4,11 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhairya.societymanagementapplication.dashboardActivity.AUTH_RESULT_OK
-import com.dhairya.societymanagementapplication.dashboardActivity.editProfile.editProfileViewModel
-import com.dhairya.societymanagementapplication.dashboardActivity.fieComplain.fileComplainViewModel
-import com.dhairya.societymanagementapplication.data.complainData
-import com.dhairya.societymanagementapplication.databinding.FragmentComplainBinding
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class ComplainViewModel( private val state: SavedStateHandle
 ) : ViewModel() {
-    private val ComplainEventChannel = Channel<ComplainViewModel.ComplainEvent>()
+    private val ComplainEventChannel = Channel<ComplainViewModel.RulesEvent>()
     val complainEvent = ComplainEventChannel.receiveAsFlow()
     val complain_data = FirebaseFirestore.getInstance().collection("complainData")
 
@@ -35,7 +30,7 @@ class ComplainViewModel( private val state: SavedStateHandle
         }
 
     private fun showErrorMessage(text: String) = viewModelScope.launch {
-        ComplainEventChannel.send(ComplainEvent.ShowErrorMessage(text))
+        ComplainEventChannel.send(RulesEvent.ShowErrorMessage(text))
     }
 
     fun setComplainReply(complainId:String) {
@@ -60,7 +55,7 @@ class ComplainViewModel( private val state: SavedStateHandle
 
 
                     ComplainEventChannel.send(
-                        ComplainViewModel.ComplainEvent.NavigateBackWithResult(
+                        ComplainViewModel.RulesEvent.NavigateBackWithResult(
                             AUTH_RESULT_OK
                         )
                     )
@@ -74,8 +69,8 @@ class ComplainViewModel( private val state: SavedStateHandle
         }
     }
 
-    sealed class ComplainEvent {
-        data class ShowErrorMessage(val msg: String) : ComplainEvent()
-        data class NavigateBackWithResult(val result: Int) : ComplainEvent()
+    sealed class RulesEvent {
+        data class ShowErrorMessage(val msg: String) : RulesEvent()
+        data class NavigateBackWithResult(val result: Int) : RulesEvent()
     }
 }

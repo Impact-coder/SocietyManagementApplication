@@ -103,7 +103,7 @@ class createProfileViewModel constructor(
         }
         else
         {
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(Dispatchers.Main) {
                 try {
 
                     if (auth.currentUser != null) {

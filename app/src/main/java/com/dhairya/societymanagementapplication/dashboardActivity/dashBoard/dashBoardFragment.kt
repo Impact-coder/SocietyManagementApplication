@@ -177,6 +177,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToFileComplain())
             }
 
+
             btnShowComplains.setOnClickListener {
                 getView()?.performHapticFeedback(
                     HapticFeedbackConstants.VIRTUAL_KEY,

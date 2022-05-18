@@ -256,5 +256,17 @@
         <action
             android:id="@+id/action_rulesFragment_to_dashBoardFragment"
             app:destination="@id/dashBoardFragment" />
+        <action
+            android:id="@+id/action_rulesFragment_to_addRuleFragment"
+            app:destination="@id/addRuleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRuleFragment"
+        android:name="com.dhairya.societymanagementapplication.dashboardActivity.addRule.addRuleFragment"
+        android:label="fragment_add_rule"
+        tools:layout="@layout/fragment_add_rule" >
+        <action
+            android:id="@+id/action_addRuleFragment_to_rulesFragment"
+            app:destination="@id/rulesFragment" />
     </fragment>
 </navigation>

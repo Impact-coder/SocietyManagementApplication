@@ -59,7 +59,7 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.complainEvent.collect { events ->
                 when (events) {
-                    is ComplainViewModel.ComplainEvent.NavigateBackWithResult -> {
+                    is ComplainViewModel.RulesEvent.NavigateBackWithResult -> {
                         Toast.makeText(
                             context,
                             "Replied Successfully!!",
@@ -69,7 +69,7 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
                         binding.complainReply.setText("")
 
                     }
-                    is ComplainViewModel.ComplainEvent.ShowErrorMessage -> {
+                    is ComplainViewModel.RulesEvent.ShowErrorMessage -> {
                         Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG).show()
 
                     }
