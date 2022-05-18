@@ -149,6 +149,16 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAddTransactionFragment())
 
             }
+
+            btnCommunication.setOnClickListener {
+                getView()?.performHapticFeedback(
+                    HapticFeedbackConstants.VIRTUAL_KEY,
+                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING
+                );
+                findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToCommunicationFragment())
+            }
+
+
             btnNotices.setOnClickListener {
                 getView()?.performHapticFeedback(
                     HapticFeedbackConstants.VIRTUAL_KEY,
