@@ -200,7 +200,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 popup.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.btn_about -> {
-                            Toast.makeText(context, "About", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToAboutFragment())
                         }
                         R.id.btn_logout -> {
                             val builder = AlertDialog.Builder(context)

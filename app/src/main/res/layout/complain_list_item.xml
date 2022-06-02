@@ -34,7 +34,6 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="8dp"
                 android:textColor="#388E3C"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@id/linearLayout"
@@ -63,14 +62,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/arrow"
                 app:layout_constraintStart_toEndOf="@id/img_complain"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/complainlist_status">
 
 
                 <TextView
                     android:id="@+id/complainList_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:maxWidth="200dp"
                     android:text="RE: Complain Subject"
                     android:textStyle="bold"
