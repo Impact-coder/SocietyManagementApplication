@@ -110,7 +110,7 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
         statusRadio = (if (binding.radioButton1.isChecked){"Resident Owner"} else {"Renting Apartment"}).toString()
 
-        Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
 
         binding.apply {
 
@@ -122,7 +122,7 @@ class editProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
             radioGroup.setOnCheckedChangeListener { radioGroup, i ->
                 statusRadio = if (radioButton1.id == i) "Resident Owner" else "Renting Apartment"
-                Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, statusRadio, Toast.LENGTH_SHORT).show()
             }
 
             editProfileName.setText(viewModel.editProfileName)

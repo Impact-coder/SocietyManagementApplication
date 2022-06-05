@@ -13,6 +13,11 @@ import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.lo
 import com.dhairya.societymanagementapplication.data.complainData
 import com.dhairya.societymanagementapplication.databinding.FragmentComplainBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 
 class ComplainFragment : Fragment(R.layout.fragment_complain) {
@@ -21,13 +26,15 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
 
     private lateinit var binding: FragmentComplainBinding
 
+    private var complain_data = FirebaseFirestore.getInstance().collection("complainData")
+    private var cId: String = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val complainData = args.complain
 
 
-        binding  = FragmentComplainBinding.bind(view)
+        binding = FragmentComplainBinding.bind(view)
 
         binding.apply {
 //            setResponse(complainData)
@@ -37,6 +44,7 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
             name.setText(complainData.memberName)
             subject.setText(complainData.complainSubject)
             response.setText(complainData.complainResponse)
+            cId = complainData.cid
 
             complainReply.setText(viewModel.complainreply)
             response.setText(viewModel.complainreponse)
@@ -46,7 +54,7 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
                 viewModel.complainreply = it.toString()
             }
 
-            response.addTextChangedListener{
+            response.addTextChangedListener {
                 viewModel.complainreponse = it.toString()
             }
 
@@ -66,6 +74,19 @@ class ComplainFragment : Fragment(R.layout.fragment_complain) {
                             Toast.LENGTH_SHORT
                         ).show()
 
+                        CoroutineScope(Dispatchers.Main).launch {
+
+                            try {
+
+                                val complain = complain_data.document(cId).get().await()
+                                    .toObject(complainData::class.java)
+
+                                binding.response.setText(complain!!.complainResponse)
+                            } catch (e: Exception) {
+                                Toast.makeText(context, e.message.toString(), Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
                         binding.complainReply.setText("")
 
                     }

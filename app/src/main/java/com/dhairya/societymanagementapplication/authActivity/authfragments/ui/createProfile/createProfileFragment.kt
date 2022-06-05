@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
@@ -116,22 +117,21 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
             }
 
-            btnCreateProfile.setOnClickListener {
+            btnCreateProfile.setOnClickListener{
 
-                    try {
-                        //                if(imgUri == null)
+                try {
+                    //                if(imgUri == null)
 //                {
 //                    Toast.makeText(context, "Flat number field cannot be empty", Toast.LENGTH_SHORT).show()
 //                }
 //                else
 //                {
-                        viewModel.createProfile(imgUri, statusRadio)
-                        //}
+                    viewModel.createProfile(imgUri, statusRadio)
+                    //}
 
-                    }catch (e:Exception)
-                    {
-                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
-                    }
+                } catch (e: Exception) {
+                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
+                }
 
 
             }
@@ -155,17 +155,13 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                                 .show()
                         }
                     }.exhaustive
-
                 }
-
-
             }
-
         }
+
 
     }
 }
-
 
 val <T> T.exhaustive: T
     get() = this
