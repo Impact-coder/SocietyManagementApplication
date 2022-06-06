@@ -7,6 +7,25 @@
     tools:context=".authActivity.authfragments.ui.createProfile.createProfileFragment">
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentLayoutCreateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -245,5 +264,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

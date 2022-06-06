@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -29,6 +30,7 @@ import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfil
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.flow.collect
 
 
@@ -126,6 +128,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 //                }
 //                else
 //                {
+                    showProgress(true)
                     viewModel.createProfile(imgUri, statusRadio)
                     //}
 
@@ -145,6 +148,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                                 "Profile Created Successfully!!",
                                 Snackbar.LENGTH_LONG
                             ).show()
+                            showProgress(false)
                             Intent(requireContext(), DashboardActivity::class.java).also {
                                 startActivity(it)
                                 requireActivity().finish()
@@ -161,6 +165,23 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
 
     }
+
+    private fun showProgress(bool: Boolean) {
+        binding.apply {
+            animationView.isVisible = bool
+            if (bool) {
+                parentLayoutCreateProfile.alpha = 0.5f
+                activity?.window!!.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                )
+            } else {
+                parentLayoutCreateProfile.alpha = 1f
+                activity?.window!!.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+            }
+        }
+    }
+
 }
 
 val <T> T.exhaustive: T
