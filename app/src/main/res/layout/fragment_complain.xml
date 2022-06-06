@@ -32,12 +32,14 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         android:text="Date"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/txt_subject"
         app:layout_constraintTop_toBottomOf="@id/txt_complainFrom" />
 
@@ -55,12 +57,14 @@
 
     <TextView
         android:id="@+id/flatNo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
         android:text="Flat No"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/txt_subject"
         app:layout_constraintTop_toBottomOf="@id/date" />
 
@@ -75,17 +79,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_flatno" />
 
+
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
         android:text="Name"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/txt_subject"
         app:layout_constraintTop_toBottomOf="@id/flatNo" />
-
 
     <TextView
         android:id="@+id/txt_subject"
@@ -101,12 +107,15 @@
 
     <TextView
         android:id="@+id/subject"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
         android:text="Subject"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/txt_subject"
         app:layout_constraintTop_toBottomOf="@id/txt_name" />
 
@@ -115,9 +124,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="20dp"
         android:text="Complain"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"

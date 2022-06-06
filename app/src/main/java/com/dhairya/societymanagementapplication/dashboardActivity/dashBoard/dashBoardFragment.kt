@@ -91,7 +91,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
             CoroutineScope(Dispatchers.Main).launch {
 
                 val list =
-                    notice_data.orderBy("dateTime", Query.Direction.DESCENDING).limit(1).get()
+                    notice_data.orderBy("dateTime", Query.Direction.ASCENDING).limit(1).get()
                         .await().toObjects(noticeData::class.java)!!
                 if (list.isEmpty()) {
                     dashboardNoticeDate.text = ""

@@ -134,6 +134,8 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
 
                 } catch (e: Exception) {
                     Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show()
+                    showProgress(false)
+
                 }
 
 
@@ -157,6 +159,7 @@ class createProfileFragment : Fragment(R.layout.fragment_create_profile) {
                         is createProfileViewModel.CreateProfileEvent.ShowErrorMessage -> {
                             Snackbar.make(requireView(), events.msg, Snackbar.LENGTH_LONG)
                                 .show()
+                            showProgress(false)
                         }
                     }.exhaustive
                 }

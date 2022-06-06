@@ -159,10 +159,18 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
                             }
                         }
 
-                        tableRowAdapter =
-                            TableRowAdapter(newArrayList as ArrayList<transactionData>)
-                        binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
-                        binding.tableRecyclerView.adapter = tableRowAdapter
+                        if( newArrayList.size != 0)
+                        {
+                            tableRowAdapter =
+                                TableRowAdapter(newArrayList as ArrayList<transactionData>)
+                            binding.tableRecyclerView.layoutManager = LinearLayoutManager(context)
+                            binding.tableRecyclerView.adapter = tableRowAdapter
+                        }
+                        else{
+                            emptyMessage.text = "There is no data available between " + sDate + " and " + eDate +"!!"
+                        }
+
+
 
 
                     } else {
@@ -190,7 +198,7 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun createExcelFile() {
         if (newArrayList.isEmpty()) {
-            Toast.makeText(requireActivity(), "Empty List found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "There is no data available between " + sDate + " and " + eDate +"!!", Toast.LENGTH_SHORT).show()
             return
         }
         val hssfWorkbook = HSSFWorkbook()

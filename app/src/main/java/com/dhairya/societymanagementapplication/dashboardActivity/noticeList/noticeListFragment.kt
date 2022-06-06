@@ -41,7 +41,7 @@ class noticeListFragment : Fragment(R.layout.fragment_notice_list) {
 
             CoroutineScope(Dispatchers.Main).launch {
 
-                val list = notice_data.orderBy("dateTime", Query.Direction.DESCENDING).get().await()
+                val list = notice_data.orderBy("dateTime", Query.Direction.ASCENDING).get().await()
                     .toObjects(noticeData::class.java)
 
 

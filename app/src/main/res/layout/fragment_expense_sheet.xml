@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".dashboardActivity.expenseSheet.expenseSheetFragment">
 
+    <TextView
+        android:id="@+id/empty_message"
+        android:layout_width="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="italic"
+
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/start_date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="0dp"
