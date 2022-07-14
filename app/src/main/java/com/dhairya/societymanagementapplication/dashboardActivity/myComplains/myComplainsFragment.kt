@@ -57,7 +57,7 @@ class myComplainsFragment : Fragment(R.layout.fragment_my_complains) {
 
             CoroutineScope(Dispatchers.Main).launch {
                 val list = complain_data.whereEqualTo("memberId", Firebase.auth.currentUser!!.uid)
-                    .orderBy("complainDate", Query.Direction.DESCENDING).get().await()
+                    .orderBy("complainDate", Query.Direction.ASCENDING).get().await()
                     .toObjects(complainData::class.java)
                 complainDisplayListAdapter = complainListAdapter(requireContext(), list.toList())
                 recycleView.adapter = complainDisplayListAdapter

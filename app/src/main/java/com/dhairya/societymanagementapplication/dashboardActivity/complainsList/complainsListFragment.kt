@@ -56,7 +56,7 @@ class complainsListFragment : Fragment(R.layout.fragment_complains_list) {
 
 
             CoroutineScope(Dispatchers.Main).launch {
-                val list = complain_data.orderBy("complainDate",Query.Direction.DESCENDING).get().await()
+                val list = complain_data.orderBy("complainDate",Query.Direction.ASCENDING).get().await()
                     .toObjects(complainData::class.java)
                 complainDisplayListAdapter = complainListAdapter(requireContext(), list.toList())
                 recycleView.adapter = complainDisplayListAdapter

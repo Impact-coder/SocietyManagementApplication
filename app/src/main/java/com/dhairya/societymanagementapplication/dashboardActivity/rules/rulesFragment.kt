@@ -63,7 +63,12 @@ class rulesFragment : Fragment(R.layout.fragment_rules) {
 
 
                 if (residentList.role == "Secretary") {
-                    btnAddRule.isVisible = true
+                        btnAddRule.setAlpha(.5f)
+                }
+                else
+                {
+
+                    btnAddRule.setAlpha(0f)
                 }
 
             }
