@@ -1,4 +1,4 @@
-package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
+    package com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login
 
 import android.content.Context
 import android.content.Intent

@@ -37,44 +37,44 @@ class maintenanceinvoiceViewModel(
         data class NavigateBackWithResult(val result: Int) : MaintenanceInvoiceEvent()
     }
 
-    fun PayMaintenance(){
-
-        val activity: maintenanceinvoiceViewModel = this
-        val co = Checkout()
-
-        try {
-            val options = JSONObject()
-            options.put("name","Razorpay Corp")
-            options.put("description","Demoing Charges")
-            //You can omit the image option to fetch the image from dashboard
-            options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
-            options.put("theme.color", "#3399cc");
-            options.put("currency","INR");
-            options.put("order_id", "order_DBJOWzybf0sJbb");
-            options.put("amount","50000")//pass amount in currency subunits
-
-            val retryObj =  JSONObject();
-            retryObj.put("enabled", true);
-            retryObj.put("max_count", 4);
-            options.put("retry", retryObj);
-            val prefill = JSONObject()
-            CoroutineScope(Dispatchers.Main).launch {
-                val userData =
-                    profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
-                        .toObject(profileData::class.java)!!
-
-                prefill.put("email", userData.email)
-                prefill.put("contact",userData.mobile)
-            }
-
-
-
-            options.put("prefill",prefill)
-            co.open(this,options)
-        }catch (e: Exception){
-            showErrorMessage("Error in payment: "+ e.message)
-            e.printStackTrace()
-        }
-
-    }
+//    fun PayMaintenance(){
+//
+//        val activity: maintenanceinvoiceViewModel = this
+//        val co = Checkout()
+//
+//        try {
+//            val options = JSONObject()
+//            options.put("name","Razorpay Corp")
+//            options.put("description","Demoing Charges")
+//            //You can omit the image option to fetch the image from dashboard
+//            options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
+//            options.put("theme.color", "#3399cc");
+//            options.put("currency","INR");
+//            options.put("order_id", "order_DBJOWzybf0sJbb");
+//            options.put("amount","50000")//pass amount in currency subunits
+//
+//            val retryObj =  JSONObject();
+//            retryObj.put("enabled", true);
+//            retryObj.put("max_count", 4);
+//            options.put("retry", retryObj);
+//            val prefill = JSONObject()
+//            CoroutineScope(Dispatchers.Main).launch {
+//                val userData =
+//                    profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
+//                        .toObject(profileData::class.java)!!
+//
+//                prefill.put("email", userData.email)
+//                prefill.put("contact",userData.mobile)
+//            }
+//
+//
+//
+//            options.put("prefill",prefill)
+//            co.open(this,options)
+//        }catch (e: Exception){
+//            showErrorMessage("Error in payment: "+ e.message)
+//            e.printStackTrace()
+//        }
+//
+//    }
 }

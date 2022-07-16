@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.2.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
     implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -76,10 +76,8 @@ dependencies {
 
     // Lifecycle + ViewModel & LiveData
     def lifecycleVersion = "2.3.1"
-    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0"
-    //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
 
     //Activity ktx for ViewModel()
@@ -90,7 +88,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1'
 
     //image crop
-    implementation "androidx.activity:activity-ktx:1.6.0-alpha05"
+    implementation "androidx.activity:activity-ktx:1.6.0-alpha03"
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 
     //firebase storage
@@ -115,7 +113,7 @@ dependencies {
 
     implementation 'org.apache.poi:poi:3.17'
 
-    //Pezorpay
+    //rezorpay
     implementation 'com.razorpay:checkout:1.6.19'
 
 }
