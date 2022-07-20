@@ -108,7 +108,8 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
 
 
             }
-            cvRules.setOnClickListener {
+
+            btn_rules.setOnClickListener {
                 findNavController().navigate(dashBoardFragmentDirections.actionDashBoardFragmentToRulesFragment())
             }
             cvNotice.setOnClickListener {
