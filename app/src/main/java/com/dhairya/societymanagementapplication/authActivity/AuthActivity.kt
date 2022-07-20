@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.dhairya.societymanagementapplication.R
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
 
 class AuthActivity : AppCompatActivity() {
 
@@ -16,6 +17,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         supportActionBar?.hide()
+
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_auth) as NavHostFragment

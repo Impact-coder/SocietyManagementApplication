@@ -213,6 +213,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                             builder.setIcon(R.drawable.ic_logout)
                             builder.setMessage("Are you Sure you want to logout")
                                 .setPositiveButton("Yes") { dialogInterface, which ->
+                                    Firebase.auth.signOut()
                                     Intent(requireContext(), AuthActivity::class.java).also {
                                         startActivity(it)
                                         requireActivity().finish()

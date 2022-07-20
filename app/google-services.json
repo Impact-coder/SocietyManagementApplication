@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "132602000656-isbi2lpposmt2ddnfrnfv0nps58fbsu9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dhairya.societymanagementapplication",
+            "certificate_hash": "73012c47f03f3068d0a52d634e35259a0adda540"
+          }
+        },
+        {
           "client_id": "132602000656-spi2smqrsnb58aakuvfrfdq118t8k9l5.apps.googleusercontent.com",
           "client_type": 3
         }
