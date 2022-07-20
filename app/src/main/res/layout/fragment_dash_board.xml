@@ -31,7 +31,8 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:backgroundTint="#50698D"
+            android:backgroundTint="#2C3454
+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.22"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,8 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="-22dp"
-
-            android:backgroundTint="#f1f5f6"
+            android:backgroundTint="#FCF7FF"
             app:cardCornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -407,7 +407,7 @@
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
                             android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
+                            android:backgroundTint="#E6F4F1"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
@@ -449,7 +449,7 @@
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
                             android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
+                            android:backgroundTint="#A2ACBD"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
