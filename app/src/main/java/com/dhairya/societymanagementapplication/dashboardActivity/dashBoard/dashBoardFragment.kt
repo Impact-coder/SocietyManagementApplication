@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
 import android.os.Vibrator
 import android.util.Log
@@ -27,10 +29,12 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_dash_board.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.util.*
 
 
 class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
@@ -220,6 +224,7 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                             alertDialog.setCancelable(false)
                             alertDialog.show()
                         }
+
                     }
                     true
                 }

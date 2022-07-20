@@ -31,7 +31,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:backgroundTint="#a5b8ea"
+            android:backgroundTint="#50698D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.22"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +50,7 @@
                     android:text="Welcome,"
                     android:textSize="25dp"
                     android:textStyle="bold"
+                    android:textColor="#fff"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,6 +61,7 @@
                     android:layout_marginStart="30sp"
                     android:text="Chris Evans"
                     android:textSize="28dp"
+                    android:textColor="#fff"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txt_welcome" />
 
@@ -85,7 +87,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="-22dp"
 
-            android:backgroundTint="#E6E6E6"
+            android:backgroundTint="#f1f5f6"
             app:cardCornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,13 +114,13 @@
             android:layout_height="0dp"
             android:layout_marginTop="0dp"
             app:cardCornerRadius="15dp"
-            android:backgroundTint="#fff8e8"
+            android:backgroundTint="#ffeaa7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.17"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view"
             app:layout_constraintWidth_percent="0.9"
-            app:strokeColor="#f0e8d3"
+            app:strokeColor="#fdcb6e"
             app:strokeWidth="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -193,7 +195,7 @@
                     android:id="@+id/dashboard_notice_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hello there"
+                    android:text="latest Notice"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:layout_marginTop="2dp"
@@ -235,63 +237,125 @@
                         android:columnCount="2">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/one"
+                            android:id="@+id/btn_communication"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_gravity="left|top"
                             android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
+                            android:backgroundTint="#CDD0D5"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:id="@+id/btn_communication"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/chat"
-                                android:text="\nCommunications" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/img_communications"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:src="@drawable/chat1"/>
+
+                                <TextView
+                                    android:id="@+id/txt_communication"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="18sp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="15sp"
+                                    android:textColor="#000"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    android:text="Communication" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                         </androidx.cardview.widget.CardView>
 
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/two"
+                            android:id="@+id/btn_payMaintenance"
                             android:layout_width="150dp"
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
                             android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
+                            android:backgroundTint="#A8B3BC"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/img_pay_maintenance"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:src="@drawable/payment"/>
+
                             <TextView
-                                android:id="@+id/btn_payMaintenance"
+                                android:id="@+id/txt_payMaintenance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_tax"
-                                android:text="\nPay maintenance" />
+                                android:textSize="18sp"
+                                android:textColor="#000"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="15dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:text="Pay \nmaintenance" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/three"
+                            android:id="@+id/btn_expenseSheet"
                             android:layout_width="150dp"
                             android:layout_height="150sp"
                             android:layout_gravity="right|top"
                             android:layout_marginTop="20sp"
-                            android:backgroundTint="#fff"
+                            android:backgroundTint="#ACA9BB"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:id="@+id/btn_expenseSheet"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_audit"
-                                android:text="\nGet Expense Sheet" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/img_expense_sheet"
+                                    android:layout_width="120dp"
+                                    android:layout_height="120dp"
+                                    android:layout_marginEnd="10dp"
+                                    app:layout_constraintTop_toBottomOf="@id/txt_expenseSheet"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:src="@drawable/expense_sheet"/>
+
+                                <TextView
+                                    android:id="@+id/txt_expenseSheet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:textSize="18sp"
+                                    android:textColor="#000"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="15dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    android:text="Get \nExpense Sheet" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                         </androidx.cardview.widget.CardView>
 
@@ -305,14 +369,34 @@
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:id="@+id/btn_residents"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:drawableTop="@drawable/ic_buildings"
-                                android:text="\nResidents"
-                                android:textAlignment="center" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/img_residents"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/btn_residents"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:src="@drawable/residents"/>
+
+                                <TextView
+                                    android:id="@+id/btn_residents"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    app:layout_constraintTop_toBottomOf="@id/img_residents"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    android:text="Residents" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                         </androidx.cardview.widget.CardView>
 

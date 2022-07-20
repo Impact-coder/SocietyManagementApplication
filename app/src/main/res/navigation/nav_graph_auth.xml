@@ -11,7 +11,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
-            app:destination="@id/forgotPasswordFragment" />
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
@@ -32,7 +34,9 @@
             app:destination="@id/forgotPasswordConfirmationFragment" />
         <action
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordConfirmationFragment"

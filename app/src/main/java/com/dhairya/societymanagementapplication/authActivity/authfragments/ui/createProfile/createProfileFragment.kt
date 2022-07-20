@@ -8,10 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import androidx.navigation.fragment.findNavController
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -24,14 +21,10 @@ import androidx.lifecycle.lifecycleScope
 import com.dhairya.societymanagementapplication.R
 import com.dhairya.societymanagementapplication.authActivity.authfragments.ui.login.exhaustive
 import com.dhairya.societymanagementapplication.dashboardActivity.DashboardActivity
-import com.dhairya.societymanagementapplication.dashboardActivity.addMember.addMemberViewModel
 import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfileBinding
-import com.dhairya.societymanagementapplication.databinding.FragmentCreateProfileBinding.*
-import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import com.theartofdev.edmodo.cropper.CropImage
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.coroutines.flow.collect
+
 
 
 class createProfileFragment : Fragment(R.layout.fragment_create_profile) {

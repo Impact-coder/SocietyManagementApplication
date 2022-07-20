@@ -28,6 +28,10 @@ class forgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
         binding = FragmentForgotPasswordBinding.bind(view)
         binding.apply {
 
+            btnBack.setOnClickListener {
+                findNavController().navigate(forgotPasswordFragmentDirections.actionForgotPasswordFragmentToLoginFragment())
+            }
+
             forgotPasswordEmail.setText(viewModel.email)
 
             forgotPasswordEmail.addTextChangedListener {

@@ -26,7 +26,7 @@ class forgotPasswordConfirmationFragment : Fragment(R.layout.fragment_forgot_pas
         binding = FragmentForgotPasswordConfrimationBinding.bind(view)
         binding.apply {
 
-            btnBackTologin.setOnClickListener {
+            btnBackToLogin.setOnClickListener {
                 findNavController().navigate(forgotPasswordConfirmationFragmentDirections.actionForgotPasswordConfirmationFragmentToLoginFragment())
 
             }
