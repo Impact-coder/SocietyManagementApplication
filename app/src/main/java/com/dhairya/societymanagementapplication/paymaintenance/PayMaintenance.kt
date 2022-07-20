@@ -17,7 +17,6 @@ class PayMaintenance : AppCompatActivity(), PaymentResultListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pay_maintenance)
-        co.setKeyID("rzp_test_2ST5z48nRAR5mN")
 
         startPayment()
     }
@@ -28,6 +27,7 @@ class PayMaintenance : AppCompatActivity(), PaymentResultListener {
         * */
 
         val activity: Activity = this
+        co.setKeyID("rzp_test_2ST5z48nRAR5mN")
 
 
         try {
@@ -51,7 +51,7 @@ class PayMaintenance : AppCompatActivity(), PaymentResultListener {
             prefill.put("contact","9876543210")
 
             options.put("prefill",prefill)
-            co.open(activity,options)
+            co.open(this,options)
         }catch (e: Exception){
             Toast.makeText(this,"Error in payment: "+ e.message, Toast.LENGTH_LONG).show()
             e.printStackTrace()

@@ -23,7 +23,6 @@
         <activity
             android:name=".paymaintenance.PayMaintenance"
             android:exported="true" />
-
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity
             android:name=".dashboardActivity.DashboardActivity"
@@ -57,9 +56,9 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="com.razorpay.Apikey"
-            android:value="rzp_test_2ST5z48nRAR5mN" />
+<!--        <meta-data-->
+<!--            android:name="com.razorpay.Apikey"-->
+<!--            android:value="rzp_test_2ST5z48nRAR5mN" />-->
         <meta-data
             android:name="com.google.gns.wallet.api.enabled"
             android:value="true" />
