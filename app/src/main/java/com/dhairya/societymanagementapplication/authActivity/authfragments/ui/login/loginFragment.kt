@@ -23,9 +23,11 @@ import com.dhairya.societymanagementapplication.data.residentsData
 import com.dhairya.societymanagementapplication.databinding.FragmentLoginBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -45,6 +47,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
     private val REQ_ONE_TAP = 101  // Can be any integer unique to the Activity
     private var showOneTapUI = true
+    lateinit var task: Task<GoogleSignInAccount>
 
 
     private lateinit var auth: FirebaseAuth
@@ -170,7 +173,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
@@ -178,6 +181,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
+                Toast.makeText(context,e.toString() , Toast.LENGTH_SHORT).show()
                 Log.w("Error101", "Google sign in failed", e)
             }
         }
@@ -221,7 +225,7 @@ class loginFragment : Fragment(R.layout.fragment_login) {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Toast.makeText(context, "Login Successfully !!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Login Failed !!", Toast.LENGTH_SHORT).show()
 
 //                    updateUI(null)
                 }

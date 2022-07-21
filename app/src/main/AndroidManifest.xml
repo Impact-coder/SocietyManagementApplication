@@ -13,6 +13,7 @@
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         android:minSdkVersion="30" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_app_icon"
@@ -20,6 +21,7 @@
         android:roundIcon="@drawable/ic_app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocietyManagementApplication">
+
         <activity
             android:name=".paymaintenance.PayMaintenance"
             android:exported="true" />
@@ -29,7 +31,13 @@
             android:exported="true"></activity>
         <activity
             android:name=".authActivity.AuthActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SplashScreen3"
             android:exported="true" />
@@ -39,11 +47,7 @@
         <activity
             android:name=".SplashScreen1"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service

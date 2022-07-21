@@ -2,19 +2,15 @@ package com.dhairya.societymanagementapplication.dashboardActivity.dashBoard
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Vibrator
 import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.PopupMenu
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -57,7 +53,10 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding = FragmentDashBoardBinding.bind(view)
+        activity?.window?.statusBarColor=Color.parseColor("#2C3454")
+
 
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -72,17 +71,17 @@ class dashBoardFragment : Fragment(R.layout.fragment_dash_board) {
                 .toObject(residentsData::class.java)!!
 //            binding.dashboardName.text = resident.email
             if (resident.role == "member") {
-                binding.cvAddMembers.isVisible = false
-                binding.cvAddExpense.isVisible = false
-                binding.cvNotices.isVisible = false
-                binding.cvShowComplains.isVisible = false
+                binding.btnAddMember.isVisible = false
+                binding.btnAddExpense.isVisible = false
+                binding.btnNotices.isVisible = false
+                binding.btnShowComplains.isVisible = false
 
             }
 
             if (resident.role == "treasurer") {
-                binding.cvAddMembers.isVisible = false
-                binding.cvNotices.isVisible = false
-                binding.cvShowComplains.isVisible = false
+                binding.btnAddMember.isVisible = false
+                binding.btnNotices.isVisible = false
+                binding.btnShowComplains.isVisible = false
             }
         }
 

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboardActivity.profile.profileFragment">
+    tools:context=".dashboardActivity.profile.profileFragment"
+    android:background="#FCF7FF">
 
     <View
         android:id="@+id/gradient_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/gradient"
+        android:background="#ACA9BB"
         android:rotation="10"
         android:scaleX="50"
         android:scaleY="1.3"
@@ -24,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@drawable/add_pic_background"
+        android:background="#2C3454"
         android:src="@drawable/ic_baseline_person_24"
         android:translationZ="5dp"
         android:clickable="true"
@@ -44,6 +45,7 @@
         android:gravity="center"
         android:text="Chris Evans"
         android:textSize="35dp"
+        android:textColor="#2C3454"
         app:layout_constraintBottom_toBottomOf="@id/gradient_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/profileimg"
@@ -110,7 +112,7 @@
         android:layout_marginStart="15dp"
         android:text="sdhairya412@gmail.com"
         android:textSize="20dp"
-        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawableStart="@drawable/alternate_email"
         android:drawablePadding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +139,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/btn_logout"
-        android:backgroundTint="#EF3535"
+        android:backgroundTint="#FF3636"
         android:drawableLeft="@drawable/ic_logout"
         android:drawablePadding="10dp"
         android:gravity="center"
@@ -147,7 +149,6 @@
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent" />
 
 

@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.rules
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -37,6 +38,9 @@ class rulesFragment : Fragment(R.layout.fragment_rules) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#E6F4F1")
+
         binding = FragmentRulesBinding.bind(view)
         binding.apply {
 

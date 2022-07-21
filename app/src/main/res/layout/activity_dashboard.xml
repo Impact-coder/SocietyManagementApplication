@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:translationZ="10dp"
-        app:labelVisibilityMode="labeled"
+        android:background="#C3BFC6"
         app:layout_constraintTop_toBottomOf="@id/nav_graph_dashboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

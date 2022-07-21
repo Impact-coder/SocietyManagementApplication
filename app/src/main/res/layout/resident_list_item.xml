@@ -9,18 +9,17 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-
+        android:backgroundTint="#E6E9EE"
+        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="15dp"
-            >
+            android:layout_marginVertical="15dp">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -59,6 +58,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/complainList_date"
                     android:layout_width="wrap_content"
@@ -70,7 +70,6 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
-
 
 
             <ImageView

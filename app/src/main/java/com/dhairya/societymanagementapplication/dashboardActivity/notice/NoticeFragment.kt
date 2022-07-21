@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.notice
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,8 @@ class NoticeFragment : Fragment(R.layout.fragment_notice) {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#ACA9BB")
 
         binding = FragmentNoticeBinding.bind(view)
         binding.apply {

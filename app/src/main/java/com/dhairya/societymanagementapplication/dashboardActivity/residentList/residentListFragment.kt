@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.residentList
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -37,6 +38,8 @@ class residentListFragment : Fragment(R.layout.fragment_resident_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding = FragmentResidentListBinding.bind(view)
+
+        activity?.window?.statusBarColor= Color.parseColor("#D5CABD")
 
         binding.apply {
             recycleView = binding.residentRecycleView

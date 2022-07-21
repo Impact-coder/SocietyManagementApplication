@@ -7,18 +7,40 @@
     tools:context=".dashboardActivity.maintenanceInvoice.maintenanceInvoiceFragment"
     android:background="#fff">
 
-    <TextView
-        android:id="@+id/txt_maintenance"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:paddingLeft="15sp"
-        android:text="Maintenance"
-        android:textSize="30dp"
-        android:textColor="#445BC3"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.11"
+        android:background="#A8B3BC"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_baseline_arrow_back_black"
+        app:layout_constraintEnd_toStartOf="@id/txt_maintenance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_maintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Maintenance"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/txt_select_month"
@@ -32,7 +54,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_maintenance" />
+        app:layout_constraintTop_toBottomOf="@id/view" />
 
     <HorizontalScrollView
         android:id="@+id/horizontal_scroll"

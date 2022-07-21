@@ -6,6 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".dashboardActivity.communication.communicationFragment">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.11"
+        android:background="#CDD0D5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back"
         android:layout_width="38dp"
@@ -24,8 +33,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:text="Communications"
-        android:textSize="26dp"
+        android:textSize="30dp"
         android:textStyle="bold"
+        android:textColor="#000"
         app:layout_constraintStart_toEndOf="@id/btn_back"
         app:layout_constraintTop_toTopOf="parent" />
 

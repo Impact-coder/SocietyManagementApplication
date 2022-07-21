@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.fieComplain
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,6 +31,8 @@ class fileComplainFragment : Fragment(R.layout.fragment_file_complain) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#A8B3BC")
 
         binding = FragmentFileComplainBinding.bind(view)
         binding.apply {

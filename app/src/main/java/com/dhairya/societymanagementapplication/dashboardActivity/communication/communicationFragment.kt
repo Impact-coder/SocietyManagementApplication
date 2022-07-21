@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.communication
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ class communicationFragment : Fragment(R.layout.fragment_communication) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.window?.statusBarColor= Color.parseColor("#CDD0D5")
         binding = FragmentCommunicationBinding.bind(view)
         binding.apply {
             btnBack.setOnClickListener {

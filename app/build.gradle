@@ -69,6 +69,7 @@ dependencies {
 
     // Also declare the dependency for the Google Play services library and specify its version
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:29.1.0')
@@ -126,5 +127,6 @@ dependencies {
 
     //rezorpay
     implementation 'com.razorpay:checkout:1.6.19'
+
 
 }

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -67,6 +68,8 @@ class expenseSheetFragment : Fragment(R.layout.fragment_expense_sheet) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#ACA9BB")
 
         var cal = Calendar.getInstance()
 

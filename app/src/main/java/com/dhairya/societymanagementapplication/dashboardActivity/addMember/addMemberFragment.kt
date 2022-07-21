@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.addMember
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
@@ -29,7 +30,7 @@ class addMemberFragment : Fragment(R.layout.fragment_add_member) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.window?.statusBarColor= Color.parseColor("#CDD0D5")
 
         binding = FragmentAddMemberBinding.bind(view)
         binding.apply {

@@ -2,6 +2,7 @@ package com.dhairya.societymanagementapplication.dashboardActivity.maintenanceIn
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +28,7 @@ class maintenanceInvoiceFragment : Fragment(R.layout.fragment_maintenance_invoic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        activity?.window?.statusBarColor= Color.parseColor("#A8B3BC")
 
         binding = FragmentMaintenanceInvoiceBinding.bind(view)
         binding.apply {

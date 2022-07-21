@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dashboardActivity.residentList.residentListFragment"
-    android:background="#c3ceef">
+    tools:context=".dashboardActivity.residentList.residentListFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.11"
+        android:background="#D5CABD"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back"
@@ -23,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Residents"
-        android:textSize="32dp"
+        android:textSize="30dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_back"
@@ -34,7 +44,8 @@
         android:id="@+id/resident_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginHorizontal="10dp"
         android:dividerHeight="0dp"
         android:divider="#12143b"
         tools:listitem="@layout/resident_list_item"

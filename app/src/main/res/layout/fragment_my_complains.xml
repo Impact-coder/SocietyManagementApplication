@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".dashboardActivity.myComplains.myComplainsFragment"
     >
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.11"
+        android:background="#A2ACBD"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back"
         android:layout_width="40dp"
@@ -23,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Complains"
-        android:textSize="32dp"
+        android:textSize="30dp"
+        android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_back"
@@ -34,7 +46,7 @@
         android:id="@+id/myComplain_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:dividerHeight="0dp"
         android:divider="#12143b"
         tools:listitem="@layout/complain_list_item"

@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.addTransaction
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -26,6 +27,8 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#B6A99A")
 
         var cal = Calendar.getInstance()
         var date = ""

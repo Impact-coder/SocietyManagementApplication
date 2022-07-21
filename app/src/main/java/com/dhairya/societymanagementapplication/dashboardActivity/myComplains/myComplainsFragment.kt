@@ -1,5 +1,6 @@
 package com.dhairya.societymanagementapplication.dashboardActivity.myComplains
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -38,6 +39,8 @@ class myComplainsFragment : Fragment(R.layout.fragment_my_complains) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.statusBarColor= Color.parseColor("#A2ACBD")
 
 //        CoroutineScope(Dispatchers.Main).launch {
 //            viewModel.getUpdatedList()
