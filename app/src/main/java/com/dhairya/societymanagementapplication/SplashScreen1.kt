@@ -1,6 +1,7 @@
 package com.dhairya.societymanagementapplication
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.AppCompatButton
+import com.dhairya.societymanagementapplication.authActivity.AuthActivity
 
 class SplashScreen1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +17,23 @@ class SplashScreen1 : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen1)
         setStatusBarTransparent()
         supportActionBar?.hide()
+
+        val preferences:SharedPreferences=getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+        val FirstTime: String? =preferences.getString("FirstTimeInstall","")
+
+        if(FirstTime.equals("Yes"))
+        {
+
+            Intent(this, AuthActivity::class.java).apply {
+                startActivity(this)
+                this@SplashScreen1.finish()
+            }
+        }
+        else{
+            val editor:SharedPreferences.Editor=preferences.edit()
+            editor.putString("FirstTimeInstall","Yes")
+            editor.apply()
+        }
 
         var intro1_next_btn = findViewById<AppCompatButton>(R.id.intro1_next_btn)
 
