@@ -266,7 +266,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/invoice_date"
+                android:id="@+id/invoice_date_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -279,56 +279,105 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/invoice_name"
-                android:layout_width="match_parent"
+                android:id="@+id/invoice_name_txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:text="Name: "
+                android:textColor="#303036"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/invoice_date_txt"
+                app:layout_constraintTop_toBottomOf="@id/invoice_date_txt" />
+
+            <TextView
+                android:id="@+id/invoice_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
                 android:text="Name"
                 android:textColor="#303036"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/invoice_date" />
+
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/invoice_name_txt"
+                app:layout_constraintTop_toBottomOf="@id/invoice_date_txt" />
 
             <TextView
-                android:id="@+id/invoice_flat"
-                android:layout_width="match_parent"
+                android:id="@+id/invoice_flat_txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Flat No:"
+                android:textColor="#303036"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/invoice_name_txt" />
+
+            <TextView
+                android:id="@+id/invoice_flat_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
                 android:text="Flat No."
                 android:textColor="#303036"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/invoice_flat_txt"
+                app:layout_constraintTop_toBottomOf="@id/invoice_name_txt" />
+
+            <TextView
+                android:id="@+id/invoice_mobile_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Mobile No:"
+                android:textColor="#303036"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/invoice_name" />
+                app:layout_constraintTop_toBottomOf="@id/invoice_flat_txt" />
 
             <TextView
                 android:id="@+id/invoice_mobile"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
                 android:text="Mobile No."
                 android:textColor="#303036"
                 android:textSize="20sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/invoice_flat" />
+                app:layout_constraintStart_toEndOf="@id/invoice_mobile_txt"
+                app:layout_constraintTop_toBottomOf="@id/invoice_flat_txt" />
+
 
             <TextView
                 android:id="@+id/invoice_maintenance"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Maintenance Amount"
+                android:text="Maintenance Amount: "
                 android:textColor="#303036"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/invoice_mobile" />
+                app:layout_constraintStart_toStartOf="@id/invoice_mobile_txt"
+                app:layout_constraintTop_toBottomOf="@id/invoice_mobile_txt" />
+
+            <TextView
+                android:id="@+id/invoice_maintenance_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="5000"
+                android:textColor="#303036"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/invoice_maintenance"
+                app:layout_constraintTop_toBottomOf="@id/invoice_mobile_txt" />
 
             <TextView
                 android:id="@+id/invoice_status"
