@@ -62,9 +62,18 @@
             </intent-filter>
         </service>
 
-<!--        <meta-data-->
-<!--            android:name="com.razorpay.Apikey"-->
-<!--            android:value="rzp_test_2ST5z48nRAR5mN" />-->
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="false"
+            >
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.razorpay.Apikey"
+            android:value="rzp_test_2ST5z48nRAR5mN" />
         <meta-data
             android:name="com.google.gns.wallet.api.enabled"
             android:value="true" />

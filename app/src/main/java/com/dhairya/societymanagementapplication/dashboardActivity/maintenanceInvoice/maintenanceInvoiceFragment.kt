@@ -34,7 +34,6 @@ class maintenanceInvoiceFragment : Fragment(R.layout.fragment_maintenance_invoic
 
     private val viewModel: maintenanceinvoiceViewModel by viewModels()
     val profile_data = FirebaseFirestore.getInstance().collection("profileData")
-    lateinit var userData: profileData
     private lateinit var binding: FragmentMaintenanceInvoiceBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,30 +41,33 @@ class maintenanceInvoiceFragment : Fragment(R.layout.fragment_maintenance_invoic
         super.onViewCreated(view, savedInstanceState)
         activity?.window?.statusBarColor = Color.parseColor("#A8B3BC")
 
-        CoroutineScope(Dispatchers.Main).launch {
 
-            userData = profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
-                .toObject(profileData::class.java)!!
-        }
 
 
         binding = FragmentMaintenanceInvoiceBinding.bind(view)
         binding.apply {
 
+            CoroutineScope(Dispatchers.Main).launch {
 
-            invoiceName.text = userData.fullName
-            invoiceFlatNo.text = userData.flatNo
-            invoiceMobile.text = userData.mobile
+                var userData = profile_data.document(Firebase.auth.currentUser!!.uid).get().await()
+                    .toObject(profileData::class.java)!!
 
-            btnPay.setOnClickListener {
-                Intent(requireContext(), PayMaintenance::class.java).apply {
-                    putExtra("Maintenance Amount", invoiceMaintenanceAmount.text)
-                    putExtra("email", userData.email)
-                    putExtra("mobile", userData.mobile)
-                    startActivity(this)
+                invoiceName.text = userData.fullName
+                invoiceFlatNo.text = userData.flatNo
+                invoiceMobile.text = userData.mobile
+
+                btnPay.setOnClickListener {
+                    Intent(requireContext(), PayMaintenance::class.java).apply {
+                        putExtra("Maintenance Amount", invoiceMaintenanceAmount.text)
+                        putExtra("email", userData.email)
+                        putExtra("mobile", userData.mobile)
+                        startActivity(this)
+                    }
+
                 }
-
             }
+
+
 
         }
 
